@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Officer Code - UPSC, BPSC, UPPCS Mentorship by Anand Mohan Sir. IIT Qualified, 4x UPSC Prelims Qualified, 3x UPSC Interview Qualified.">
+<title>The Officer Code â Anand Mohan Sir</title>
+</head>
+<body>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+  :root {
+    --navy: #050544;
+    --gold: #FFBD59;
+    --white: #FFFFFF;
+    --light-bg: #F4F4FA;
+    --navy-90: rgba(5,5,68,0.9);
+    --navy-light: #0a0a6e;
+    --gold-dark: #e6a840;
+    --text-gray: #555;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ââ NAV ââ */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 5%;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .nav-logo {
+    font-size: 1.6rem; font-weight: 800; color: var(--gold);
+    letter-spacing: 3px; text-decoration: none;
+  }
+  .nav-logo span { color: var(--white); font-weight: 400; font-size: 0.85rem; letter-spacing: 1px; display: block; }
+  .nav-cta {
+    background: var(--gold); color: var(--navy);
+    padding: 10px 24px; border-radius: 6px;
+    text-decoration: none; font-weight: 700; font-size: 0.95rem;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-dark); transform: scale(1.05); }
+
+  /* ââ HERO ââ */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #0c0c5a 50%, var(--navy) 100%);
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -50%; right: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,189,89,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner {
+    max-width: 1100px; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center;
+  }
+  .hero-text { position: relative; z-index: 2; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,189,89,0.15); color: var(--gold);
+    padding: 6px 18px; border-radius: 50px;
+    font-size: 0.85rem; font-weight: 600;
+    margin-bottom: 20px; letter-spacing: 1px;
+  }
+  .hero h1 {
+    font-size: 2.8rem; font-weight: 800; color: var(--white);
+    line-height: 1.2; margin-bottom: 20px;
+  }
+  .hero h1 em {
+    color: var(--gold); font-style: normal;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.75); font-size: 1.15rem;
+    margin-bottom: 32px; line-height: 1.7;
+  }
+  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 14px 32px; border-radius: 8px;
+    text-decoration: none; font-weight: 700; font-size: 1.05rem;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,189,89,0.3); }
+  .btn-secondary {
+    background: transparent; color: var(--white);
+    padding: 14px 32px; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 1.05rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-photo {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .photo-frame {
+    width: 320px; height: 380px;
+    background: linear-gradient(135deg, rgba(255,189,89,0.2), rgba(255,189,89,0.05));
+    border: 3px solid var(--gold);
+    border-radius: 20px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .photo-placeholder {
+    width: 140px; height: 140px;
+    background: rgba(255,189,89,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .photo-placeholder svg { width: 70px; height: 70px; fill: var(--gold); opacity: 0.6; }
+  .photo-name { color: var(--white); font-size: 1.3rem; font-weight: 700; }
+  .photo-title { color: var(--gold); font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; margin-top: 4px; }
+
+  /* ââ TRUST BAR ââ */
+  .trust-bar {
+    background: var(--gold);
+    padding: 20px 5%;
+    display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+    text-align: center;
+  }
+  .trust-item {
+    color: var(--navy); font-weight: 700; font-size: 0.95rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .trust-item span { font-size: 1.3rem; }
+
+  /* ââ SECTIONS ââ */
+  .section {
+    padding: 80px 5%;
+  }
+  .section-center { text-align: center; max-width: 800px; margin: 0 auto 50px; }
+  .section-tag {
+    display: inline-block;
+    color: var(--gold); background: rgba(255,189,89,0.12);
+    padding: 5px 16px; border-radius: 50px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+    margin-bottom: 14px; text-transform: uppercase;
+  }
+  .section-title {
+    font-size: 2.2rem; font-weight: 800; color: var(--navy);
+    line-height: 1.25; margin-bottom: 14px;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--text-gray); line-height: 1.7;
+  }
+
+  /* ââ TIMELINE ââ */
+  .timeline-section { background: var(--light-bg); }
+  .timeline-grid {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .timeline-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid rgba(5,5,68,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .timeline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(5,5,68,0.08);
+  }
+  .timeline-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 4px; background: var(--gold);
+  }
+  .timeline-year {
+    font-size: 2rem; font-weight: 800; color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .timeline-label {
+    font-size: 0.9rem; font-weight: 600; color: var(--navy);
+  }
+  .timeline-sub { font-size: 0.8rem; color: var(--text-gray); margin-top: 2px; }
+
+  /* ââ RESULTS ââ */
+  .results-grid {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+  }
+  .result-card {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 36px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-card::after {
+    content: '';
+    position: absolute; bottom: -30px; right: -30px;
+    width: 100px; height: 100px;
+    background: rgba(255,189,89,0.08);
+    border-radius: 50%;
+  }
+  .result-number {
+    font-size: 2.8rem; font-weight: 800; color: var(--gold);
+    line-height: 1;
+  }
+  .result-label {
+    color: rgba(255,255,255,0.85); font-size: 0.95rem;
+    margin-top: 10px; line-height: 1.4;
+  }
+  .result-highlight {
+    border: 2px solid var(--gold);
+  }
+
+  /* ââ PLANS ââ */
+  .plans-section { background: var(--light-bg); }
+  .plans-grid {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .plan-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    border: 2px solid rgba(5,5,68,0.08);
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .plan-card:hover { transform: translateY(-4px); }
+  .plan-card.featured {
+    border-color: var(--gold);
+    box-shadow: 0 12px 40px rgba(255,189,89,0.15);
+  }
+  .plan-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--navy);
+    padding: 5px 20px; border-radius: 50px;
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .plan-name {
+    font-size: 1.2rem; font-weight: 800; color: var(--navy);
+    margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .plan-duration {
+    font-size: 0.85rem; color: var(--text-gray); margin-bottom: 24px;
+  }
+  .plan-price-old {
+    font-size: 1rem; color: var(--text-gray);
+    text-decoration: line-through; margin-bottom: 4px;
+  }
+  .plan-price {
+    font-size: 2.6rem; font-weight: 800; color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .plan-price-note {
+    font-size: 0.8rem; color: var(--gold); font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .plan-features { list-style: none; text-align: left; margin-bottom: 30px; }
+  .plan-features li {
+    padding: 8px 0;
+    font-size: 0.9rem; color: var(--navy);
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid rgba(5,5,68,0.06);
+  }
+  .plan-features li:last-child { border: none; }
+  .check { color: #22c55e; font-weight: 700; font-size: 1.1rem; }
+  .cross { color: #ccc; font-weight: 700; font-size: 1.1rem; }
+  .plan-cta {
+    display: block; width: 100%;
+    background: var(--navy); color: var(--white);
+    padding: 14px; border-radius: 10px;
+    text-decoration: none; font-weight: 700; font-size: 1rem;
+    transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+  .plan-cta:hover { background: var(--navy-light); }
+  .plan-card.featured .plan-cta {
+    background: var(--gold); color: var(--navy);
+  }
+  .plan-card.featured .plan-cta:hover { background: var(--gold-dark); }
+
+  .seats-banner {
+    max-width: 600px; margin: 30px auto 0;
+    background: var(--navy); color: var(--white);
+    padding: 16px 30px; border-radius: 12px;
+    text-align: center; font-size: 1rem; font-weight: 600;
+  }
+  .seats-banner span { color: var(--gold); }
+
+  /* ââ WHY ââ */
+  .why-grid {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .why-card {
+    padding: 28px;
+    border-radius: 14px;
+    border: 1px solid rgba(5,5,68,0.08);
+    background: var(--white);
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .why-icon {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    background: rgba(255,189,89,0.12);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .why-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .why-card p { font-size: 0.88rem; color: var(--text-gray); line-height: 1.5; }
+
+  /* ââ FINAL CTA ââ */
+  .final-cta {
+    background: var(--navy);
+    padding: 80px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,189,89,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .final-cta h2 {
+    font-size: 2.2rem; font-weight: 800; color: var(--white);
+    margin-bottom: 14px; position: relative;
+  }
+  .final-cta h2 em { color: var(--gold); font-style: normal; }
+  .final-cta p {
+    color: rgba(255,255,255,0.7); font-size: 1.1rem;
+    margin-bottom: 36px; max-width: 550px; margin-left: auto; margin-right: auto;
+  }
+  .cta-buttons {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .btn-whatsapp {
+    background: #25D366; color: var(--white);
+    padding: 16px 36px; border-radius: 10px;
+    text-decoration: none; font-weight: 700; font-size: 1.1rem;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: all 0.2s;
+  }
+  .btn-whatsapp:hover { background: #1fb855; transform: translateY(-2px); }
+  .btn-call {
+    background: transparent; color: var(--white);
+    padding: 16px 36px; border-radius: 10px;
+    text-decoration: none; font-weight: 700; font-size: 1.1rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: all 0.2s;
+  }
+  .btn-call:hover { border-color: var(--gold); color: var(--gold); }
+  .address {
+    color: rgba(255,255,255,0.5); font-size: 0.9rem;
+    padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);
+    max-width: 400px; margin: 0 auto;
+  }
+  .address strong { color: rgba(255,255,255,0.7); }
+
+  /* ââ FOOTER ââ */
+  .footer {
+    background: #020228;
+    padding: 24px 5%;
+    text-align: center;
+    color: rgba(255,255,255,0.4); font-size: 0.8rem;
+  }
+  .footer span { color: var(--gold); }
+
+  /* ââ FLOATING WHATSAPP ââ */
+  .float-wa {
+    position: fixed; bottom: 24px; right: 24px; z-index: 99;
+    width: 60px; height: 60px;
+    background: #25D366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none;
+    transition: transform 0.2s;
+    animation: pulse-wa 2s infinite;
+  }
+  .float-wa:hover { transform: scale(1.1); }
+  .float-wa svg { width: 32px; height: 32px; fill: white; }
+  @keyframes pulse-wa {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); }
+  }
+
+  /* ââ RESPONSIVE ââ */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .hero h1 { font-size: 2rem; }
+    .hero-buttons { justify-content: center; }
+    .photo-frame { width: 260px; height: 320px; margin: 0 auto; }
+    .plans-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .section-title { font-size: 1.7rem; }
+    .trust-bar { gap: 20px; }
+    .trust-item { font-size: 0.82rem; }
+    .final-cta h2 { font-size: 1.7rem; }
+    .result-number { font-size: 2.2rem; }
+    .nav-logo { font-size: 1.3rem; }
+    .nav-cta { padding: 8px 18px; font-size: 0.85rem; }
+  }
+</style>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">TOC <span>The Officer Code</span></a>
+  <a href="https://wa.me/918235950035?text=Hi%2C%20I%20want%20to%20know%20about%20the%20mentorship%20program" class="nav-cta">Join Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">UPSC / BPSC / UPPCS MENTORSHIP</div>
+      <h1>Don't Just Prepare.<br><em>Prepare to Clear.</em></h1>
+      <p class="hero-sub">Learn directly from Anand Mohan Sir â IIT qualified, 4x UPSC Prelims qualified, 3x UPSC Interview qualified. He's been where you want to go.</p>
+      <div class="hero-buttons">
+        <a href="https://wa.me/918235950035?text=Hi%2C%20I%20want%20to%20join%20the%20mentorship%20program" class="btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.642-6.438-1.758l-.408-.248-3.1 1.04 1.04-3.1-.248-.408A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          WhatsApp Now
+        </a>
+        <a href="tel:+918235950035" class="btn-secondary">ð Call: 8235950035</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        </div>
+        <div class="photo-name">Anand Mohan Sir</div>
+        <div class="photo-title">MENTOR Â· GUIDE Â· MOTIVATOR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>ð</span> IIT Qualified</div>
+  <div class="trust-item"><span>ð</span> 4x UPSC Prelims</div>
+  <div class="trust-item"><span>ð¤</span> 3x UPSC Interview</div>
+  <div class="trust-item"><span>ð</span> 16 Students Cleared UPSC 2026 Prelims</div>
+</div>
+
+<!-- TIMELINE -->
+<section class="section timeline-section">
+  <div class="section-center">
+    <div class="section-tag">The Journey</div>
+    <h2 class="section-title">A Mentor Who Has Walked the Path</h2>
+    <p class="section-sub">Before he guided others, he proved himself. Here is Anand Mohan Sir's journey â every exam, every stage, every result.</p>
+  </div>
+  <div class="timeline-grid">
+    <div class="timeline-card">
+      <div class="timeline-year">2011</div>
+      <div class="timeline-label">NDA Qualified</div>
+      <div class="timeline-sub">National Defence Academy</div>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-year">2011</div>
+      <div class="timeline-label">NIFT Qualified</div>
+      <div class="timeline-sub">National Institute of Fashion</div>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-year">2011</div>
+      <div class="timeline-label">BHU Qualified</div>
+      <div class="timeline-sub">Banaras Hindu University</div>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-year">2012</div>
+      <div class="timeline-label">IIT Qualified</div>
+      <div class="timeline-sub">Indian Institute of Technology</div>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-year">2021â25</div>
+      <div class="timeline-label">UPSC Prelims</div>
+      <div class="timeline-sub">Qualified 4 times (2021, 22, 23, 25)</div>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-year">2022â25</div>
+      <div class="timeline-label">UPSC Mains</div>
+      <div class="timeline-sub">Qualified 3 times (2022, 23, 25)</div>
+    </div>
+    <div class="timeline-card">
+      <div class="timeline-year">2022â25</div>
+      <div class="timeline-label">UPSC Interview</div>
+      <div class="timeline-sub">Reached Interview 3 times</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section">
+  <div class="section-center">
+    <div class="section-tag">Proven Results</div>
+    <h2 class="section-title">His Students Speak Through Results</h2>
+    <p class="section-sub">Numbers don't lie. This is what happens when the right mentor meets hardworking students.</p>
+  </div>
+  <div class="results-grid">
+    <div class="result-card">
+      <div class="result-number">100+</div>
+      <div class="result-label">Students Qualified IIT</div>
+    </div>
+    <div class="result-card result-highlight">
+      <div class="result-number">16</div>
+      <div class="result-label">Students Cleared UPSC 2026 Prelims</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">3</div>
+      <div class="result-label">Students Qualified 70th BPSC</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">25</div>
+      <div class="result-label">Students Writing UPSC Mains 2026</div>
+    </div>
+    <div class="result-card">
+      <div class="result-number">2000+</div>
+      <div class="result-label">Students Learned Sanskrit Under His Guidance</div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="section plans-section">
+  <div class="section-center">
+    <div class="section-tag">Mentorship Plans</div>
+    <h2 class="section-title">Choose Your Path to UPSC CSE 2027</h2>
+    <p class="section-sub">Two plans. One goal â your selection. Pick the one that fits your preparation style.</p>
+  </div>
+  <div class="plans-grid">
+    <!-- Plan 1 -->
+    <div class="plan-card">
+      <div class="plan-name">Bi-Weekly Mentorship</div>
+      <div class="plan-duration">1 Year Program Â· Twice a Month</div>
+      <div class="plan-price-old">&#8377;15,000</div>
+      <div class="plan-price">&#8377;12,000</div>
+      <div class="plan-price-note">For First 10 Students Only</div>
+      <ul class="plan-features">
+        <li><span class="check">â</span> Personalized Study Plan</li>
+        <li><span class="check">â</span> Doubt Resolution</li>
+        <li><span class="check">â</span> Performance Tracking</li>
+        <li><span class="check">â</span> Accountability Support</li>
+        <li><span class="check">â</span> Priority Mentor Support</li>
+        <li><span class="cross">â</span> Answer Writing Evaluation</li>
+        <li><span class="cross">â</span> Detailed Answer Feedback</li>
+      </ul>
+      <a href="https://wa.me/918235950035?text=Hi%2C%20I%20want%20to%20join%20the%20Bi-Weekly%20Mentorship%20Plan" class="plan-cta">Enroll Now â</a>
+    </div>
+    <!-- Plan 2 -->
+    <div class="plan-card featured">
+      <div class="plan-badge">MOST POPULAR</div>
+      <div class="plan-name">Weekly Mentorship + Answer Writing</div>
+      <div class="plan-duration">1 Year Program Â· Every Week</div>
+      <div class="plan-price-old">&#8377;30,000</div>
+      <div class="plan-price">&#8377;20,000</div>
+      <div class="plan-price-note">For First 10 Students Only</div>
+      <ul class="plan-features">
+        <li><span class="check">â</span> Personalized Study Plan</li>
+        <li><span class="check">â</span> Doubt Resolution</li>
+        <li><span class="check">â</span> Performance Tracking</li>
+        <li><span class="check">â</span> Accountability Support</li>
+        <li><span class="check">â</span> Priority Mentor Support</li>
+        <li><span class="check">â</span> Answer Writing Evaluation</li>
+        <li><span class="check">â</span> Detailed Answer Feedback</li>
+      </ul>
+      <a href="https://wa.me/918235950035?text=Hi%2C%20I%20want%20to%20join%20the%20Weekly%20Mentorship%20%2B%20Answer%20Writing%20Plan" class="plan-cta">Enroll Now â</a>
+    </div>
+  </div>
+  <div class="seats-banner">Only <span>10 seats</span> at founder pricing â once filled, regular price applies.</div>
+</section>
+
+<!-- WHY -->
+<section class="section">
+  <div class="section-center">
+    <div class="section-tag">Why Us</div>
+    <h2 class="section-title">Why Students Trust This Mentorship</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">ð</div>
+      <div>
+        <h4>Back to Basics</h4>
+        <p>No shortcuts. We build your concepts from the ground up so you never feel lost in advanced topics.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">ð¯</div>
+      <div>
+        <h4>Smart Strategy</h4>
+        <p>Separate strategies for Prelims and Mains. No one-size-fits-all approach here.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">ð¤</div>
+      <div>
+        <h4>Individual Attention</h4>
+        <p>Limited seats mean you get direct access to your mentor. No crowd, no confusion.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">ð</div>
+      <div>
+        <h4>Result-Oriented</h4>
+        <p>Everything we do is aimed at one thing â your name in the final selection list.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">ð§ </div>
+      <div>
+        <h4>Concept Clarity First</h4>
+        <p>We don't make you memorize. We make you understand. That's what stays in the exam hall.</p>
+      </div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">ð¤</div>
+      <div>
+        <h4>Accountability Partner</h4>
+        <p>Feeling lazy? Your mentor checks in. No one falls behind in this program.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Your First Step to Becoming an <em>Officer</em> Starts Here</h2>
+  <p>Don't wait for the "right time." The right time is when you decide to get serious. Talk to us today.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/918235950035?text=Hi%2C%20I%20want%20to%20know%20about%20the%20mentorship%20program" class="btn-whatsapp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.642-6.438-1.758l-.408-.248-3.1 1.04 1.04-3.1-.248-.408A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp Us
+    </a>
+    <a href="tel:+918235950035" class="btn-call">ð Call: 8235950035</a>
+  </div>
+  <div class="address">
+    <strong>Visit Us</strong><br>
+    4th Floor, Roshpa Tower, Main Road, Ranchi, Jharkhand
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  &copy; 2026 <span>The Officer Code</span> Â· All Rights Reserved Â· Designed by <a href="https://kalamacademy.org/business" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;font-weight:600;">Kalam Academy Team</a>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/918235950035?text=Hi%2C%20I%20want%20to%20know%20about%20the%20mentorship%20program" class="float-wa" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.642-6.438-1.758l-.408-.248-3.1 1.04 1.04-3.1-.248-.408A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a></body>
+</html>
