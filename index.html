@@ -388,6 +388,21 @@ pointer-events: none;
     max-width: 400px; margin: 0 auto;
   }
   .address strong { color: rgba(255,255,255,0.7); }
+  .visit-hours {
+    display: inline-block; text-align: center;
+    margin-top: 14px; padding: 7px 18px;
+    border: 1px solid rgba(255,189,89,0.35);
+    border-radius: 999px;
+    background: rgba(255,189,89,0.08);
+    color: var(--gold); font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.2px; line-height: 1.55;
+  }
+  .visit-hours svg { vertical-align: -2px; margin-right: 7px; }
+  @media (max-width: 480px) { .visit-hours { font-size: 0.8rem; padding: 7px 14px; } }
+  .visit-closed {
+    margin-top: 9px; font-size: 0.78rem;
+    color: rgba(255,255,255,0.4); letter-spacing: 0.2px;
+  }
 
   /* ── FOOTER ── */
   .footer {
@@ -1173,6 +1188,10 @@ const TESTIMONIALS = [
   <div class="address">
     <strong>Visit Us</strong><br>
     4th Floor, Roshpa Tower, Main Road, Ranchi, Jharkhand
+    <div class="visit-hours">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><span style="white-space:nowrap">Monday &ndash; Saturday</span> &nbsp;·&nbsp; <span style="white-space:nowrap">10:00 AM &ndash; 2:00 PM</span>
+    </div>
+    <div class="visit-closed">Sunday closed</div>
   </div>
 </section>
 
