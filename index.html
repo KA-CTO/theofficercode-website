@@ -9,6 +9,7 @@
 <body>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&display=swap');
 
   :root {
     --navy: #050544;
@@ -24,7 +25,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'DM Sans', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
     color: var(--navy);
     background: var(--white);
     line-height: 1.6;
@@ -430,6 +431,180 @@ pointer-events: none;
     .nav-logo { font-size: 1.3rem; }
     .nav-cta { padding: 8px 18px; font-size: 0.85rem; }
   }
+  /* ══ STUDENT VOICES (testimonials) ══ */
+
+  .tst-section { background: var(--light-bg); }
+  .tst-shell { max-width: 1180px; margin: 0 auto; position: relative; padding: 0 56px; }
+
+  .tst-row {
+    display: flex; align-items: stretch; gap: 20px;
+    justify-content: safe center;
+    overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    padding: 8px 2px 20px;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .tst-row::-webkit-scrollbar { display: none; }
+
+  .tst-card {
+    --per: 4;
+    flex: 0 0 calc((100% - (var(--per) - 1) * 20px) / var(--per));
+    scroll-snap-align: start;
+    display: flex; flex-direction: column; align-items: center;
+    background: var(--white);
+    border: 1px solid rgba(5,5,68,0.08);
+    border-radius: 18px;
+    padding: 0 20px 22px;
+    overflow: hidden;
+    font-family: inherit; color: inherit; text-align: center;
+    /* a card with a video is a <button>, which the browser gives
+       line-height:normal — pin every card to it so all cards align */
+    line-height: normal;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .tst-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(5,5,68,0.12); }
+  .tst-card:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .tst-card-static { cursor: default; }
+  .tst-card-static:hover { transform: none; box-shadow: none; }
+
+  .tst-arc {
+    align-self: stretch; margin: 0 -20px; height: 74px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 0 0 50% 50% / 0 0 46% 46%;
+  }
+  .tst-avawrap { position: relative; margin-top: -50px; z-index: 2; }
+  .tst-ava {
+    width: 94px; height: 94px; border-radius: 50%;
+    border: 4px solid var(--white); background: var(--navy);
+    overflow: hidden; position: relative;
+    box-shadow: 0 8px 18px rgba(5,5,68,0.18);
+  }
+  .tst-ava img, .tst-ava video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .tst-ava video { position: absolute; inset: 0; opacity: 0; transition: opacity .35s ease; }
+  .tst-card.is-previewing .tst-ava video { opacity: 1; }
+  .tst-initials {
+    width: 100%; height: 100%; display: grid; place-items: center;
+    color: var(--gold); font-weight: 800; font-size: 1.9rem; letter-spacing: 1px;
+  }
+  .tst-anon svg { width: 46px; height: 46px; fill: var(--gold); opacity: .8; }
+  /* keeps the exact height of a real name / designation while showing nothing */
+  .tst-hidden { visibility: hidden; }
+  .tst-play {
+    position: absolute; right: -2px; bottom: 2px; z-index: 3;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--gold); border: 3px solid var(--white);
+    display: grid; place-items: center;
+    box-shadow: 0 4px 10px rgba(5,5,68,0.25);
+  }
+  .tst-play svg { width: 11px; height: 11px; fill: var(--navy); margin-left: 2px; }
+
+  .tst-rating { position: relative; display: inline-block; margin-top: 12px; font-size: 0.95rem; letter-spacing: 3px; line-height: 1; }
+  .tst-rating-bg { color: rgba(5,5,68,0.16); }
+  .tst-rating-fg { position: absolute; left: 0; top: 0; overflow: hidden; white-space: nowrap; color: var(--gold); }
+
+  .tst-name { font-weight: 800; font-size: 1.02rem; color: var(--navy); margin-top: 10px; }
+  .tst-tag {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 1.6px;
+    text-transform: uppercase; color: var(--gold-dark); margin-top: 5px;
+  }
+  .tst-quote {
+    font-size: 0.89rem; color: var(--text-gray); line-height: 1.6; margin-top: 12px;
+    display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  /* Hindi sits a touch smaller with more leading so the matras breathe */
+  .tst-quote[lang="hi"] { font-size: 0.85rem; line-height: 1.8; }
+  .tst-card-nowords .tst-rating { margin-top: auto; }
+  .tst-card-nowords .tst-tag { margin-bottom: auto; }
+  .tst-watch { margin-top: auto; padding-top: 14px; font-size: 0.78rem; font-weight: 700; color: var(--navy); opacity: .55; }
+  .tst-card:hover .tst-watch { opacity: 1; color: var(--gold-dark); }
+  .tst-draft {
+    margin-top: 12px; font-size: 0.62rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+    color: #8a5d00; background: rgba(255,189,89,0.22); border: 1px dashed var(--gold-dark);
+    padding: 3px 10px; border-radius: 50px;
+  }
+
+  .tst-arrow {
+    position: absolute; top: 44%; transform: translateY(-50%); z-index: 5;
+    width: 46px; height: 46px; border-radius: 50%; border: none;
+    background: var(--navy); color: var(--gold); font-size: 1.4rem; line-height: 1;
+    cursor: pointer; box-shadow: 0 10px 24px rgba(5,5,68,0.28);
+    transition: transform .2s, opacity .2s;
+  }
+  .tst-arrow:hover { transform: translateY(-50%) scale(1.08); }
+  .tst-arrow:disabled { opacity: .28; cursor: default; transform: translateY(-50%); }
+  .tst-static .tst-arrow, .tst-static .tst-hint { display: none; }
+  .tst-prev { left: 4px; }
+  .tst-next { right: 4px; }
+  .tst-hint { text-align: center; font-size: 0.8rem; color: var(--text-gray); margin-top: 4px; transition: opacity .2s; }
+  .tst-playing .tst-hint { opacity: 0; }
+
+  /* modal */
+  .tst-modal[hidden] { display: none !important; }
+  .tst-modal { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px; }
+  .tst-back { position: absolute; inset: 0; background: rgba(5,5,68,0.9); }
+  .tst-dialog { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 100%; }
+  .tst-stage {
+    position: relative; background: #000; border-radius: 16px; overflow: hidden;
+    aspect-ratio: 9 / 16; height: min(74vh, 660px); max-width: 100%;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.55);
+  }
+  .tst-stage video, .tst-stage iframe { width: 100%; height: 100%; display: block; border: 0; }
+  /* a testimonial with words but no video opens as a readable panel */
+  .tst-modal.is-textmode .tst-dialog { width: min(560px, 100%); }
+  .tst-stage.is-text {
+    background: var(--white); aspect-ratio: auto;
+    height: auto; width: 100%; max-height: 74vh;
+    overflow-y: auto; padding: 36px 32px; text-align: center;
+  }
+  .tst-stage.is-text .tst-full-stars {
+    display: block; color: var(--gold); font-size: 1.1rem; letter-spacing: 4px; margin-bottom: 18px;
+  }
+  .tst-stage.is-text .tst-full-quote {
+    font-size: 1.02rem; line-height: 1.8; color: var(--text-gray); margin: 0;
+  }
+  .tst-modal-meta { color: var(--white); text-align: center; }
+  .tst-modal-meta strong { display: block; font-size: 1.05rem; }
+  .tst-modal-meta span { font-size: 0.78rem; letter-spacing: 1.6px; text-transform: uppercase; color: var(--gold); }
+  .tst-unmute {
+    position: absolute; left: 50%; bottom: 82px; transform: translateX(-50%); z-index: 3;
+    background: var(--gold); color: var(--navy); border: none;
+    padding: 11px 22px; border-radius: 50px; cursor: pointer;
+    font-family: inherit; font-size: 0.9rem; font-weight: 700;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.4);
+  }
+  .tst-unmute:hover { background: var(--gold-dark); }
+  .tst-modal.is-auto .tst-back { background: rgba(5,5,68,0.72); }
+
+  .tst-close {
+    position: absolute; top: calc(-6px + env(safe-area-inset-top, 0px)); right: -6px; z-index: 4;
+    width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.35);
+    background: var(--navy); color: var(--white); font-size: 1.3rem; line-height: 1; cursor: pointer;
+  }
+
+  .tst-hint .on-phone { display: none; }
+
+  @media (max-width: 1100px) {
+    .tst-card { --per: 3; }
+    .tst-shell { padding: 0 44px; }
+  }
+  @media (max-width: 820px)  { .tst-card { --per: 2; } }
+  @media (max-width: 560px)  {
+    .tst-card { --per: 1.15; }
+    .tst-quote { -webkit-line-clamp: 8; }
+    .tst-modal-meta {
+      background: rgba(5,5,68,0.85); padding: 8px 18px; border-radius: 12px;
+    }
+    .tst-shell { padding: 0; }
+    .tst-arrow { display: none; }
+    .tst-hint .on-desk { display: none; }
+    .tst-hint .on-phone { display: inline; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tst-row { scroll-behavior: auto; }
+    .tst-card, .tst-arrow, .tst-ava video { transition: none; }
+    .tst-card:hover { transform: none; }
+  }
+
 </style>
 
 <!-- NAV -->
@@ -549,6 +724,341 @@ anandsir.jpg
 </section>
 
 <!-- PLANS -->
+<!-- STUDENT VOICES -->
+<section class="section tst-section">
+  <div class="section-center">
+    <div class="section-tag">Student Voices</div>
+    <h2 class="section-title">Hear It Straight From His Students</h2>
+    <p class="section-sub">Real students, real preparation, real results — in their own words. Tap any card to play the full video.</p>
+  </div>
+
+  <div class="tst-shell">
+    <button class="tst-arrow tst-prev" type="button" aria-label="Previous testimonials">&#8249;</button>
+    <div class="tst-row" id="tstRow"></div>
+    <button class="tst-arrow tst-next" type="button" aria-label="Next testimonials">&#8250;</button>
+  </div>
+  <p class="tst-hint"><span class="on-desk">Use the arrows to see more students</span><span class="on-phone">Swipe to see more students</span></p>
+</section>
+
+<div class="tst-modal" id="tstModal" hidden>
+  <div class="tst-back" data-close></div>
+  <div class="tst-dialog">
+    <button class="tst-close" type="button" data-close aria-label="Close video">&#10005;</button>
+    <div class="tst-stage" id="tstStage"></div>
+    <div class="tst-modal-meta" id="tstMeta"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   TESTIMONIALS — this is the only list you edit to add a student.
+   Copy one block, change the values, done.
+
+   name    : student's name — leave this line out and the card shows an
+             empty line there instead, keeping the same height as the others
+   tag     : mentorship enrolled, or designation (e.g. "IPS — 2025 Batch")
+             — leave it out the same way to hide the designation
+   stars   : 5, 4.5, 4 …  (half stars allowed)
+   quote   : the line shown on the card — leave it out and the card shows
+             the student, their course and their rating, with no words
+   lang    : "hi" if that quote is written in Hindi — leave it out for English
+   photo   : avatar image path — leave out and initials are used instead
+   video   : self-hosted video file (upload it beside this page)
+     …or…
+   youtube : a YouTube link or ID — use ONE of video / youtube
+   preview : optional short silent clip that plays on hover
+   poster  : optional still shown before the video plays
+   ═══════════════════════════════════════════════════════════════ */
+const TESTIMONIALS = [
+  {
+    name: "Apeksha Bhatt",
+    tag: "UPSC Mentorship",
+    stars: 5,
+    quote: "Anand Sir is not just a mentor, he's a big brother. He clears the fog whenever it sets in, and keeps my UPSC preparation balanced.",
+    photo: "assets/apeksha-avatar.jpg",
+    video: "assets/apeksha.mp4",
+    preview: "assets/apeksha-preview.mp4",
+    poster: "assets/apeksha-poster.jpg"
+  },
+  {
+    name: "Akanksha Kumari",
+    tag: "UPSC Mentorship",
+    stars: 4.5,
+    quote: "I\u2019m really grateful to have had the guidance of my UPSC mentor. His guidance has helped me a lot in understanding my preparation better, staying focused, and avoiding unnecessary mistakes. The regular support and motivation gave me more clarity and confidence throughout my preparation. I would definitely recommend his mentorship to serious UPSC aspirants."
+  }
+
+  ,{
+    name: "Annasha Sen Gupta",
+    tag: "BPSC Mentorship",
+    stars: 5,
+    quote: "I\u2019m genuinely thankful to Anand Sir for the guidance I received during my UPSC preparation. UPSC preparation can feel very confusing at times, but his guidance helped me stay on the right track and gave me much more clarity about what to study and how to prepare. His constant support and honest feedback really helped me improve. I\u2019m glad I chose Anand Sir\u2019s mentorship."
+  }
+
+];
+
+/* A card with no video / youtube is text-only: no play badge, nothing to click.
+   A YouTube one looks like this:
+     { name: "…", tag: "…", stars: 5, quote: "…", youtube: "https://youtu.be/VIDEO_ID" }  */
+
+(function () {
+  const row = document.getElementById('tstRow');
+  const section = document.querySelector('.tst-section');
+  const modal = document.getElementById('tstModal');
+  const stage = document.getElementById('tstStage');
+  const meta = document.getElementById('tstMeta');
+  const prev = document.querySelector('.tst-prev');
+  const next = document.querySelector('.tst-next');
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const HOVER_DELAY = 450;   // ms before a silent preview starts on hover
+  const AUTO_OPEN = true;    // first card's video opens by itself when the section is scrolled to
+  const AUTO_SOUND = true;   // try to open it with sound on (falls back to a Tap-for-sound button)
+  const AUTO_LOOP = false;   // play it through once, then leave it resting
+
+  let autoUsed = false;      // it only ever opens itself once per visit
+  let autoMode = false;      // the video currently on screen was opened automatically
+  let autoVid = null;        // the auto-open player, kept alive so the browser trusts it
+  let primed = false;        // true once a real tap has unlocked sound for that player
+
+  const ytId = (v) => {
+    if (!v) return null;
+    const m = String(v).match(/(?:v=|youtu\.be\/|embed\/|shorts\/)([A-Za-z0-9_-]{6,})/);
+    return m ? m[1] : String(v);
+  };
+  const initials = (n) => n.trim().split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  /* no photo and no name → a plain person icon rather than initials */
+  const ANON_FACE = '<div class="tst-initials tst-anon"><svg viewBox="0 0 24 24" aria-hidden="true">' +
+    '<path d="M12 12.6a4.8 4.8 0 1 0 0-9.6 4.8 4.8 0 0 0 0 9.6Zm0 1.9c-4.3 0-7.8 2.5-7.8 5.5V22h15.6v-2c0-3-3.5-5.5-7.8-5.5Z"/>' +
+    '</svg></div>';
+  const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  TESTIMONIALS.forEach((t, i) => {
+    const hasVideo = !!(t.video || t.youtube);
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.setAttribute('aria-label', (hasVideo ? 'Play video testimonial' : 'Read the full testimonial') +
+                                    (t.name ? ' of ' + t.name : ''));
+    card.className = 'tst-card' + (t.quote ? '' : ' tst-card-nowords');
+    card.dataset.i = i;
+
+    const face = t.photo
+      ? '<img src="' + esc(t.photo) + '" alt="' + esc(t.name || 'Student') + '" loading="lazy">'
+      : (t.name ? '<div class="tst-initials">' + esc(initials(t.name)) + '</div>' : ANON_FACE);
+
+    const previewSrc = hasVideo ? (t.preview || t.video || null) : null;
+    const previewTag = (canHover && previewSrc)
+      ? '<video src="' + esc(previewSrc) + '" muted loop playsinline preload="none"></video>'
+      : '';
+
+    card.innerHTML =
+      '<div class="tst-arc"></div>' +
+      '<div class="tst-avawrap">' +
+        '<div class="tst-ava">' + face + previewTag + '</div>' +
+        (hasVideo ? '<span class="tst-play"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M0 0l10 5-10 5z"/></svg></span>' : '') +
+      '</div>' +
+      '<span class="tst-rating" role="img" aria-label="' + t.stars + ' out of 5 stars">' +
+        '<span class="tst-rating-bg">★★★★★</span>' +
+        '<span class="tst-rating-fg" style="width:' + (t.stars / 5 * 100) + '%">★★★★★</span>' +
+      '</span>' +
+      '<div class="tst-name' + (t.name ? '' : ' tst-hidden') + '">' + esc(t.name || 'Name') + '</div>' +
+      '<div class="tst-tag' + (t.tag ? '' : ' tst-hidden') + '">' + esc(t.tag || 'Designation') + '</div>' +
+      (t.quote ? '<p class="tst-quote"' + (t.lang ? ' lang="' + esc(t.lang) + '"' : '') + '>' + esc(t.quote) + '</p>' : '') +
+      (t.draft ? '<span class="tst-draft">Draft quote</span>' : '') +
+      (hasVideo ? '<div class="tst-watch">▶ Watch testimonial</div>'
+                : (t.quote ? '<div class="tst-watch tst-readmore">Read full testimonial</div>' : ''));
+
+    if (canHover && previewSrc && hasVideo) {
+      let timer = null;
+      const vid = card.querySelector('.tst-ava video');
+      card.addEventListener('mouseenter', () => {
+        timer = setTimeout(() => {
+          card.classList.add('is-previewing');
+          vid.currentTime = 0;
+          vid.play().catch(() => {});
+        }, HOVER_DELAY);
+      });
+      card.addEventListener('mouseleave', () => {
+        clearTimeout(timer);
+        card.classList.remove('is-previewing');
+        vid.pause();
+      });
+    }
+
+    if (hasVideo) card.addEventListener('click', () => open(i, false));
+    row.appendChild(card);
+  });
+
+  /* Cards are laid out, so now we can see which quotes actually run past the
+     card. Those become clickable and open in full; the rest lose the
+     "Read full testimonial" line and stop behaving like buttons. */
+  [...row.children].forEach((card, i) => {
+    if (TESTIMONIALS[i].video || TESTIMONIALS[i].youtube) return;
+    const q = card.querySelector('.tst-quote');
+    const more = card.querySelector('.tst-readmore');
+    if (q && more && q.scrollHeight > q.clientHeight + 1) {
+      card.addEventListener('click', () => open(i, false));
+    } else {
+      if (more) more.remove();
+      card.classList.add('tst-card-static');
+      card.tabIndex = -1;
+      card.removeAttribute('aria-label');
+    }
+  });
+
+  /* ── the video overlay ───────────────────────────────────────────
+     auto === true  → opened by scrolling to the section: muted and
+     looping, the page keeps scrolling behind it, and it closes
+     itself once the section leaves the screen.
+     auto === false → the visitor clicked a card: sound on, page
+     locked behind it, closes on ✕ / Esc / backdrop.            */
+  function open(i, auto) {
+    const t = TESTIMONIALS[i];
+    autoMode = !!auto;
+
+    if (t.youtube) {
+      const id = ytId(t.youtube);
+      const p = auto ? '&mute=1&loop=1&playlist=' + id : '';
+      stage.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+        '?autoplay=1&rel=0&playsinline=1' + p + '" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="' + esc(t.name || 'Student testimonial') + '"></iframe>';
+      if (auto) addSoundButton(() => {
+        stage.querySelector('iframe').src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+      });
+    } else if (auto) {
+      stage.innerHTML = '';
+      const v = getAutoVid(t);
+      v.loop = AUTO_LOOP;
+      v.currentTime = 0;
+      stage.appendChild(v);
+      /* Try sound first. Browsers refuse unless a tap has already trusted
+         this player, so fall back to muted + a one-tap sound button. */
+      v.muted = !AUTO_SOUND;
+      const attempt = v.play();
+      if (attempt) attempt.catch(() => {
+        v.muted = true;
+        v.play().catch(() => {});
+        addSoundButton(() => { v.muted = false; v.play().catch(() => {}); });
+      });
+    } else if (!t.video) {
+      /* words only — show the whole testimonial rather than a player */
+      stage.className = 'tst-stage is-text';
+      modal.classList.add('is-textmode');
+      stage.innerHTML =
+        '<span class="tst-full-stars" role="img" aria-label="' + t.stars + ' out of 5 stars">' +
+          '★★★★★'.slice(0, Math.round(t.stars)) + '</span>' +
+        '<p class="tst-full-quote"' + (t.lang ? ' lang="' + esc(t.lang) + '"' : '') + '>' + esc(t.quote) + '</p>';
+    } else {
+      stage.innerHTML = '<video src="' + esc(t.video) + '"' + (t.poster ? ' poster="' + esc(t.poster) + '"' : '') +
+        ' controls autoplay playsinline></video>';
+      stage.querySelector('video').play().catch(() => {});
+    }
+
+    meta.innerHTML = (t.name ? '<strong>' + esc(t.name) + '</strong>' : '') +
+                     (t.tag ? '<span>' + esc(t.tag) + '</span>' : '');
+    section.classList.add('tst-playing');
+    modal.hidden = false;
+    modal.classList.toggle('is-auto', !!auto);
+    if (!auto) {
+      document.body.style.overflow = 'hidden';
+      document.querySelector('.tst-close').focus();
+    }
+  }
+
+  /* one player, kept between opens — a player a visitor has once tapped
+     is allowed to start with sound later on */
+  function getAutoVid(t) {
+    if (!autoVid) {
+      autoVid = document.createElement('video');
+      autoVid.src = t.video;
+      if (t.poster) autoVid.poster = t.poster;
+      autoVid.controls = true;
+      autoVid.playsInline = true;
+      autoVid.preload = 'metadata';
+    }
+    return autoVid;
+  }
+
+  /* the very first tap anywhere on the page unlocks sound for that player */
+  function primeSound() {
+    if (primed) return;
+    primed = true;
+    const first = TESTIMONIALS.find(t => t.video);
+    if (!first) return;
+    const v = getAutoVid(first);
+    if (!v.paused || !modal.hidden) return;   // already playing — never interrupt it
+    v.muted = true;
+    const p = v.play();
+    if (p) p.then(() => {
+      if (!modal.hidden) return;              // the visitor opened it meanwhile — leave it alone
+      v.pause(); v.currentTime = 0; v.muted = false;
+    }).catch(() => {});
+  }
+  ['pointerdown', 'touchstart', 'keydown'].forEach(ev =>
+    window.addEventListener(ev, primeSound, { once: true, passive: true }));
+
+  function addSoundButton(onClick) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tst-unmute';
+    btn.textContent = '🔊 Tap for sound';
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      onClick();
+      btn.remove();
+      autoMode = false;                    // they engaged — stop closing it on scroll
+      document.body.style.overflow = 'hidden';
+    });
+    stage.appendChild(btn);
+  }
+
+  function close(byUser) {
+    if (autoVid) { autoVid.pause(); autoVid.loop = false; }
+    stage.className = 'tst-stage';
+    stage.innerHTML = '';
+    modal.classList.remove('is-textmode');
+    modal.hidden = true;
+    section.classList.remove('tst-playing');
+    modal.classList.remove('is-auto');
+    document.body.style.overflow = '';
+    if (byUser) autoUsed = true;     // closed by hand → never reopens itself
+    autoMode = false;
+  }
+
+  modal.addEventListener('click', (e) => { if (e.target.hasAttribute('data-close')) close(true); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.hidden) close(true); });
+
+  /* opens the first card's video when the section scrolls into view */
+  if (AUTO_OPEN && 'IntersectionObserver' in window && !(navigator.connection || {}).saveData) {
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting && e.intersectionRatio > 0.4) {
+          const first = TESTIMONIALS.findIndex(t => t.video || t.youtube);
+          if (!autoUsed && modal.hidden && first > -1) {
+            autoUsed = true;
+            open(first, true);
+          }
+        } else if (autoMode && !modal.hidden) {
+          close(false);              // scrolled away — put it away quietly
+        }
+      });
+    }, { threshold: [0, 0.4] }).observe(section);
+  }
+
+  const page = () => row.clientWidth;
+  prev.addEventListener('click', () => row.scrollBy({ left: -page(), behavior: 'smooth' }));
+  next.addEventListener('click', () => row.scrollBy({ left: page(), behavior: 'smooth' }));
+
+  function arrows() {
+    /* nothing to scroll to — no arrows, no "swipe for more" */
+    const scrollable = row.scrollWidth > row.clientWidth + 8;
+    section.classList.toggle('tst-static', !scrollable);
+    prev.disabled = row.scrollLeft < 8;
+    next.disabled = row.scrollLeft + row.clientWidth >= row.scrollWidth - 8;
+  }
+  row.addEventListener('scroll', arrows, { passive: true });
+  window.addEventListener('resize', arrows);
+  arrows();
+})();
+</script>
+
 <section class="section plans-section">
   <div class="section-center">
     <div class="section-tag">Mentorship Plans</div>
