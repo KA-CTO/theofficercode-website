@@ -162,10 +162,10 @@
   /* ── lead card ── */
   .lead {
     min-width: 0; background: var(--bg); color: var(--ink);
-    border-radius: 20px; border: 3px solid var(--gold); overflow: hidden;
+    border-radius: 20px; border: 3px solid var(--gold);
     box-shadow: 0 30px 70px rgba(0,0,0,0.35);
   }
-  .chat { background: var(--bg-soft); padding: 16px 18px; border-bottom: 1px solid var(--line); }
+  .chat { background: var(--bg-soft); padding: 16px 18px; border-bottom: 1px solid var(--line); border-radius: 17px 17px 0 0; }
   .chat-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
   .chat-ava {
     flex: 0 0 42px; height: 42px; border-radius: 50%;
@@ -199,6 +199,46 @@
     transition: border-color .15s, box-shadow .15s;
   }
   .fld input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--gold-soft); }
+  /* "Preferred mode of learning" — modern dropdown: a button that opens a floating card list */
+  .pick { position: relative; }
+  .pick-btn {
+    width: 100%; display: flex; align-items: center; gap: 12px; text-align: left; cursor: pointer;
+    font: 400 1rem var(--font); color: var(--ink); background: var(--bg);
+    padding: 7px 10px 7px 7px; border: 1.5px solid rgba(5,5,68,0.2); border-radius: 12px;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .pick-btn:hover { border-color: rgba(5,5,68,0.45); }
+  .pick-btn:focus-visible, .pick.open .pick-btn { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px var(--gold-soft); }
+  .pick-ic { flex: 0 0 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; font-size: 1.1rem; background: var(--bg-soft); transition: background .2s; }
+  .pick-btn.has .pick-ic { background: var(--gold-soft); }
+  .pick-val { flex: 1; min-width: 0; line-height: 1.25; color: #757575; }
+  .pick-btn.has .pick-val { color: var(--ink); }
+  .pick-val b { display: block; font-weight: 700; }
+  .pick-val small { display: block; font-size: 0.78rem; color: var(--muted); }
+  .pick-arrow { flex: 0 0 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; color: var(--navy); background: var(--bg-soft); transition: transform .25s ease, background .2s; }
+  .pick-arrow svg { width: 12px; height: 8px; }
+  .pick.open .pick-arrow { transform: rotate(180deg); background: var(--gold); }
+  .pick-list {
+    position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 30; list-style: none;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 6px;
+    box-shadow: 0 22px 50px rgba(5,5,68,0.22), 0 4px 12px rgba(5,5,68,0.08);
+    opacity: 0; visibility: hidden; transform: translateY(-6px) scale(.98); transform-origin: top center;
+    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+  }
+  .pick.open .pick-list { opacity: 1; visibility: visible; transform: none; transition: opacity .18s ease, transform .18s ease; }
+  .pick-list:focus { outline: none; }
+  .pick-opt { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 12px; cursor: pointer; border: 1.5px solid transparent; transition: background .15s, border-color .15s; }
+  .pick-opt + .pick-opt { margin-top: 4px; }
+  .pick-opt.active { background: var(--bg-soft); }
+  .pick-opt.active .opt-ic { background: var(--bg); }
+  .pick-opt[aria-selected="true"] { background: var(--gold-soft); border-color: rgba(255,189,89,0.8); }
+  .opt-ic { flex: 0 0 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; font-size: 1.25rem; background: var(--bg-soft); transition: background .15s; }
+  .pick-opt[aria-selected="true"] .opt-ic { background: var(--navy); }
+  .opt-txt { flex: 1; min-width: 0; line-height: 1.25; }
+  .opt-txt b { display: block; font-size: 1rem; }
+  .opt-txt small { font-size: 0.8rem; color: var(--muted); }
+  .opt-tick { flex: 0 0 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; border: 2px solid rgba(5,5,68,0.2); color: transparent; font-size: 0.72rem; font-weight: 800; transition: background .15s, border-color .15s, color .15s; }
+  .pick-opt[aria-selected="true"] .opt-tick { background: var(--navy); border-color: var(--navy); color: var(--gold); }
   .phone { display: flex; }
   .phone span {
     display: grid; place-items: center; padding: 0 12px; font-weight: 700; color: var(--muted);
@@ -208,7 +248,7 @@
   .err { display: none; color: var(--err); font-size: 0.78rem; font-weight: 600; margin-top: 4px; }
   .req { color: var(--err); font-weight: 700; }
   .req-note { font-size: 0.78rem; color: var(--muted); margin-top: -4px; }
-  .fld.bad input, .fld.bad .phone span { border-color: var(--err); }
+  .fld.bad input, .fld.bad .pick-btn, .fld.bad .phone span { border-color: var(--err); }
   .fld.bad .err { display: block; }
   .picked {
     display: none; align-items: center; justify-content: space-between; gap: 10px;
@@ -583,6 +623,29 @@
           </div>
           <div class="err" data-empty="Please write your phone number." data-wrong="Please write a correct 10-digit mobile number.">Please write your phone number.</div>
         </div>
+        <div class="fld" id="f-mode">
+          <label id="mode-lbl" for="mode">Preferred mode of learning <span class="req" aria-hidden="true">*</span></label>
+          <div class="pick" id="modePick">
+            <button type="button" class="pick-btn" id="mode" value="" aria-haspopup="listbox" aria-expanded="false" aria-controls="modeList" aria-labelledby="mode-lbl mode-value">
+              <span class="pick-ic" id="modeIc" aria-hidden="true">🎓</span>
+              <span class="pick-val" id="mode-value">Choose Online or Offline</span>
+              <span class="pick-arrow" aria-hidden="true"><svg viewBox="0 0 12 8"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </button>
+            <ul class="pick-list" id="modeList" role="listbox" tabindex="-1" aria-labelledby="mode-lbl">
+              <li class="pick-opt" id="mode-online" role="option" aria-selected="false" data-value="online">
+                <span class="opt-ic" aria-hidden="true">💻</span>
+                <span class="opt-txt"><b>Online</b><small>Live classes</small></span>
+                <span class="opt-tick" aria-hidden="true">✓</span>
+              </li>
+              <li class="pick-opt" id="mode-offline" role="option" aria-selected="false" data-value="offline">
+                <span class="opt-ic" aria-hidden="true">🏫</span>
+                <span class="opt-txt"><b>Offline</b><small>Ranchi classroom</small></span>
+                <span class="opt-tick" aria-hidden="true">✓</span>
+              </li>
+            </ul>
+          </div>
+          <div class="err" data-empty="Please choose Online or Offline." data-wrong="Please choose Online or Offline.">Please choose Online or Offline.</div>
+        </div>
         <p class="req-note"><span class="req">*</span> All fields are required</p>
         <button type="submit" class="btn btn-gold" id="submitBtn">Book My Free Counselling →</button>
         <p class="send-err" id="sendErr">Something went wrong. Please try again, or call us on 8235950035.</p>
@@ -834,6 +897,7 @@
           name:         "Rahul Kumar",
           email:        "rahul@gmail.com",
           phone:        "9876543210",        // 10 digits, no +91
+          mode:         "online",            // "online" or "offline" — the student must pick one
           plan:         "online",            // "", "online" or "offline-ranchi"
                                              // (filled when the visitor taps a course card's button)
           page:         "https://theofficercode.com/?utm_source=…",  // full URL, keeps UTM tags from ads
@@ -902,6 +966,69 @@ const THANK_YOU_URL = 'thank-you/';
     picked.classList.remove('show');
   });
 
+  /* ── "Preferred mode of learning" dropdown ──
+     The button keeps the chosen value ("online" / "offline") in its value,
+     so the checks below read it like any other field. Mouse, touch and keyboard all work. */
+  const MODE_LABELS = { online: 'Online – Live classes', offline: 'Offline – Ranchi classroom' };
+  const modeBox = $('modePick');
+  const modeBtn = $('mode');
+  const modeList = $('modeList');
+  const modeOpts = [...modeList.querySelectorAll('[role="option"]')];
+  let activeOpt = -1;
+  const isOpen = () => modeBox.classList.contains('open');
+  function setActive(i) {
+    activeOpt = (i + modeOpts.length) % modeOpts.length;
+    modeOpts.forEach((o, n) => o.classList.toggle('active', n === activeOpt));
+    modeList.setAttribute('aria-activedescendant', modeOpts[activeOpt].id);
+  }
+  function openModes() {
+    if (isOpen()) return;
+    modeBox.classList.add('open');
+    modeBtn.setAttribute('aria-expanded', 'true');
+    const cur = modeOpts.findIndex((o) => o.dataset.value === modeBtn.value);
+    setActive(cur < 0 ? 0 : cur);
+    modeList.focus({ preventScroll: true });
+    /* on a phone, scroll a little if the list would open below the screen */
+    const r = modeList.getBoundingClientRect();
+    if (r.bottom > window.innerHeight - 8) window.scrollBy({ top: r.bottom - window.innerHeight + 16, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  function closeModes(refocus) {
+    if (!isOpen()) return;
+    modeBox.classList.remove('open');
+    modeBtn.setAttribute('aria-expanded', 'false');
+    modeOpts.forEach((o) => o.classList.remove('active'));
+    if (refocus) modeBtn.focus({ preventScroll: true });
+  }
+  function chooseMode(i) {
+    const o = modeOpts[i];
+    modeBtn.value = o.dataset.value;
+    modeOpts.forEach((x) => x.setAttribute('aria-selected', String(x === o)));
+    modeBtn.classList.add('has');
+    $('modeIc').textContent = o.querySelector('.opt-ic').textContent;
+    $('mode-value').innerHTML = o.querySelector('.opt-txt').innerHTML;
+    closeModes(true);
+    modeBtn.dispatchEvent(new Event('change'));
+  }
+  modeBtn.addEventListener('click', () => (isOpen() ? closeModes(true) : openModes()));
+  modeBtn.addEventListener('keydown', (e) => {
+    if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) { e.preventDefault(); openModes(); }
+  });
+  modeList.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); setActive(activeOpt + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(activeOpt - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); setActive(0); }
+    else if (e.key === 'End') { e.preventDefault(); setActive(modeOpts.length - 1); }
+    else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chooseMode(activeOpt); }
+    else if (e.key === 'Escape') { e.preventDefault(); closeModes(true); }
+    else if (e.key === 'Tab') { closeModes(false); }
+  });
+  modeOpts.forEach((o, i) => {
+    o.addEventListener('mousemove', () => { if (activeOpt !== i) setActive(i); });
+    o.addEventListener('click', () => chooseMode(i));
+  });
+  document.addEventListener('pointerdown', (e) => { if (!modeBox.contains(e.target)) closeModes(false); });
+  modeList.addEventListener('focusout', (e) => { if (!modeBox.contains(e.relatedTarget)) closeModes(false); });
+
   /* every "Book Free Counselling" button: scroll to the form, then focus the first field */
   document.querySelectorAll('[data-book]').forEach((a) => {
     a.addEventListener('click', (e) => {
@@ -923,6 +1050,7 @@ const THANK_YOU_URL = 'thank-you/';
     name: (v) => v.trim().length >= 2,
     email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
     phone: (v) => /^[6-9]\d{9}$/.test(cleanPhone(v)),
+    mode: (v) => v === 'online' || v === 'offline',
   };
   let tried = false;
   function check(key) {
@@ -938,6 +1066,7 @@ const THANK_YOU_URL = 'thank-you/';
   Object.keys(checks).forEach((k) => {
     $(k).addEventListener('input', () => { if (tried) check(k); });
     $(k).addEventListener('blur', () => { if (tried) check(k); });
+    $(k).addEventListener('change', () => { if (tried) check(k); });
   });
 
   /* ── submit ── */
@@ -951,6 +1080,7 @@ const THANK_YOU_URL = 'thank-you/';
       name: $('name').value.trim(),
       email: $('email').value.trim(),
       phone: cleanPhone($('phone').value),
+      mode: $('mode').value,
       plan: planInput.value,
       page: location.href,
       submitted_at: new Date().toISOString(),
@@ -981,7 +1111,8 @@ const THANK_YOU_URL = 'thank-you/';
       const msg = 'Hi, I want to book a free counselling session for the UPSC batch.\n\n' +
         'Name: ' + data.name + '\n' +
         'Email: ' + data.email + '\n' +
-        'Phone: +91 ' + data.phone +
+        'Phone: +91 ' + data.phone + '\n' +
+        'Preferred mode: ' + MODE_LABELS[data.mode] +
         (data.plan && label ? '\nInterested in: ' + label : '');
       const wa = 'https://wa.me/' + LEAD_WHATSAPP + '?text=' + encodeURIComponent(msg);
       const win = window.open(wa, '_blank');
