@@ -16,7 +16,7 @@
 <body>
 <style>
   /* Layout: ad landing page. Offer list + free-counselling form side by side at the top,
-     then refund promise, who it's for, fees, what you get, proof, and one repeated action. */
+     then Anand Sir's journey, results, fees, what you get, proof, and one repeated action. */
   :root {
     --navy: #050544;
     --navy-2: #0c0c5a;
@@ -104,11 +104,55 @@
     flex: 0 0 38px; height: 38px; border-radius: 10px;
     background: rgba(255,255,255,0.08); display: grid; place-items: center; font-size: 1.1rem;
   }
-  .points li.star {
-    background: var(--gold-soft); border: 1.5px solid rgba(255,189,89,0.55);
-    padding: 10px 14px 10px 10px; border-radius: 14px; font-weight: 700; color: #fff;
+  /* "Clear UPSC Prelims" line — green money-back box with a moving shine, glow, sparkles and a gold 100% stamp */
+  .points li.money {
+    position: relative; color: #fff; font-weight: 800;
+    padding: 12px 16px 12px 10px; border-radius: 14px;
+    background: linear-gradient(110deg, #15803d 0%, #16a34a 38%, #2fbf62 50%, #16a34a 62%, #15803d 100%);
+    background-size: 260% 100%; background-position: 130% 0;
+    box-shadow: 0 0 0 2px rgba(34,197,94,0.45), 0 8px 26px rgba(22,163,74,0.35);
+    animation: hot-shine 3s ease-in-out 1.5s infinite, money-glow 2.4s ease-in-out infinite;
   }
-  .points li.star .ic { background: var(--gold); }
+  .points li.money .ic { background: #fff; }
+  .money-stamp {
+    position: relative; flex: 0 0 74px; height: 74px; margin: -8px -4px -8px auto; border-radius: 50%;
+    background: var(--gold); display: grid; place-items: center; transform: rotate(-12deg);
+    box-shadow: 0 0 0 3px #15803d, 0 0 0 5px var(--gold), 0 6px 14px rgba(0,0,0,0.3);
+    animation: stamp-pulse 2.4s ease-in-out infinite;
+  }
+  .money-stamp .seal-txt { color: #0b5a2a; }
+  .stamp-big { display: block; font-size: 1.15rem; letter-spacing: 0; line-height: 1; margin-bottom: 1px; }
+
+  /* "most affordable" line — gold pill with a moving shine, soft glow and twinkling sparkles */
+  .points li.hot {
+    position: relative; color: var(--navy); font-weight: 800;
+    padding: 12px 16px 12px 10px; border-radius: 14px;
+    background: linear-gradient(110deg, var(--gold) 0%, var(--gold) 38%, #fff4d6 50%, var(--gold) 62%, var(--gold) 100%);
+    background-size: 260% 100%; background-position: 130% 0;
+    box-shadow: 0 0 0 2px rgba(255,189,89,0.45), 0 8px 26px rgba(255,189,89,0.35);
+    animation: hot-shine 3s ease-in-out infinite, hot-glow 2.4s ease-in-out infinite;
+  }
+  .points li.hot .ic { background: var(--navy); }
+  /* round "Best Value" seal on the right of the gold line — the star edge turns slowly, the words stay still */
+  .points li.hot { margin-bottom: 10px; }
+  .hot-seal { position: relative; flex: 0 0 74px; height: 94px; margin: -6px -4px -26px auto; align-self: flex-start; display: grid; place-items: center; transform-origin: 50% 0; animation: seal-sway 3.2s ease-in-out infinite; }
+  .seal-medal { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 4px 8px rgba(5,5,68,0.35)); }
+  .seal-medal .disc { fill: var(--navy); stroke: var(--gold); stroke-width: 2.5; }
+  .seal-medal .rib { fill: var(--navy); stroke: var(--gold); stroke-width: 2; stroke-linejoin: round; }
+  .hot-seal .seal-txt { margin-bottom: 22px; }
+  .seal-txt { position: relative; text-align: center; color: var(--gold); font-size: 0.6rem; font-weight: 800; letter-spacing: 1px; line-height: 1.12; text-transform: uppercase; }
+  .seal-stars { display: block; font-size: 0.44rem; letter-spacing: 0; line-height: 1; margin-bottom: 2px; }
+  .hot-txt { font-size: 1rem; font-weight: 700; line-height: 1.35; }
+  .hot-txt b { display: block; font-size: 1.32rem; font-weight: 800; line-height: 1.2; }
+  .points li.hot .spark, .points li.money .spark {
+    position: absolute; width: 14px; height: 14px; background: #fff; pointer-events: none;
+    clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+    animation: twinkle 1.8s ease-in-out infinite;
+  }
+  .points li.hot .s1, .points li.money .s1 { top: -7px; left: 58%; }
+  .points li.hot .s2, .points li.money .s2 { bottom: -6px; left: 44px; width: 10px; height: 10px; animation-delay: .6s; }
+  .points li.hot .s3, .points li.money .s3 { bottom: -6px; left: 80%; width: 11px; height: 11px; animation-delay: 1.2s; }
 
   .mentor-chip { display: flex; align-items: center; gap: 12px; margin-top: 28px; }
   .mentor-chip img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; object-position: top; border: 3px solid var(--gold); }
@@ -181,15 +225,8 @@
   .thanks .tick { width: 58px; height: 58px; margin: 0 auto 12px; border-radius: 50%; background: var(--ok); color: #fff; display: grid; place-items: center; font-size: 1.7rem; }
   .thanks h3 { font-size: 1.25rem; margin-bottom: 6px; }
   .thanks p { color: var(--muted); font-size: 0.95rem; }
-  .thanks-wa { margin-top: 16px; width: 100%; }
   .lead.done form { display: none; }
   .lead.done .thanks { display: block; }
-
-  /* ── trust bar ── */
-  .trust { background: var(--gold); }
-  .trust-in { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px 40px; padding-block: 18px; }
-  .trust-item { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.95rem; color: var(--navy); }
-  .trust-item span { font-size: 1.25rem; }
 
   /* ── sections ── */
   .section { padding-block: 80px; }
@@ -202,30 +239,6 @@
   }
   .title { font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 800; line-height: 1.22; text-wrap: balance; margin-bottom: 12px; }
   .sub { font-size: 1.05rem; color: var(--muted); }
-
-  /* ── refund ── */
-  .refund {
-    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 32px;
-    background: var(--navy); color: #fff; border-radius: 22px; padding: 36px 40px;
-    position: relative; overflow: hidden;
-  }
-  .refund::after {
-    content: ''; position: absolute; right: -60px; bottom: -80px; width: 240px; height: 240px; border-radius: 50%;
-    background: rgba(255,189,89,0.08); pointer-events: none;
-  }
-  .refund-big { font-size: clamp(3.2rem, 7vw, 4.6rem); font-weight: 800; color: var(--gold); line-height: 1; }
-  .refund h2 { font-size: clamp(1.35rem, 2.6vw, 1.75rem); line-height: 1.25; margin-bottom: 8px; text-wrap: balance; }
-  .refund p { color: rgba(255,255,255,0.78); max-width: 560px; }
-  .refund .btn { position: relative; z-index: 1; }
-
-  /* ── who it's for ── */
-  .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .who-card { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 28px 24px; }
-  .who-card h3 { font-size: 1.12rem; line-height: 1.35; margin-bottom: 10px; }
-  .who-card h3::before { content: '“'; display: block; color: var(--gold); font-size: 2.6rem; line-height: .7; margin-bottom: 6px; }
-  .who-card p { color: var(--muted); font-size: 0.95rem; }
-  .tagline { text-align: center; margin-top: 40px; font-size: clamp(1.3rem, 2.6vw, 1.7rem); font-weight: 800; text-wrap: balance; }
-  .tagline em { font-style: normal; color: var(--gold-dark); }
 
   /* ── course ── */
   .courses { display: grid; gap: 28px; max-width: 1080px; margin: 0 auto; }
@@ -247,20 +260,16 @@
   .course-name { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
   .course-line { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
   .course.classroom .course-line { color: rgba(255,255,255,0.72); }
-  .fee-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-top: 16px; }
-  .fee-price strong { font-size: 2.5rem; font-weight: 800; line-height: 1.1; font-variant-numeric: tabular-nums; }
-  .fee-price s { color: var(--muted); font-size: 1.05rem; }
-  .course.classroom .fee-price s { color: rgba(255,255,255,0.55); }
-  .fee-was { margin-top: 16px; font-size: 1.25rem; font-weight: 700; color: var(--muted); line-height: 1; }
-  .fee-was s { text-decoration-thickness: 2px; text-decoration-color: var(--err); }
-  .fee-price-now { margin-top: 4px; align-items: center; }
-  .fee-save {
-    padding: 4px 10px; border-radius: 50px; background: #e3f6ea; color: var(--ok);
-    font-size: 0.78rem; font-weight: 800; letter-spacing: 0.3px; white-space: nowrap;
-  }
-  .fee-note { font-size: 0.85rem; font-weight: 700; color: var(--gold-dark); margin-top: 2px; }
-  .course.classroom .fee-note { color: var(--gold); }
-  .fee-addon { font-size: 0.85rem; margin-top: 6px; color: rgba(255,255,255,0.85); }
+  /* online card: no price shown — a box sends students to the free counselling instead */
+  .fee-ask { margin-top: 16px; display: flex; gap: 12px; align-items: flex-start; background: var(--gold-soft); border: 1.5px solid rgba(255,189,89,0.6); border-radius: 14px; padding: 14px; }
+  .fee-ask-ic { flex: 0 0 38px; height: 38px; border-radius: 10px; background: var(--navy); display: grid; place-items: center; font-size: 1.05rem; }
+  .fee-ask b { display: block; font-size: 1.05rem; line-height: 1.3; color: var(--navy); }
+  .fee-ask p { font-size: 0.86rem; color: var(--muted); line-height: 1.45; margin-top: 3px; }
+  .course.classroom .fee-ask { background: rgba(255,189,89,0.12); border-color: rgba(255,189,89,0.55); }
+  .course.classroom .fee-ask-ic { background: var(--gold); }
+  .course.classroom .fee-ask b { color: #fff; }
+  .course.classroom .fee-ask p { color: rgba(255,255,255,0.75); }
+  .fee-addon { font-size: 0.85rem; margin-top: 10px; color: rgba(255,255,255,0.85); }
   .fee-addon b { color: var(--gold); }
   .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; margin: 20px 0 24px; padding-top: 18px; border-top: 1px solid var(--line); }
   .course.classroom .facts { border-top-color: rgba(255,255,255,0.15); }
@@ -283,9 +292,22 @@
   .perk b { display: block; font-size: 0.98rem; margin-bottom: 2px; }
   .perk p { font-size: 0.86rem; color: var(--muted); line-height: 1.5; }
   .course-note { margin-top: 14px; font-size: 0.9rem; font-weight: 600; padding: 10px 14px; border-radius: 10px; background: var(--gold-soft); }
+  /* "What's in the programme?" — plain list with a green tick; a gold glint runs across the words, line after line */
   .ticks { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 22px; }
-  .ticks li { display: flex; gap: 10px; padding: 6px 0; font-size: 0.92rem; line-height: 1.45; }
-  .ticks li::before { content: '✓'; color: var(--ok); font-weight: 800; flex: 0 0 auto; }
+  .ticks li { position: relative; padding: 6px 0 6px 22px; font-size: 0.92rem; line-height: 1.6; }
+  .ticks li::before { content: '✓'; position: absolute; left: 0; top: 6px; color: var(--ok); font-weight: 800; }
+  .ticks li span {
+    font-weight: 700; color: var(--navy);
+    background: linear-gradient(100deg, var(--navy) 0%, var(--navy) 40%, #e6a840 47%, #ffd27a 50%, #e6a840 53%, var(--navy) 60%, var(--navy) 100%);
+    background-size: 250% 100%; background-position: 120% 0;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    animation: text-shine 4s ease-in-out infinite;
+  }
+  .ticks li:nth-child(2) span { animation-delay: .3s; } .ticks li:nth-child(3) span { animation-delay: .6s; }
+  .ticks li:nth-child(4) span { animation-delay: .9s; } .ticks li:nth-child(5) span { animation-delay: 1.2s; }
+  .ticks li:nth-child(6) span { animation-delay: 1.5s; } .ticks li:nth-child(7) span { animation-delay: 1.8s; }
+  .ticks li:nth-child(8) span { animation-delay: 2.1s; }
   .glance { display: grid; gap: 8px; }
   .glance div { display: grid; grid-template-columns: 100px 1fr; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 12px; background: var(--bg-soft); font-size: 0.9rem; }
   .glance b { justify-self: start; padding: 3px 10px; border-radius: 50px; background: var(--gold); color: var(--navy); font-size: 0.7rem; letter-spacing: 1.2px; text-transform: uppercase; }
@@ -300,10 +322,6 @@
   .fac { display: flex; align-items: center; gap: 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 16px; font-weight: 700; font-size: 0.95rem; line-height: 1.3; }
   .fac span { flex: 0 0 42px; height: 42px; border-radius: 10px; background: var(--gold-soft); display: grid; place-items: center; font-size: 1.2rem; }
 
-  /* ── BPSC / UPPCS line under results ── */
-  .also { max-width: 760px; margin: 28px auto 0; text-align: center; background: var(--bg-soft); border: 1px dashed var(--gold-dark); border-radius: 12px; padding: 14px 22px; font-size: 0.98rem; }
-  .also b { color: var(--navy); }
-
   /* ── what you get ── */
   .get-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
   .get { border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; background: var(--bg); }
@@ -312,28 +330,48 @@
   .get p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
 
   /* ── journey ── */
-  .journey { display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: center; max-width: 980px; margin: 0 auto; }
-  .mentor-card { background: var(--navy); border: 3px solid var(--gold); border-radius: 20px; overflow: hidden; text-align: center; padding-bottom: 20px; }
-  .mentor-card img { width: 100%; height: 300px; object-fit: cover; object-position: top center; margin-bottom: 16px; }
-  .mentor-card strong { display: block; color: #fff; font-size: 1.3rem; }
-  .mentor-card span { color: var(--gold); font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; }
-  .steps { list-style: none; position: relative; display: grid; gap: 10px; min-width: 0; }
+  #journey { padding-block: 56px; }
+  #journey .head { margin-bottom: 28px; }
+  .journey { display: grid; grid-template-columns: 260px 1fr; gap: 36px; align-items: center; max-width: 880px; margin: 0 auto; }
+  .mentor-card { background: var(--navy); border: 3px solid var(--gold); border-radius: 18px; overflow: hidden; text-align: center; padding-bottom: 14px; }
+  .mentor-card img { width: 100%; height: 220px; object-fit: cover; object-position: top center; margin-bottom: 12px; }
+  .mentor-card strong { display: block; color: #fff; font-size: 1.15rem; }
+  .mentor-card span { color: var(--gold); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; white-space: nowrap; }
+  .steps { list-style: none; position: relative; display: grid; gap: 6px; min-width: 0; }
   .steps::before { content: ''; position: absolute; left: 87px; top: 14px; bottom: 14px; width: 2px; background: rgba(5,5,68,0.12); }
   .steps li { display: grid; grid-template-columns: 74px 28px 1fr; align-items: center; gap: 0; }
   .steps .yr { font-weight: 800; color: var(--gold-dark); font-size: 0.95rem; text-align: right; padding-right: 6px; font-variant-numeric: tabular-nums; }
-  .steps .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg-soft); box-shadow: 0 0 0 2px var(--gold); justify-self: center; position: relative; z-index: 1; }
-  .steps .what { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; min-width: 0; }
-  .steps .what b { display: block; font-size: 0.98rem; }
-  .steps .what small { color: var(--muted); font-size: 0.84rem; }
+  .steps .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--gold); border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--gold); justify-self: center; position: relative; z-index: 1; }
+  .steps .what { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 6px 14px; min-width: 0; }
+  .steps .what b { display: block; font-size: 0.92rem; line-height: 1.35; }
+  .steps .what small { color: var(--muted); font-size: 0.78rem; line-height: 1.35; }
   .steps li.upsc .what { border-color: rgba(255,189,89,0.7); }
 
-  /* ── results ── */
-  .results { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-  .result { background: var(--navy); border-radius: 16px; padding: 30px 18px; text-align: center; position: relative; overflow: hidden; }
-  .result::after { content: ''; position: absolute; bottom: -30px; right: -30px; width: 100px; height: 100px; border-radius: 50%; background: rgba(255,189,89,0.08); }
-  .result strong { display: block; font-size: 2.5rem; font-weight: 800; color: var(--gold); line-height: 1; font-variant-numeric: tabular-nums; }
-  .result span { display: block; color: rgba(255,255,255,0.85); font-size: 0.92rem; line-height: 1.4; margin-top: 10px; }
-  .result.hl { border: 2px solid var(--gold); }
+  /* ── results: medals hanging from a gold rail (UPSC Prelims medal in gold) ── */
+  .medals { display: flex; flex-wrap: wrap; justify-content: center; row-gap: 28px; }
+  .medal { position: relative; flex: 0 0 26%; text-align: center; padding: 0 6px; }
+  .medal::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 10px; z-index: 1;
+    background: linear-gradient(#ffe3a8, #f2b44a 60%, #d99a2b); }
+  .medal-art { position: relative; width: 120px; height: 180px; margin: 0 auto; transform-origin: 50% 0; animation: seal-sway 3.4s ease-in-out infinite; }
+  .medal:nth-child(2) .medal-art { animation-delay: -.7s; }
+  .medal:nth-child(3) .medal-art { animation-delay: -1.4s; }
+  .medal-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+  .medal svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 6px 14px rgba(230,168,64,0.45)); }
+  .medal .rib { fill: #c81e1e; } .medal .r2 { fill: #e23b3b; }
+  .medal .disc { fill: url(#medalGold); stroke: #fff; stroke-width: 3; }
+  .medal .in { fill: none; stroke: rgba(5,5,68,0.25); stroke-width: 1.5; }
+  /* shine: a soft white streak sweeps across each gold disc; a small star twinkles on its edge */
+  .medal .shine { animation: medal-shine 3.2s ease-in-out infinite; }
+  .medal:nth-child(2) .shine { animation-delay: .6s; } .medal:nth-child(3) .shine { animation-delay: 1.2s; }
+  .m-spark { position: absolute; top: 47%; right: 14px; width: 14px; height: 14px; background: #fff; pointer-events: none;
+    clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.95)); animation: twinkle 1.8s ease-in-out infinite; }
+  .medal:nth-child(2) .m-spark { animation-delay: .6s; } .medal:nth-child(3) .m-spark { animation-delay: 1.2s; }
+  .medal strong { position: absolute; left: 0; right: 0; top: 66.7%; transform: translateY(-50%);
+    font-size: 2rem; font-weight: 800; color: var(--navy); line-height: 1; font-variant-numeric: tabular-nums; }
+  .medal > span { display: block; font-size: 0.9rem; font-weight: 600; line-height: 1.35; color: var(--muted); margin-top: 6px; }
+  .medal.gold strong { font-size: 2.5rem; }
+  .medal.gold > span { color: var(--navy); font-weight: 800; }
 
   /* ── final CTA ── */
   .final { background: var(--navy); color: #fff; text-align: center; position: relative; overflow: hidden; }
@@ -379,6 +417,14 @@
   .mbar .mbar-wa svg { width: 26px; height: 26px; fill: #fff; }
 
   @keyframes blink { 50% { opacity: .3; } }
+  @keyframes hot-shine { 0% { background-position: 130% 0; } 60%, 100% { background-position: -30% 0; } }
+  @keyframes hot-glow { 0%, 100% { box-shadow: 0 0 0 2px rgba(255,189,89,0.45), 0 8px 26px rgba(255,189,89,0.30); } 50% { box-shadow: 0 0 0 3px rgba(255,189,89,0.75), 0 8px 34px rgba(255,189,89,0.60); } }
+  @keyframes money-glow { 0%, 100% { box-shadow: 0 0 0 2px rgba(34,197,94,0.45), 0 8px 26px rgba(22,163,74,0.30); } 50% { box-shadow: 0 0 0 3px rgba(34,197,94,0.80), 0 8px 34px rgba(22,163,74,0.60); } }
+  @keyframes stamp-pulse { 0%, 100% { transform: rotate(-12deg) scale(1); } 50% { transform: rotate(-12deg) scale(1.07); } }
+  @keyframes medal-shine { 0% { transform: translateX(0); } 55%, 100% { transform: translateX(150px); } }
+  @keyframes text-shine { 0% { background-position: 120% 0; } 45%, 100% { background-position: -20% 0; } }
+  @keyframes seal-sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+  @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.4) rotate(0deg); } 50% { opacity: 1; transform: scale(1) rotate(45deg); } }
   @keyframes pop { from { opacity: 0; transform: translateY(6px) scale(.98); } to { opacity: 1; transform: none; } }
   @keyframes dot { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
   @keyframes pulse-wa { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); } }
@@ -386,18 +432,17 @@
   /* ── responsive ── */
   @media (max-width: 1000px) {
     .get-grid { grid-template-columns: repeat(2, 1fr); }
-    .results { grid-template-columns: repeat(3, 1fr); }
-    .refund { grid-template-columns: auto 1fr; }
-    .refund .btn { grid-column: 1 / -1; justify-self: start; }
   }
   @media (max-width: 900px) {
     .hero-grid { grid-template-columns: 1fr; gap: 34px; }
-    .who-grid { grid-template-columns: 1fr; }
     .course { grid-template-columns: 1fr; }
     .side-in { position: static; }
     .fac-grid { grid-template-columns: repeat(2, 1fr); }
-    .journey { grid-template-columns: 1fr; max-width: 520px; gap: 34px; }
-    .mentor-card { max-width: 300px; margin: 0 auto; width: 100%; }
+    .journey { grid-template-columns: 1fr; max-width: 520px; gap: 20px; }
+    .mentor-card { width: 100%; display: grid; grid-template-columns: 92px 1fr; grid-template-rows: 1fr 1fr; column-gap: 14px; padding: 0; text-align: left; border-radius: 14px; }
+    .mentor-card img { grid-row: 1 / 3; height: 96px; margin: 0; }
+    .mentor-card strong { align-self: end; }
+    .mentor-card span { align-self: start; padding-right: 10px; font-size: 0.64rem; letter-spacing: 0.8px; }
   }
   @media (max-width: 760px) {
     :root { --nav-h: 62px; }
@@ -407,11 +452,13 @@
     .hero { padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 30px); padding-bottom: 44px; }
     .points li { font-size: 0.98rem; }
     .section { padding-block: 60px; }
-    .trust-in { gap: 10px 22px; }
-    .trust-item { font-size: 0.84rem; }
-    .refund { grid-template-columns: 1fr; padding: 30px 24px; gap: 16px; text-align: left; }
-    .results { grid-template-columns: repeat(2, 1fr); }
-    .results .result.hl { grid-column: 1 / -1; order: -1; }
+    #journey { padding-block: 44px; }
+    .medal { flex-basis: 50%; }
+    .medal.gold { flex-basis: 100%; }
+    .medal::before { left: -20px; right: -20px; }
+    .medal-art { width: 104px; height: 156px; }
+    .medal strong { font-size: 1.75rem; }
+    .medal.gold strong { font-size: 2.2rem; }
     .float-wa { display: none; }
     .mbar { display: flex; }
     .footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
@@ -430,6 +477,14 @@
     .steps li { grid-template-columns: 62px 28px 1fr; }
     .steps .yr { font-size: 0.78rem; white-space: nowrap; padding-right: 4px; }
     .lead form { padding: 16px 16px 18px; }
+    .points li.hot { padding-right: 52px; }
+    .hot-seal { position: absolute; top: -14px; right: -6px; width: 58px; height: 74px; margin: 0; }
+    .hot-seal .seal-txt { margin-bottom: 17px; }
+    .points li.money { padding-right: 52px; }
+    .money-stamp { position: absolute; top: -14px; right: -4px; width: 58px; height: 58px; margin: 0; }
+    .stamp-big { font-size: 0.92rem; }
+    .seal-txt { font-size: 0.5rem; }
+    .seal-stars { font-size: 0.42rem; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -437,10 +492,27 @@
   }
 </style>
 
+<script>
+/* A click on "Home" (or any fresh visit without a section in the address)
+   always opens this page at the very top. "#top" is tidied out of the address.
+   Back/forward keeps the browser's normal scroll memory. */
+(function () {
+  try {
+    const nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    const fresh = !nav || nav.type === 'navigate';
+    const wantsTop = !location.hash || location.hash === '#top';
+    if (location.hash === '#top') history.replaceState(null, '', location.pathname + location.search);
+    if (fresh && wantsTop) {
+      const up = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      up(); window.addEventListener('load', up, { once: true });
+    }
+  } catch (_) {}
+})();
+</script>
 <!-- NAV -->
 <nav class="nav">
   <div class="wrap nav-in">
-    <a href="./" class="nav-logo">TOC <span>The Officer Code</span></a>
+    <a href="#" class="nav-logo">TOC <span>The Officer Code</span></a>
     <div class="nav-links">
       <a href="#course" class="nav-link">Course</a>
       <a href="mentorship/" class="nav-link">Mentorship</a>
@@ -456,7 +528,8 @@
       <div class="hero-badge"><i></i> New UPSC Batch · Starts October–November 2026</div>
       <h1>Want to Crack UPSC <em>Without Going to Delhi?</em></h1>
       <ul class="points">
-        <li class="star"><span class="ic">✅</span> Clear UPSC Prelims, Get 100% of Your Fees Back</li>
+        <li class="hot"><span class="ic">🏆</span><span class="hot-txt"><b>India’s Most Affordable</b> Complete UPSC Course</span><i class="spark s1" aria-hidden="true"></i><i class="spark s2" aria-hidden="true"></i><i class="spark s3" aria-hidden="true"></i><span class="hot-seal" role="img" aria-label="Best value"><svg class="seal-medal" viewBox="0 0 100 128" aria-hidden="true"><polygon class="rib" points="34,70 50,78 40,126 33,115 23,121"/><polygon class="rib" points="66,70 50,78 60,126 67,115 77,121"/><circle class="disc" cx="50" cy="50" r="40"/></svg><span class="seal-txt" aria-hidden="true"><span class="seal-stars">★★★★★</span>Best<br>Value</span></span></li>
+        <li class="money"><span class="ic">✅</span><span class="hot-txt"><b>Clear UPSC Prelims</b> Get 100% of Your Fees Back</span><i class="spark s1" aria-hidden="true"></i><i class="spark s2" aria-hidden="true"></i><i class="spark s3" aria-hidden="true"></i><span class="money-stamp" role="img" aria-label="100% fees back"><span class="seal-txt" aria-hidden="true"><span class="stamp-big">100%</span>Fees Back</span></span></li>
         <li><span class="ic">🏫</span> Join Our Ranchi Classroom or Study Live Online</li>
         <li><span class="ic">📝</span> Topic-Wise Tests, Answer Writing &amp; Doubt Solving</li>
         <li><span class="ic">🎤</span> Interview Guidance Included</li>
@@ -512,65 +585,59 @@
         </div>
         <p class="req-note"><span class="req">*</span> All fields are required</p>
         <button type="submit" class="btn btn-gold" id="submitBtn">Book My Free Counselling →</button>
-        <p class="send-err" id="sendErr">Something went wrong. Please try again, or WhatsApp us.</p>
+        <p class="send-err" id="sendErr">Something went wrong. Please try again, or call us on 8235950035.</p>
       </form>
 
       <div class="thanks" id="thanks">
         <div class="tick">✓</div>
         <h3 id="thanksTitle">Thank you!</h3>
         <p id="thanksText">We got your request. Our team will call you soon.</p>
-        <a href="#" class="btn btn-wa thanks-wa" id="thanksWa" target="_blank" rel="noopener" hidden>Open WhatsApp</a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- TRUST BAR -->
-<div class="trust">
-  <div class="wrap trust-in">
-    <div class="trust-item"><span>🎓</span> IIT Qualified</div>
-    <div class="trust-item"><span>📝</span> 4x UPSC Prelims</div>
-    <div class="trust-item"><span>🎤</span> 3x UPSC Interview</div>
-    <div class="trust-item"><span>🏆</span> 16 Students Cleared UPSC 2026 Prelims</div>
-  </div>
-</div>
-
-<!-- REFUND PROMISE -->
-<section class="section">
+<!-- ANAND SIR'S JOURNEY -->
+<section class="section" id="journey">
   <div class="wrap">
-    <div class="refund">
-      <div class="refund-big">100%</div>
-      <div>
-        <h2>Clear UPSC Prelims. Get 100% of your fees back.</h2>
-        <p>Study with us online or in our Ranchi classroom. If you clear UPSC Prelims while you are with us, you get your full fee back. No conditions.</p>
+    <div class="head">
+      <div class="tag">The Journey</div>
+      <h2 class="title">A Teacher Who Has Walked the Path</h2>
+      <p class="sub">Before he guided others, he proved himself. Here is Anand Mohan Sir's journey — every exam, every stage, every result.</p>
+    </div>
+    <div class="journey">
+      <div class="mentor-card">
+        <img src="anandsir.jpg" alt="Anand Mohan Sir" loading="lazy">
+        <strong>Anand Mohan Sir</strong>
+        <span>TEACHER · MENTOR · MOTIVATOR</span>
       </div>
-      <a href="#counselling" class="btn btn-gold" data-book>Book Free Counselling</a>
+      <ol class="steps">
+        <li><span class="yr">2011</span><span class="dot"></span><div class="what"><b>NDA Qualified</b><small>National Defence Academy</small></div></li>
+        <li><span class="yr">2011</span><span class="dot"></span><div class="what"><b>NIFT Qualified</b><small>National Institute of Fashion</small></div></li>
+        <li><span class="yr">2011</span><span class="dot"></span><div class="what"><b>BHU Qualified</b><small>Banaras Hindu University</small></div></li>
+        <li><span class="yr">2012</span><span class="dot"></span><div class="what"><b>IIT Qualified</b><small>Indian Institute of Technology</small></div></li>
+        <li class="upsc"><span class="yr">2021–25</span><span class="dot"></span><div class="what"><b>UPSC Prelims</b><small>Qualified 4 times (2021, 22, 23, 25)</small></div></li>
+        <li class="upsc"><span class="yr">2022–25</span><span class="dot"></span><div class="what"><b>UPSC Mains</b><small>Qualified 3 times (2022, 23, 25)</small></div></li>
+        <li class="upsc"><span class="yr">2022–25</span><span class="dot"></span><div class="what"><b>UPSC Interview</b><small>Reached Interview 3 times</small></div></li>
+      </ol>
     </div>
   </div>
 </section>
 
-<!-- WHO IT'S FOR -->
+<!-- RESULTS -->
 <section class="section soft">
   <div class="wrap">
     <div class="head">
-      <div class="tag">Is This for You?</div>
-      <h2 class="title">This Batch Is Made for You If…</h2>
+      <div class="tag">Proven Results</div>
+      <h2 class="title">His Students Speak Through Results</h2>
+      <p class="sub">Numbers don't lie. This is what happens when the right mentor meets hardworking students.</p>
     </div>
-    <div class="who-grid">
-      <div class="who-card">
-        <h3>You went to Delhi, worked hard, and lost hope.</h3>
-        <p>You don't have to start from zero. We make a separate plan for students who have tried before.</p>
-      </div>
-      <div class="who-card">
-        <h3>You did 1–2 years of coaching, but very little stayed in your head.</h3>
-        <p>We teach so you understand, not just memorise. Weekly tests keep it fresh.</p>
-      </div>
-      <div class="who-card">
-        <h3>You want to be an officer, but big coaching fees are too much.</h3>
-        <p>Courses start at just ₹9,999, and you can pay in easy parts.</p>
-      </div>
+    <svg class="medal-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs><linearGradient id="medalGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3cf"/><stop offset=".45" stop-color="#FFBD59"/><stop offset="1" stop-color="#d4860f"/></linearGradient><linearGradient id="medalShine" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><clipPath id="medalClip"><circle cx="50" cy="100" r="44"/></clipPath></defs></svg>
+    <div class="medals">
+      <div class="medal gold"><div class="medal-art"><svg viewBox="0 0 100 150" aria-hidden="true"><polygon class="rib" points="30,3 50,3 50,62 38,58"/><polygon class="rib r2" points="70,3 50,3 50,62 62,58"/><circle class="disc" cx="50" cy="100" r="44"/><circle class="in" cx="50" cy="100" r="36"/><g clip-path="url(#medalClip)"><g class="shine"><rect x="-34" y="50" width="26" height="110" fill="url(#medalShine)" transform="skewX(-18)"/></g></g></svg><i class="m-spark" aria-hidden="true"></i><strong data-count="16">16</strong></div><span>Students Cleared UPSC 2026 Prelims</span></div>
+      <div class="medal"><div class="medal-art"><svg viewBox="0 0 100 150" aria-hidden="true"><polygon class="rib" points="30,3 50,3 50,62 38,58"/><polygon class="rib r2" points="70,3 50,3 50,62 62,58"/><circle class="disc" cx="50" cy="100" r="44"/><circle class="in" cx="50" cy="100" r="36"/><g clip-path="url(#medalClip)"><g class="shine"><rect x="-34" y="50" width="26" height="110" fill="url(#medalShine)" transform="skewX(-18)"/></g></g></svg><i class="m-spark" aria-hidden="true"></i><strong data-count="25">25</strong></div><span>Students Writing UPSC Mains 2026</span></div>
+      <div class="medal"><div class="medal-art"><svg viewBox="0 0 100 150" aria-hidden="true"><polygon class="rib" points="30,3 50,3 50,62 38,58"/><polygon class="rib r2" points="70,3 50,3 50,62 62,58"/><circle class="disc" cx="50" cy="100" r="44"/><circle class="in" cx="50" cy="100" r="36"/><g clip-path="url(#medalClip)"><g class="shine"><rect x="-34" y="50" width="26" height="110" fill="url(#medalShine)" transform="skewX(-18)"/></g></g></svg><i class="m-spark" aria-hidden="true"></i><strong data-count="3">3</strong></div><span>Students Qualified State PCS</span></div>
     </div>
-    <p class="tagline">It's not too late to <em>become an officer.</em></p>
   </div>
 </section>
 
@@ -590,9 +657,7 @@
           <span class="fee-mode">Online</span>
           <h3 class="course-name">Online</h3>
           <p class="course-line">Live online classes · Study from home</p>
-          <div class="fee-was"><s>₹20,000</s></div>
-          <div class="fee-price fee-price-now"><strong>₹9,999</strong><span class="fee-save">You save ₹10,001</span></div>
-          <div class="fee-note">Easy instalments available</div>
+          <div class="fee-ask"><span class="fee-ask-ic">📞</span><div><b>Know the price in a free counselling</b><p>Book a free counselling. Our team will tell you the fee and the easy instalment options.</p></div></div>
           <dl class="facts">
             <div><dt>Batch</dt><dd>UPSC CSE 2028 &amp; 2029</dd></div>
             <div><dt>Mode</dt><dd>Online, live + recorded</dd></div>
@@ -600,14 +665,13 @@
             <div><dt>Starts</dt><dd>October–November 2026</dd></div>
           </dl>
           <div class="fee-actions">
-            <a href="https://lhsmd.courses.store/" class="btn btn-gold" target="_blank" rel="noopener">Buy Now →</a>
-            <a href="#counselling" class="btn btn-outline" data-book data-plan="online" data-label="Online – ₹9,999">Book Free Counselling</a>
+            <a href="#counselling" class="btn btn-gold" data-book data-plan="online" data-label="Online">Book Free Counselling</a>
           </div>
           </div>
         </div>
         <div class="course-main">
           <div>
-            <h4 class="course-h">What you get for ₹9,999 <span>Prelims · Mains · Interview</span></h4>
+            <h4 class="course-h">What you get <span>Prelims · Mains · Interview</span></h4>
             <div class="perks">
               <div class="perk"><span class="perk-ic">🎥</span><div><b>Live lectures</b><p>Learn every topic live, step by step, from the basics. Understand it, don't just memorise it.</p></div></div>
               <div class="perk"><span class="perk-ic">⏯️</span><div><b>Recorded classes</b><p>Every class is recorded. Missed one? Watch it later. Want to revise? Watch it again.</p></div></div>
@@ -627,9 +691,8 @@
           <span class="fee-mode">Ranchi Classroom</span>
           <h3 class="course-name">Offline Batch</h3>
           <p class="course-line">Classroom programme in Ranchi · Classes by Anand Mohan Sir</p>
-          <div class="fee-price"><strong>₹60,000</strong><s>₹86,000</s></div>
-          <div class="fee-note">Regular fee ₹86,000</div>
-          <div class="fee-addon"><b>+</b> Add PCS for ₹15,000</div>
+          <div class="fee-ask"><span class="fee-ask-ic">📞</span><div><b>Know the price in a free counselling</b><p>Book a free counselling. Our team will tell you the fee and the easy instalment options.</p></div></div>
+          <div class="fee-addon"><b>+</b> PCS add-on available</div>
           <dl class="facts">
             <div><dt>Batch</dt><dd>UPSC CSE 2028</dd></div>
             <div><dt>Mode</dt><dd>Classroom, Ranchi</dd></div>
@@ -637,35 +700,22 @@
             <div><dt>Starts</dt><dd>October–November 2026</dd></div>
           </dl>
           <div class="fee-actions">
-            <a href="#counselling" class="btn btn-gold" data-book data-plan="offline-ranchi" data-label="Offline Batch – ₹60,000">Book Free Counselling</a>
+            <a href="#counselling" class="btn btn-gold" data-book data-plan="offline-ranchi" data-label="Offline Batch">Book Free Counselling</a>
           </div>
           </div>
         </div>
         <div class="course-main">
           <div>
-            <h4 class="course-h">Key features</h4>
-            <ul class="ticks">
-              <li>Small batches, so every student gets attention.</li>
-              <li>Classes in Hindi and English.</li>
-              <li>Weekly tests, so you always know where you stand.</li>
-              <li>The batch starts with CSAT, so the qualifying paper is covered first.</li>
-              <li>Library and study hall for self-study.</li>
-              <li>Regular updates to parents.</li>
-              <li>Mentorship by Anand Mohan Sir throughout the year.</li>
-              <li>Help finding a hostel or PG in Ranchi.</li>
-            </ul>
-          </div>
-          <div>
             <h4 class="course-h">What's in the programme?</h4>
             <ul class="ticks">
-              <li>Classroom lectures, with recorded sessions for revision</li>
-              <li>Curated notes and practice books</li>
-              <li>Topic-wise tests and a Prelims test series</li>
-              <li>Mains answer-writing classes</li>
-              <li>Doubt solving and mentor support</li>
-              <li>Personality development classes</li>
-              <li>Parliamentary sessions, debate and speech</li>
-              <li>Interview guidance</li>
+              <li><span>Classroom lectures, with recorded sessions for revision</span></li>
+              <li><span>Curated notes and practice books</span></li>
+              <li><span>Topic-wise tests and a Prelims test series</span></li>
+              <li><span>Mains answer-writing classes</span></li>
+              <li><span>Doubt solving and mentor support</span></li>
+              <li><span>Personality development classes</span></li>
+              <li><span>Parliamentary sessions, debate and speech</span></li>
+              <li><span>Interview guidance</span></li>
             </ul>
           </div>
           <div>
@@ -725,52 +775,6 @@
   </div>
 </section>
 
-<!-- ANAND SIR'S JOURNEY -->
-<section class="section soft">
-  <div class="wrap">
-    <div class="head">
-      <div class="tag">The Journey</div>
-      <h2 class="title">A Mentor Who Has Walked the Path</h2>
-      <p class="sub">Before he guided others, he proved himself. Here is Anand Mohan Sir's journey — every exam, every stage, every result.</p>
-    </div>
-    <div class="journey">
-      <div class="mentor-card">
-        <img src="anandsir.jpg" alt="Anand Mohan Sir" loading="lazy">
-        <strong>Anand Mohan Sir</strong>
-        <span>MENTOR · GUIDE · MOTIVATOR</span>
-      </div>
-      <ol class="steps">
-        <li><span class="yr">2011</span><span class="dot"></span><div class="what"><b>NDA Qualified</b><small>National Defence Academy</small></div></li>
-        <li><span class="yr">2011</span><span class="dot"></span><div class="what"><b>NIFT Qualified</b><small>National Institute of Fashion</small></div></li>
-        <li><span class="yr">2011</span><span class="dot"></span><div class="what"><b>BHU Qualified</b><small>Banaras Hindu University</small></div></li>
-        <li><span class="yr">2012</span><span class="dot"></span><div class="what"><b>IIT Qualified</b><small>Indian Institute of Technology</small></div></li>
-        <li class="upsc"><span class="yr">2021–25</span><span class="dot"></span><div class="what"><b>UPSC Prelims</b><small>Qualified 4 times (2021, 22, 23, 25)</small></div></li>
-        <li class="upsc"><span class="yr">2022–25</span><span class="dot"></span><div class="what"><b>UPSC Mains</b><small>Qualified 3 times (2022, 23, 25)</small></div></li>
-        <li class="upsc"><span class="yr">2022–25</span><span class="dot"></span><div class="what"><b>UPSC Interview</b><small>Reached Interview 3 times</small></div></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<!-- RESULTS -->
-<section class="section">
-  <div class="wrap">
-    <div class="head">
-      <div class="tag">Proven Results</div>
-      <h2 class="title">His Students Speak Through Results</h2>
-      <p class="sub">Numbers don't lie. This is what happens when the right mentor meets hardworking students.</p>
-    </div>
-    <div class="results">
-      <div class="result"><strong>100+</strong><span>Students Qualified IIT</span></div>
-      <div class="result hl"><strong>16</strong><span>Students Cleared UPSC 2026 Prelims</span></div>
-      <div class="result"><strong>3</strong><span>Students Qualified 70th BPSC</span></div>
-      <div class="result"><strong>25</strong><span>Students Writing UPSC Mains 2026</span></div>
-      <div class="result"><strong>2000+</strong><span>Students Learned Sanskrit Under His Guidance</span></div>
-    </div>
-    <p class="also"><b>Also for BPSC and UPPCS:</b> Anand Sir guides state aspirants too. 3 of his students qualified the 70th BPSC.</p>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section class="section final">
   <div class="wrap">
@@ -822,26 +826,33 @@
 <script>
 /* ═══════════════════════════════════════════════════════════════
    LEAD FORM — for the developer
-   1. Put your API URL in LEAD_API_URL below.
-   2. On submit the form sends a POST with a JSON body:
+   1. Put the URL of your server's lead endpoint in LEAD_API_URL below.
+   2. On submit the form sends a POST whose body is this JSON
+      (sent as text/plain so the browser skips the CORS pre-check —
+      read the raw request body and JSON-decode it):
         {
           name:         "Rahul Kumar",
           email:        "rahul@gmail.com",
           phone:        "9876543210",        // 10 digits, no +91
           plan:         "online",            // "", "online" or "offline-ranchi"
-                                             // (filled when the visitor taps a fee card's button)
+                                             // (filled when the visitor taps a course card's button)
           page:         "https://theofficercode.com/?utm_source=…",  // full URL, keeps UTM tags from ads
           submitted_at: "2026-10-06T10:15:00.000Z"
         }
-   3. Any 2xx reply shows the thank-you. Anything else shows an error
-      and the visitor can try again.
-   While LEAD_API_URL is empty, the form opens WhatsApp to LEAD_WHATSAPP
-   with the visitor's name, email and phone already typed, so no lead is
-   lost — they only have to tap Send. Once LEAD_API_URL is filled in, the
-   form posts to the API instead and WhatsApp is no longer used.
+      The server must allow requests from https://theofficercode.com
+      (Access-Control-Allow-Origin).
+   3. Any 2xx reply takes the visitor to the thank-you page (THANK_YOU_URL).
+      Anything else, or no reply within 15 seconds, shows an error and the
+      visitor can try again.
+   FOR NOW (no lead server yet): while LEAD_API_URL is empty, the form
+   opens WhatsApp to LEAD_WHATSAPP with the student's details already typed
+   (they tap Send) and shows the same thank-you page. Once LEAD_API_URL is
+   filled in, the form saves to the server instead and WhatsApp is no
+   longer used.
    ═══════════════════════════════════════════════════════════════ */
 const LEAD_API_URL = '';
 const LEAD_WHATSAPP = '918235950035';
+const THANK_YOU_URL = 'thank-you/';
 
 (function () {
   const $ = (id) => document.getElementById(id);
@@ -951,9 +962,20 @@ const LEAD_WHATSAPP = '918235950035';
       try { if (window.fbq) fbq('track', 'Lead'); } catch (_) {}
       try { if (window.gtag) gtag('event', 'generate_lead'); } catch (_) {}
     };
+    /* show a short thank-you in the form box, then open the thank-you page.
+       First name and phone go along in this tab's sessionStorage, never in the URL. */
+    const showThanks = (wa) => {
+      track();
+      $('thanksTitle').textContent = 'Thank you, ' + first + '!';
+      $('thanksText').textContent = 'We got your details. Our team will call you on +91 ' + data.phone + ' soon.';
+      lead.classList.add('done');
+      say('Thank you, <b>' + first.replace(/[<>&]/g, '') + '</b>! 🎉', 'good');
+      try { sessionStorage.setItem('toc_lead', JSON.stringify({ first: first, phone: data.phone, wa: wa || '' })); } catch (_) {}
+      setTimeout(() => { location.href = THANK_YOU_URL; }, 900);
+    };
 
-    /* no API yet → hand the lead over on WhatsApp, right inside this tap
-       (browsers only allow opening WhatsApp straight from a tap) */
+    /* FOR NOW — no lead server yet: send the details on WhatsApp.
+       WhatsApp has to open right inside this tap, before anything else waits. */
     if (!LEAD_API_URL) {
       const label = $('pickedName').textContent;
       const msg = 'Hi, I want to book a free counselling session for the UPSC batch.\n\n' +
@@ -963,41 +985,35 @@ const LEAD_WHATSAPP = '918235950035';
         (data.plan && label ? '\nInterested in: ' + label : '');
       const wa = 'https://wa.me/' + LEAD_WHATSAPP + '?text=' + encodeURIComponent(msg);
       const win = window.open(wa, '_blank');
-      if (win) { try { win.opener = null; } catch (_) {} } else { location.href = wa; }
-      track();
-      $('thanksTitle').textContent = 'Almost done, ' + first + '!';
-      $('thanksText').textContent = 'WhatsApp is opening with your details already typed. Just tap Send, and our team will call you on +91 ' + data.phone + ' soon.';
-      $('thanksWa').href = wa;
-      $('thanksWa').hidden = false;
-      lead.classList.add('done');
-      say('Thanks, <b>' + first.replace(/[<>&]/g, '') + '</b>! Please tap <b>Send</b> on WhatsApp. 🙏', 'good');
+      if (win) { try { win.opener = null; } catch (_) {} }
+      showThanks(wa);
       return;
     }
 
+    /* lead server ready: save there */
     const btn = $('submitBtn');
     btn.disabled = true;
     btn.textContent = 'Booking…';
     $('sendErr').classList.remove('show');
-
     try {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 15000);
       const res = await fetch(LEAD_API_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(data),
+        signal: ctrl.signal,
       });
+      clearTimeout(timer);
       if (!res.ok) throw new Error('HTTP ' + res.status);
     } catch (err) {
+      console.error('Lead form:', err);
       btn.disabled = false;
       btn.textContent = 'Book My Free Counselling →';
       $('sendErr').classList.add('show');
       return;
     }
-
-    track();
-    $('thanksTitle').textContent = 'Thank you, ' + first + '!';
-    $('thanksText').textContent = 'We got your request for a free counselling session. Our team will call you on +91 ' + data.phone + ' soon.';
-    lead.classList.add('done');
-    say('Thank you, <b>' + first.replace(/[<>&]/g, '') + '</b>! 🎉', 'good');
+    showThanks('');
   });
 
   /* ── phone: sticky "Book" bar once the form has scrolled away ── */
@@ -1007,6 +1023,25 @@ const LEAD_WHATSAPP = '918235950035';
       const gone = !en.isIntersecting && en.boundingClientRect.top < 0;
       mbar.classList.toggle('show', gone && !lead.classList.contains('done'));
     }).observe(lead);
+  }
+
+  /* ── results: numbers count up from 0 when the medals scroll into view ── */
+  const nums = document.querySelectorAll('.medal strong[data-count]');
+  if (nums.length && !reduce && 'IntersectionObserver' in window) {
+    const run = (el) => {
+      const raw = el.dataset.count, target = parseInt(raw, 10), plus = raw.endsWith('+') ? '+' : '';
+      const t0 = performance.now(), dur = 1400;
+      const step = (t) => {
+        const k = Math.min(1, (t - t0) / dur), ease = 1 - Math.pow(1 - k, 3);
+        el.textContent = Math.round(target * ease) + (k === 1 ? plus : '');
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { io.unobserve(en.target); run(en.target); } });
+    }, { threshold: 0.6 });
+    nums.forEach((el) => { el.textContent = '0'; io.observe(el); });
   }
 })();
 </script>
