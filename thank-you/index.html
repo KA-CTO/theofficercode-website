@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Thank You | The Officer Code — Anand Mohan Sir</title>
+<meta name="description" content="Thank you for booking a free counselling with The Officer Code.">
+<!-- this page is only for students who just sent the form, so keep it out of Google -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap">
+<!--
+  FOR THE DEVELOPER / ADS: every student who sends the counselling form lands here.
+  Put the Meta Pixel "Lead" event and the Google Ads conversion tag on this page
+  to count leads from ads.
+-->
+<style>
+  :root {
+    --navy: #050544;
+    --navy-2: #0c0c5a;
+    --night: #020228;
+    --gold: #FFBD59;
+    --gold-dark: #e6a840;
+    --gold-soft: rgba(255,189,89,0.14);
+    --bg: #FFFFFF;
+    --bg-soft: #F4F4FA;
+    --line: rgba(5,5,68,0.10);
+    --ink: #050544;
+    --muted: #4f5170;
+    --wa: #25D366;
+    --ok: #16a34a;
+    --font: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --nav-h: 68px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font); font-size: 16px; line-height: 1.6; color: var(--ink);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, var(--navy) 100%);
+    min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden;
+  }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding-inline: 20px; width: 100%; }
+
+  /* nav */
+  .nav { background: var(--navy); box-shadow: 0 2px 20px rgba(0,0,0,0.3); padding-top: env(safe-area-inset-top, 0px); }
+  .nav-in { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .nav-logo { color: var(--gold); text-decoration: none; font-size: 1.5rem; font-weight: 800; letter-spacing: 3px; line-height: 1.1; }
+  .nav-logo span { display: block; color: #fff; font-size: 0.78rem; font-weight: 400; letter-spacing: 1px; }
+  .nav-back { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
+  .nav-back:hover { color: var(--gold); }
+
+  /* thank-you card */
+  main { flex: 1; display: grid; place-items: center; padding: 48px 0 56px; position: relative; overflow: hidden; }
+  main::before {
+    content: ''; position: absolute; top: -10%; right: -10%; width: 560px; height: 560px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,189,89,0.10) 0%, transparent 70%); pointer-events: none;
+  }
+  .card {
+    position: relative; max-width: 560px; margin: 0 auto; background: var(--bg);
+    border: 3px solid var(--gold); border-radius: 22px; padding: 40px 32px 32px; text-align: center;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+  }
+  .tick {
+    width: 84px; height: 84px; margin: 0 auto 18px; border-radius: 50%; background: var(--ok); color: #fff;
+    display: grid; place-items: center; font-size: 2.6rem; font-weight: 800;
+    box-shadow: 0 0 0 8px rgba(22,163,74,0.15); animation: pop .5s cubic-bezier(.2,1.6,.4,1) both;
+  }
+  h1 { font-size: clamp(1.7rem, 5vw, 2.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 10px; text-wrap: balance; }
+  h1 em { font-style: normal; color: var(--gold-dark); }
+  .lead-text { color: var(--muted); font-size: 1.05rem; max-width: 440px; margin: 0 auto; }
+  .lead-text b { color: var(--ink); }
+
+  /* the one step left when the details still need to be sent on WhatsApp */
+  .next { display: grid; gap: 10px; margin: 22px auto 0; max-width: 440px; }
+  .step {
+    text-align: left;
+    background: var(--gold-soft); border: 1.5px solid rgba(255,189,89,0.6); border-radius: 14px; padding: 14px 16px;
+    display: flex; gap: 12px; align-items: center;
+  }
+  .step-num { flex: 0 0 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--gold); display: grid; place-items: center; font-weight: 800; }
+  .step p { font-size: 0.96rem; line-height: 1.45; }
+
+  .wa-again { margin-top: 14px; font-size: 0.86rem; color: var(--muted); }
+  .wa-again a { color: #128c4a; font-weight: 700; }
+  .help { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+  .help strong { display: block; color: var(--ink); font-size: 1rem; margin-bottom: 4px; }
+  .help a { color: var(--ink); font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .help a:hover { color: var(--gold-dark); }
+  .help .hours { margin-top: 6px; font-size: 0.86rem; }
+  .home { display: inline-block; margin-top: 18px; color: var(--muted); font-weight: 600; font-size: 0.92rem; text-decoration: none; }
+  .home:hover { color: var(--gold-dark); }
+
+  /* a small burst of confetti behind the card */
+  .confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .confetti i { position: absolute; top: -12px; width: 8px; height: 14px; border-radius: 2px; opacity: 0; animation: fall 2.6s ease-in forwards; }
+
+  .footer { background: var(--night); color: rgba(255,255,255,0.45); text-align: center; font-size: 0.82rem; padding: 22px 20px calc(22px + env(safe-area-inset-bottom, 0px)); }
+  .footer b { color: var(--gold); font-weight: 600; }
+
+  @keyframes pop { from { transform: scale(.3); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes fall { 0% { opacity: 1; transform: translateY(0) rotate(0); } 100% { opacity: 0; transform: translateY(105vh) rotate(540deg); } }
+
+  @media (max-width: 520px) {
+    :root { --nav-h: 62px; }
+    .nav-logo { font-size: 1.3rem; }
+    main { padding: 28px 0 36px; }
+    .card { padding: 32px 20px 24px; border-radius: 18px; }
+    .tick { width: 72px; height: 72px; font-size: 2.2rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .confetti { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="../" class="nav-logo">TOC <span>The Officer Code</span></a>
+    <a href="../" class="nav-back">&larr; Back to home</a>
+  </div>
+</nav>
+
+<main>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="tick" aria-hidden="true">✓</div>
+      <h1 id="title">Thank you!</h1>
+      <p class="lead-text" id="text">We got your details. Our team will call you soon.</p>
+
+      <div class="next">
+        <div class="step"><span class="step-num">1</span><p>Our team will <b>call you</b> to fix a time for your free counselling.</p></div>
+        <div class="step"><span class="step-num">2</span><p>In the counselling, <b>ask anything</b>: the course, the fee, the batch timings.</p></div>
+      </div>
+      <!-- for now the details travel on WhatsApp: a quiet way back if it didn't open -->
+      <p class="wa-again" id="waAgain" hidden>WhatsApp didn't open? <a href="#" id="waLink" target="_blank" rel="noopener">Tap here to send your details</a></p>
+
+      <div class="help">
+        <strong>Want to talk right now?</strong>
+        Call us: <a href="tel:+918235950035">8235950035</a> · <a href="tel:+919122437765">9122437765</a>
+        <div class="hours">4th Floor, Roshpa Tower, Main Road, Ranchi · Monday to Saturday, 10 AM – 2 PM</div>
+      </div>
+      <a href="../" class="home">&larr; Back to home</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  &copy; 2026 <b>The Officer Code</b> · All Rights Reserved
+</footer>
+
+<script>
+/* The form on the home page saves the student's first name, phone and
+   (while leads still travel on WhatsApp) their ready-made WhatsApp link in
+   sessionStorage before coming here. Nothing personal goes in the URL. */
+(function () {
+  let lead = null;
+  try { lead = JSON.parse(sessionStorage.getItem('toc_lead') || 'null'); } catch (_) {}
+  const clean = (v) => String(v || '').replace(/[<>&"]/g, '');
+
+  if (lead && lead.first) {
+    document.getElementById('title').innerHTML = 'Thank you, <em>' + clean(lead.first) + '</em>!';
+  }
+  const text = document.getElementById('text');
+  const phone = lead && /^\d{10}$/.test(lead.phone || '') ? '+91 ' + lead.phone : '';
+
+  if (phone) {
+    text.innerHTML = 'We got your details. Our team will call you on <b>' + phone + '</b> soon.';
+  }
+
+  if (lead && lead.wa && /^https:\/\/wa\.me\//.test(lead.wa)) {
+    document.getElementById('waLink').href = lead.wa;
+    document.getElementById('waAgain').hidden = false;
+  }
+
+  /* confetti, once */
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const box = document.getElementById('confetti');
+    const colours = ['#FFBD59', '#16a34a', '#ffffff', '#e6a840', '#25D366'];
+    for (let i = 0; i < 40; i++) {
+      const c = document.createElement('i');
+      c.style.left = Math.random() * 100 + '%';
+      c.style.background = colours[i % colours.length];
+      c.style.animationDelay = (Math.random() * 0.8) + 's';
+      c.style.animationDuration = (2 + Math.random() * 1.4) + 's';
+      box.appendChild(c);
+    }
+  }
+})();
+</script>
+</body>
+</html>
