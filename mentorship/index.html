@@ -306,6 +306,9 @@ pointer-events: none;
     background: var(--gold); color: var(--navy);
   }
   .plan-card.featured .plan-cta:hover { background: var(--gold-dark); }
+  /* under each Enroll button: link to the mentorship terms */
+  .plan-terms { margin-top: 12px; font-size: 0.8rem; line-height: 1.5; color: var(--text-gray); }
+  .plan-terms a { color: var(--navy); font-weight: 700; }
 
   .seats-banner {
     max-width: 600px; margin: 30px auto 0;
@@ -635,6 +638,20 @@ pointer-events: none;
 
 </style>
 
+<script>
+/* Opening this page from a link always starts at the top of the page.
+   A link to one part of the page (like #mentorship) still goes to that part,
+   and Back/Forward keeps the browser's normal scroll memory. */
+(function () {
+  try {
+    const nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if ((!nav || nav.type === 'navigate') && !location.hash) {
+      const up = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      up(); window.addEventListener('load', up, { once: true });
+    }
+  } catch (_) {}
+})();
+</script>
 <!-- NAV -->
 <nav class="nav">
   <a href="../" class="nav-logo">TOC <span>The Officer Code</span></a>
@@ -1115,6 +1132,7 @@ const TESTIMONIALS = [
         <li><span class="cross">✕</span> Detailed Answer Feedback</li>
       </ul>
       <a href="https://rzp.io/rzp/Bi-Weekly" target="_blank" rel="noopener" class="plan-cta">Enroll Now →</a>
+      <p class="plan-terms">By enrolling, you agree to our <a href="../terms/#mentorship">Terms &amp; Conditions</a>.</p>
     </div>
     <!-- Plan 2 -->
     <div class="plan-card featured">
@@ -1134,6 +1152,7 @@ const TESTIMONIALS = [
         <li><span class="check">✓</span> Detailed Answer Feedback</li>
       </ul>
       <a href="https://rzp.io/rzp/Weekly-Mentorship" target="_blank" rel="noopener" class="plan-cta">Enroll Now →</a>
+      <p class="plan-terms">By enrolling, you agree to our <a href="../terms/#mentorship">Terms &amp; Conditions</a>.</p>
     </div>
   </div>
   <div class="seats-banner">Our mentorship enrollment closes on <span>10 October</span> — hurry now!</div>
@@ -1213,7 +1232,7 @@ const TESTIMONIALS = [
 </section>
 
 <!-- FOOTER -->
-<footer class="footer"><div style="margin-bottom:10px;"><a href="../" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">&larr; New UPSC Batch (Ranchi Classroom &amp; Online)</a></div><div style="margin-bottom:8px;font-size:0.95rem;color:rgba(255,255,255,0.7);">Co-Founders: <span style="color:#FFBD59;font-weight:600;">Mr. Anand Mohan</span> &amp; <span style="color:#FFBD59;font-weight:600;">Mr. Saman Shrestha</span></div>
+<footer class="footer"><div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;max-width:640px;margin:0 auto 16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.12);"><a href="../" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">&larr; New UPSC Batch (Ranchi Classroom &amp; Online)</a><a href="../about-us/" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">About Us</a><a href="../#counselling" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">Contact Us</a><a href="../terms/" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">Terms &amp; Conditions</a></div><div style="margin-bottom:8px;font-size:0.95rem;color:rgba(255,255,255,0.7);">Co-Founders: <span style="color:#FFBD59;font-weight:600;">Mr. Anand Mohan</span> &amp; <span style="color:#FFBD59;font-weight:600;">Mr. Saman Shrestha</span></div>
   &copy; 2026 <span>The Officer Code</span> · All Rights Reserved · Designed by <a href="https://kalamacademy.org/business" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;font-weight:600;">Kalam Academy Team</a>
 </footer>
 
