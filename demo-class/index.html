@@ -211,6 +211,9 @@
   .field label { display: block; font-weight: 700; font-size: 0.92rem; margin-bottom: 6px; }
   .field input { width: 100%; padding: 13px 14px; border: 2px solid var(--line); border-radius: 10px; font: 400 1rem var(--font); color: var(--ink); background: #fff; }
   .field input:focus { outline: none; border-color: var(--gold); }
+  /* every field is required - red star on the label, one note under the form */
+  .req { color: #d93636; font-weight: 700; }
+  .req-note { margin-top: 12px; font-size: 0.8rem; color: var(--muted); }
   .phone-wrap { display: flex; }
   .phone-wrap .cc { display: grid; place-items: center; padding: 0 14px; border: 2px solid var(--line); border-right: none; border-radius: 10px 0 0 10px; background: var(--bg-soft); font-weight: 700; color: var(--muted); }
   .phone-wrap input { border-radius: 0 10px 10px 0; }
@@ -296,20 +299,21 @@
       <p class="where">4th Floor, Roshpa Tower, Main Road, Ranchi</p>
       <form id="demoForm" novalidate>
         <div class="field">
-          <label for="dname">Your name</label>
-          <input id="dname" name="name" type="text" required autocomplete="name" placeholder="e.g. Rahul Kumar">
+          <label for="dname">Your name <span class="req" aria-hidden="true">*</span></label>
+          <input id="dname" aria-required="true" name="name" type="text" required autocomplete="name" placeholder="e.g. Rahul Kumar">
         </div>
         <div class="field">
-          <label for="demail">Email</label>
-          <input id="demail" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@gmail.com">
+          <label for="demail">Email <span class="req" aria-hidden="true">*</span></label>
+          <input id="demail" aria-required="true" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@gmail.com">
         </div>
         <div class="field">
-          <label for="dphone">Phone number</label>
+          <label for="dphone">Phone number <span class="req" aria-hidden="true">*</span></label>
           <div class="phone-wrap">
             <span class="cc">+91</span>
-            <input id="dphone" name="phone" type="tel" required autocomplete="tel-national" inputmode="numeric" maxlength="16" placeholder="10-digit mobile number">
+            <input id="dphone" aria-required="true" name="phone" type="tel" required autocomplete="tel-national" inputmode="numeric" maxlength="16" placeholder="10-digit mobile number">
           </div>
         </div>
+        <p class="req-note"><span class="req">*</span> All fields are required</p>
         <p class="err" id="demoErr"></p>
         <button type="submit" class="btn btn-gold" id="demoBtn">Pay &#8377;111 &amp; Confirm Seat</button>
         <p class="fine">&#8377;111 today. This &#8377;111 is cut from your course fee if you join the batch.</p>
