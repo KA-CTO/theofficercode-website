@@ -217,6 +217,37 @@
   .phone-wrap { display: flex; }
   .phone-wrap .cc { display: grid; place-items: center; padding: 0 14px; border: 2px solid var(--line); border-right: none; border-radius: 10px 0 0 10px; background: var(--bg-soft); font-weight: 700; color: var(--muted); }
   .phone-wrap input { border-radius: 0 10px 10px 0; }
+
+  /* -- centre videos: a wide classroom clip and a tall library clip, side by side -- */
+  .cent-vids { display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: 18px; margin: 0 auto 34px; }
+  .cv { position: relative; height: 320px; border-radius: 18px; overflow: hidden; background: #020228; border: 2px solid rgba(255,189,89,0.45); cursor: pointer; line-height: 0; }
+  .cv video, .cv > img { height: 100%; width: auto; display: block; }
+  .cv-tag { position: absolute; left: 12px; top: 12px; z-index: 2; padding: 5px 12px; border-radius: 50px; background: rgba(5,5,68,0.75); color: var(--gold); font-size: 0.7rem; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; line-height: 1.5; }
+  .cv-sound { position: absolute; right: 12px; bottom: 12px; z-index: 3; width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer; background: rgba(5,5,68,0.75); color: #fff; display: grid; place-items: center; font: inherit; font-size: 0.95rem; line-height: 1; transition: background .2s, color .2s; }
+  /* sound is on for the clip the cursor is over */
+  .cv.loud { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(255,189,89,0.35); }
+  .cv.loud .cv-sound { background: var(--gold); color: var(--navy); }
+  .cv-hint { position: absolute; right: 58px; bottom: 19px; z-index: 3; padding: 4px 11px; border-radius: 50px; background: rgba(5,5,68,0.8); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: .3px; white-space: nowrap; line-height: 1.5; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  .cv.needs-click:hover .cv-hint { opacity: 1; }
+  .cv:hover .cv-sound, .cv:focus-visible .cv-sound { background: var(--gold); color: var(--navy); }
+  .cv:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .cv-note { text-align: center; color: var(--muted); font-size: 0.88rem; margin: -20px auto 34px; }
+  .cv-head { text-align: center; font-size: clamp(1.4rem, 3vw, 1.75rem); font-weight: 800; line-height: 1.25; margin: 34px 0 18px; }
+
+  /* tap a clip and it opens big, with sound */
+  .vbox { position: fixed; inset: 0; z-index: 1000; display: none; place-items: center; background: rgba(2,2,40,0.93); padding: 20px; }
+  .vbox.open { display: grid; }
+  .vbox video { max-width: min(94vw, 880px); max-height: 86vh; border-radius: 14px; background: #000; }
+  .vbox-x { position: absolute; top: 16px; right: 18px; width: 42px; height: 42px; border-radius: 50%; border: none; cursor: pointer; background: rgba(255,255,255,0.16); color: #fff; font-size: 1.2rem; line-height: 1; }
+  .vbox-x:hover { background: var(--gold); color: var(--navy); }
+
+  @media (max-width: 900px) { .cv { height: 300px; } }
+  @media (max-width: 640px) {
+    .cent-vids { gap: 14px; }
+    .cv { height: auto; width: 100%; }
+    .cv video, .cv > img { width: 100%; height: auto; }
+    .cv.tall { width: 66%; }
+  }
   .reg .btn { width: 100%; margin-top: 20px; }
   .reg .fine { margin-top: 12px; text-align: center; color: var(--muted); font-size: 0.86rem; }
   .reg .err { margin-top: 12px; color: #b3261e; font-weight: 600; font-size: 0.92rem; display: none; }
@@ -293,6 +324,23 @@
            alt="The Officer Code demo class at the Ranchi centre with Anand Sir — ₹111 demo booking, adjusted in your fee. 4th Floor, Roshpa Tower, Main Road, Ranchi."></a>
     </div>
 
+    <!-- CENTRE CLIPS -->
+    <h2 class="cv-head">See the room before you come</h2>
+    <div class="cent-vids">
+      <div class="cv wide" data-src="../assets/centre-class.mp4" tabindex="0" role="button" aria-label="Play the classroom video with sound">
+        <span class="cv-tag">Our Classroom</span>
+        <video src="../assets/centre-class.mp4" poster="../assets/centre-class-poster.jpg" muted loop playsinline preload="none" aria-label="Inside the TOC classroom at Roshpa Tower, Ranchi"></video>
+        <span class="cv-hint">Click for sound</span>
+        <button type="button" class="cv-sound" aria-label="Turn the sound on or off">&#128263;</button>
+      </div>
+      <div class="cv tall" data-src="../assets/centre-library.mp4" tabindex="0" role="button" aria-label="Play the library video with sound">
+        <span class="cv-tag">Our Library</span>
+        <video src="../assets/centre-library.mp4" poster="../assets/centre-library-poster.jpg" muted loop playsinline preload="none" aria-label="Students studying in the TOC library at Roshpa Tower, Ranchi"></video>
+        <span class="cv-hint">Click for sound</span>
+        <button type="button" class="cv-sound" aria-label="Turn the sound on or off">&#128263;</button>
+      </div>
+    </div>
+    <p class="cv-note">Tap a clip to watch it with sound.</p>
     <!-- REGISTER -->
     <div class="reg" id="register">
       <h2>Book Your Demo Class</h2>
@@ -517,6 +565,116 @@ const LEAD_WHATSAPP = '918235950035';
                               : 'Please allow the WhatsApp window, or call 8235950035.';
       err.classList.add('show');
     }
+  });
+})();
+</script>
+
+<!-- CENTRE VIDEO OVERLAY -->
+<div class="vbox" id="vbox" role="dialog" aria-modal="true" aria-label="Centre video">
+  <button class="vbox-x" id="vboxX" aria-label="Close video">&#10005;</button>
+  <video id="vboxV" controls playsinline></video>
+</div>
+
+<script>
+/* The two centre clips play silently while they are on screen and stop when they
+   are not, so nobody downloads a video they never see.
+
+   Move the cursor over a clip and that clip's sound comes on; the other one goes
+   quiet. Browsers only allow sound once the visitor has clicked somewhere on the
+   page, so if the browser refuses we stay silent and show "Click for sound" — the
+   speaker button is a real click, so it always works.
+
+   Tap a clip and it opens big with sound. */
+(function () {
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.cv'));
+  if (!cards.length) return;
+  var box = document.getElementById('vbox');
+  var bv = document.getElementById('vboxV');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var MUTED = '\uD83D\uDD07', LOUD = '\uD83D\uDD0A';
+
+  function vid(c) { return c.querySelector('video'); }
+  function icon(c) { return c.querySelector('.cv-sound'); }
+
+  function soundOff(card) {
+    var v = vid(card);
+    if (!v) return;
+    v.muted = true;
+    card.classList.remove('loud');
+    icon(card).textContent = MUTED;
+  }
+
+  function soundOn(card) {
+    var v = vid(card);
+    if (!v) return;
+    cards.forEach(function (c) { if (c !== card) soundOff(c); });
+    v.muted = false;
+    var p = v.play();
+    if (!p || !p.then) { card.classList.add('loud'); icon(card).textContent = LOUD; return; }
+    p.then(function () {
+      card.classList.add('loud');
+      card.classList.remove('needs-click');
+      icon(card).textContent = LOUD;
+    }).catch(function () {
+      /* browser said no - go back to silent and tell the visitor to click */
+      v.muted = true;
+      card.classList.remove('loud');
+      card.classList.add('needs-click');
+      icon(card).textContent = MUTED;
+      v.play().catch(function () {});
+    });
+  }
+
+  function openBig(src) {
+    cards.forEach(function (c) { soundOff(c); var v = vid(c); if (v) v.pause(); });
+    bv.src = src;
+    box.classList.add('open');
+    bv.muted = false;
+    bv.play().catch(function () { bv.muted = true; bv.play().catch(function () {}); });
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBig() {
+    box.classList.remove('open');
+    bv.pause();
+    bv.removeAttribute('src');
+    bv.load();
+    document.body.style.overflow = '';
+    if (!still) cards.forEach(function (c) { var v = vid(c); if (v) v.play().catch(function () {}); });
+  }
+
+  if (!still && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = vid(e.target);
+        if (!v) return;
+        if (e.isIntersecting) { v.play().catch(function () {}); }
+        else { soundOff(e.target); v.pause(); }
+      });
+    }, { threshold: 0.3 });
+    cards.forEach(function (c) { io.observe(c); });
+  }
+
+  cards.forEach(function (card) {
+    if (canHover) {
+      card.addEventListener('mouseenter', function () { soundOn(card); });
+      card.addEventListener('mouseleave', function () { soundOff(card); });
+    }
+    icon(card).addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (card.classList.contains('loud')) soundOff(card); else soundOn(card);
+    });
+    card.addEventListener('click', function () { openBig(card.dataset.src); });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBig(card.dataset.src); }
+    });
+  });
+
+  document.getElementById('vboxX').addEventListener('click', closeBig);
+  box.addEventListener('click', function (e) { if (e.target === box) closeBig(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && box.classList.contains('open')) closeBig();
   });
 })();
 </script>
