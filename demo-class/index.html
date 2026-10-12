@@ -309,7 +309,7 @@
       <span class="per">One seat &middot; 2 hours &middot; At our Ranchi centre</span>
     </div>
     <div class="hero-cta">
-      <a href="#register" class="btn btn-gold">Book My Seat &mdash; &#8377;111</a>
+      <a href="https://pages.razorpay.com/tocdemo" class="btn btn-gold">Book My Seat &mdash; &#8377;111</a>
       <a href="https://wa.me/918235950035?text=Hi%2C%20I%20want%20to%20join%20the%20%E2%82%B9111%20UPSC%20demo%20class%20in%20Ranchi" class="btn btn-wa" target="_blank" rel="noopener">WhatsApp Us</a>
     </div>
   </div>
@@ -320,7 +320,7 @@
 
     <!-- POSTER -->
     <div class="poster">
-      <a href="#register" aria-label="Book your demo class seat"><img src="../assets/demo-class-poster.jpg" width="1200" height="1200"
+      <a href="https://pages.razorpay.com/tocdemo" aria-label="Pay ₹111 and book your demo class seat"><img src="../assets/demo-class-poster.jpg" width="1200" height="1200"
            alt="The Officer Code demo class at the Ranchi centre with Anand Sir — ₹111 demo booking, adjusted in your fee. 4th Floor, Roshpa Tower, Main Road, Ranchi."></a>
     </div>
 
@@ -345,27 +345,8 @@
     <div class="reg" id="register">
       <h2>Book Your Demo Class</h2>
       <p class="where">4th Floor, Roshpa Tower, Main Road, Ranchi</p>
-      <form id="demoForm" novalidate>
-        <div class="field">
-          <label for="dname">Your name <span class="req" aria-hidden="true">*</span></label>
-          <input id="dname" aria-required="true" name="name" type="text" required autocomplete="name" placeholder="e.g. Rahul Kumar">
-        </div>
-        <div class="field">
-          <label for="demail">Email <span class="req" aria-hidden="true">*</span></label>
-          <input id="demail" aria-required="true" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@gmail.com">
-        </div>
-        <div class="field">
-          <label for="dphone">Phone number <span class="req" aria-hidden="true">*</span></label>
-          <div class="phone-wrap">
-            <span class="cc">+91</span>
-            <input id="dphone" aria-required="true" name="phone" type="tel" required autocomplete="tel-national" inputmode="numeric" maxlength="16" placeholder="10-digit mobile number">
-          </div>
-        </div>
-        <p class="req-note"><span class="req">*</span> All fields are required</p>
-        <p class="err" id="demoErr"></p>
-        <button type="submit" class="btn btn-gold" id="demoBtn">Pay &#8377;111 &amp; Confirm Seat</button>
-        <p class="fine">&#8377;111 today. This &#8377;111 is cut from your course fee if you join the batch.</p>
-      </form>
+      <a href="https://pages.razorpay.com/tocdemo" class="btn btn-gold" id="demoBtn">Pay &#8377;111 &amp; Confirm Seat</a>
+      <p class="fine">&#8377;111 today. This &#8377;111 is cut from your course fee if you join the batch.</p>
     </div>
 
     <!-- WHY -->
@@ -385,7 +366,7 @@
     <!-- BAR -->
     <div class="bar">
       <p>Book your seat &mdash; <span class="was">&#8377;500</span> <span class="now">&#8377;111</span></p>
-      <a href="#register" class="btn btn-gold">Book My Seat</a>
+      <a href="https://pages.razorpay.com/tocdemo" class="btn btn-gold">Book My Seat</a>
     </div>
 
     <!-- TEACHER -->
@@ -424,7 +405,7 @@
     <!-- BAR -->
     <div class="bar">
       <p>Two hours. <span class="now">&#8377;111</span>. Adjusted in your fee later.</p>
-      <a href="#register" class="btn btn-gold">Book My Seat</a>
+      <a href="https://pages.razorpay.com/tocdemo" class="btn btn-gold">Book My Seat</a>
     </div>
 
     <!-- FAQ -->
@@ -469,105 +450,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.642-6.438-1.758l-.408-.248-3.1 1.04 1.04-3.1-.248-.408A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </a>
 
-<script>
-/* ═══════════════════════════════════════════════════════════════
-   DEMO CLASS FORM — for the developer
-
-   PAY_URL  — paste the ₹111 payment link here (Razorpay page, UPI
-              link, whatever you use). While it is empty the form
-              falls back to WhatsApp, exactly like the home page did
-              before the lead API was connected.
-
-   What happens on submit:
-     1. the three fields are checked,
-     2. the lead is POSTed to LEAD_API_URL as form data, with the same
-        field names the home page uses (Type, name, email, mobile,
-        interested_in, source, status ...),
-     3. the student is sent to PAY_URL (or to WhatsApp if PAY_URL
-        is still empty).
-   The lead is sent first so you have the student's number even if
-   they drop off at the payment page.
-   ═══════════════════════════════════════════════════════════════ */
-const PAY_URL = '';
-const LEAD_API_URL = 'https://teamka.in/api_live/APIs/ash.php';
-const LEAD_WHATSAPP = '918235950035';
-
-(function () {
-  const $ = (id) => document.getElementById(id);
-  const form = $('demoForm');
-  const btn = $('demoBtn');
-  const err = $('demoErr');
-
-  const fail = (msg, el) => {
-    err.textContent = msg;
-    err.classList.add('show');
-    if (el) el.focus();
-    return false;
-  };
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    err.classList.remove('show');
-
-    const name = $('dname').value.trim();
-    const email = $('demail').value.trim();
-    const phone = $('dphone').value.replace(/\D/g, '').replace(/^91(?=\d{10}$)/, '');
-
-    if (name.length < 2) return fail('Please write your name.', $('dname'));
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('Please write a working email.', $('demail'));
-    if (!/^[6-9]\d{9}$/.test(phone)) return fail('Please write a 10-digit mobile number.', $('dphone'));
-
-    /* Exactly the field names the CRM expects — copied from the home page form.
-       Do not rename these: the endpoint reads them as-is. */
-    const fd = new FormData();
-    fd.append('Type', '003A');
-    fd.append('name', name);
-    fd.append('email', email);
-    fd.append('mobile', phone);
-    fd.append('alternate_mobile', 0);
-    fd.append('whatsapp', 0);
-    fd.append('interested_in', 'UPSC Offline');
-    fd.append('source', 'website');
-    fd.append('status', 'Unassigned');
-    fd.append('caller', '');
-    fd.append('caller_id', '');
-    fd.append('state', '');
-    fd.append('city', '');
-    fd.append('Shop_Size', '');
-
-    const waLink = 'https://wa.me/' + LEAD_WHATSAPP + '?text=' + encodeURIComponent(
-      'Hi, I want to book the ₹111 UPSC demo class in Ranchi.\n\n' +
-      'Name: ' + name + '\nEmail: ' + email + '\nPhone: +91 ' + phone
-    );
-
-    /* WhatsApp has to open inside this tap, before anything else waits */
-    const popup = (!PAY_URL) ? window.open(waLink, '_blank') : null;
-
-    btn.disabled = true;
-    btn.textContent = 'Please wait…';
-
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 15000);
-    try {
-      await fetch(LEAD_API_URL, { method: 'POST', body: fd, signal: ctrl.signal });
-    } catch (err) {
-      /* the student still gets to pay even if the lead call fails */
-      console.error('Demo class form:', err);
-    }
-    clearTimeout(timer);
-
-    if (PAY_URL) {
-      location.href = PAY_URL;
-    } else {
-      btn.disabled = false;
-      btn.textContent = 'Pay ₹111 & Confirm Seat';
-      err.textContent = popup ? 'Your details are ready on WhatsApp — tap Send there.'
-                              : 'Please allow the WhatsApp window, or call 8235950035.';
-      err.classList.add('show');
-    }
-  });
-})();
-</script>
 
 <!-- CENTRE VIDEO OVERLAY -->
 <div class="vbox" id="vbox" role="dialog" aria-modal="true" aria-label="Centre video">
