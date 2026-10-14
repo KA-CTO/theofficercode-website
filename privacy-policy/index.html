@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18495506036"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18495506036');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Privacy Policy | The Officer Code — Anand Mohan Sir</title>
+<meta name="description" content="How The Officer Code collects, uses and protects your details when you visit our website, book free counselling or join our UPSC course or mentorship.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap">
+</head>
+<body>
+<style>
+  /* Layout: same look as the Terms page. Short navy header, then one card
+     per topic, each with a numbered list, then the Grievance Officer box. */
+  :root {
+    --navy: #050544;
+    --navy-2: #0c0c5a;
+    --night: #020228;
+    --gold: #FFBD59;
+    --gold-dark: #e6a840;
+    --gold-soft: rgba(255,189,89,0.14);
+    --bg: #FFFFFF;
+    --bg-soft: #F4F4FA;
+    --line: rgba(5,5,68,0.10);
+    --ink: #050544;
+    --muted: #4f5170;
+    --wa: #25D366;
+    --font: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --nav-h: 68px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 20px); }
+  body {
+    font-family: var(--font); font-size: 16px; line-height: 1.6;
+    color: var(--ink); background: var(--bg); overflow-x: hidden;
+  }
+  a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding-inline: 20px; }
+
+  /* ── buttons ── */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer;
+    font: 700 1.02rem/1.2 var(--font); text-decoration: none;
+    transition: transform .2s, background .2s, box-shadow .2s;
+  }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,189,89,0.3); }
+  .btn-wa { background: var(--wa); color: #fff; }
+  .btn-wa:hover { background: #1fb855; transform: translateY(-2px); }
+
+  /* ── nav (same as home page) ── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy); box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .nav-in { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .nav-logo { color: var(--gold); text-decoration: none; font-size: 1.5rem; font-weight: 800; letter-spacing: 3px; line-height: 1.1; }
+  .nav-logo span { display: block; color: #fff; font-size: 0.78rem; font-weight: 400; letter-spacing: 1px; }
+  .nav-links { display: flex; align-items: center; gap: 26px; }
+  .nav-link { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
+  .nav-link:hover { color: var(--gold); }
+  .nav-cta { padding: 10px 20px; font-size: 0.92rem; border-radius: 8px; }
+
+  /* ── header ── */
+  .hero {
+    position: relative; overflow: hidden; color: #fff; text-align: center;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, var(--navy) 100%);
+    padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 44px);
+    padding-bottom: 48px;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -40%; right: -15%; width: 560px; height: 560px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,189,89,0.10) 0%, transparent 70%); pointer-events: none;
+  }
+  .hero .wrap { position: relative; }
+  .hero-badge {
+    display: inline-block; margin-bottom: 16px; padding: 6px 16px; border-radius: 50px;
+    background: var(--gold-soft); color: var(--gold);
+    font-size: 0.76rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  }
+  .hero h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; line-height: 1.15; text-wrap: balance; margin-bottom: 12px; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p { max-width: 560px; margin: 0 auto; font-size: 1.05rem; color: rgba(255,255,255,0.85); }
+  .jump { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .jump a {
+    padding: 8px 18px; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.28);
+    color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+    transition: border-color .2s, color .2s;
+  }
+  .jump a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── policy cards (same as the Terms page cards) ── */
+  .section { padding-block: 56px 72px; background: var(--bg-soft); }
+  .terms { max-width: 820px; margin: 0 auto; display: grid; gap: 28px; }
+  .term { min-width: 0; background: var(--bg); border: 2px solid var(--line); border-radius: 22px; padding: 30px 32px 14px; }
+  .tag {
+    display: inline-block; margin-bottom: 10px; padding: 5px 14px; border-radius: 50px;
+    background: var(--gold-soft); color: var(--gold-dark);
+    font-size: 0.74rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .term h2 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); font-weight: 800; line-height: 1.25; text-wrap: balance; }
+  .term-sub { color: var(--muted); font-size: 0.98rem; margin-top: 2px; }
+  .declare {
+    margin-top: 18px; padding: 14px 16px; border-radius: 12px;
+    background: var(--gold-soft); border: 1.5px solid rgba(255,189,89,0.6);
+    font-weight: 600; line-height: 1.55;
+  }
+  .clauses { list-style: none; margin-top: 10px; }
+  .clauses li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; padding: 16px 0; border-top: 1px solid var(--line); }
+  .clauses li:first-child { border-top: none; }
+  .num {
+    width: 34px; height: 34px; border-radius: 50%; background: var(--navy); color: var(--gold);
+    display: grid; place-items: center; font-weight: 800; font-size: 0.95rem; font-variant-numeric: tabular-nums;
+  }
+  .clauses p { min-width: 0; padding-top: 4px; font-size: 1.02rem; line-height: 1.65; }
+  .clauses b { color: var(--navy); }
+  .clauses a { color: var(--navy); font-weight: 700; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+
+  /* ── Grievance Officer box ── */
+  .ask { background: var(--navy); color: #fff; border-radius: 18px; padding: 28px 24px; text-align: center; }
+  .ask .tag { background: rgba(255,189,89,0.18); color: var(--gold); }
+  .ask h2 { font-size: 1.3rem; font-weight: 800; line-height: 1.3; margin-bottom: 6px; }
+  .ask p { color: rgba(255,255,255,0.75); font-size: 0.95rem; }
+  .ask .phones { margin-top: 4px; color: rgba(255,255,255,0.9); font-weight: 600; }
+  .ask .phones a { color: var(--gold); text-decoration: none; white-space: nowrap; }
+  .ask .btn { margin-top: 18px; }
+
+  /* ── footer (same as home page) ── */
+  .footer { background: var(--night); color: rgba(255,255,255,0.45); text-align: center; font-size: 0.82rem; padding-block: 26px; }
+  .footer .founders { color: rgba(255,255,255,0.72); font-size: 0.95rem; margin-bottom: 8px; }
+  .footer b { color: var(--gold); font-weight: 600; }
+  .footer a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  /* footer menu, then a faint line, then the co-founder and copyright lines */
+  .footer .links { display: flex; justify-content: center; gap: 8px 22px; flex-wrap: wrap; max-width: 460px; margin: 0 auto 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .footer .links a[aria-current="page"] { color: #fff; }
+
+  /* ── floating WhatsApp ── */
+  .float-wa {
+    position: fixed; right: 24px; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); z-index: 99;
+    width: 60px; height: 60px; border-radius: 50%; background: var(--wa);
+    display: grid; place-items: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    animation: pulse-wa 2s infinite;
+  }
+  .float-wa svg { width: 32px; height: 32px; fill: #fff; }
+  @keyframes pulse-wa { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); } }
+
+  /* ── responsive ── */
+  @media (max-width: 760px) {
+    :root { --nav-h: 62px; }
+    .nav-link { display: none; }
+    .nav-logo { font-size: 1.3rem; }
+    .nav-cta { padding: 9px 14px; font-size: 0.84rem; }
+    .hero { padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 32px); padding-bottom: 40px; }
+    .section { padding-block: 36px 56px; }
+    .term { padding: 24px 20px 8px; border-radius: 18px; }
+    .clauses li { grid-template-columns: 30px 1fr; gap: 12px; }
+    .num { width: 30px; height: 30px; font-size: 0.88rem; }
+    .clauses p { padding-top: 2px; font-size: 0.98rem; }
+    .float-wa { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: 54px; height: 54px; }
+    .footer { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<script>
+/* Opening this page from a link always starts at the top of the page.
+   A link to one part of the page (like #rights) still goes to that part,
+   and Back/Forward keeps the browser's normal scroll memory. */
+(function () {
+  try {
+    const nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if ((!nav || nav.type === 'navigate') && !location.hash) {
+      const up = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      up(); window.addEventListener('load', up, { once: true });
+    }
+  } catch (_) {}
+})();
+</script>
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="../" class="nav-logo">TOC <span>The Officer Code</span></a>
+    <div class="nav-links">
+      <a href="../#course" class="nav-link">Course</a>
+      <a href="../mentorship/" class="nav-link">Mentorship</a>
+      <a href="../#counselling" class="btn btn-gold nav-cta">Free Counselling</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-badge">Last updated: 14 October 2026</div>
+    <h1>Privacy <em>Policy</em></h1>
+    <p>How The Officer Code collects, uses and protects your details.</p>
+    <div class="jump">
+      <a href="#collect">What We Collect</a>
+      <a href="#share">Who Sees It</a>
+      <a href="#rights">Your Rights</a>
+    </div>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap terms">
+
+    <!-- WHAT WE COLLECT -->
+    <article class="term" id="collect">
+      <div class="tag">Your Details</div>
+      <h2>What We Collect</h2>
+      <p class="term-sub">Only what we need to help you</p>
+      <p class="declare">This policy is for everyone who visits theofficercode.com, books free counselling, talks to us on WhatsApp or phone, or joins our course or mentorship.</p>
+      <ol class="clauses">
+        <li><span class="num">1</span><p><b>Counselling form:</b> your name, email, mobile number and the exam you are preparing for (UPSC Online, UPSC Offline Ranchi Center or State PCS).</p></li>
+        <li><span class="num">2</span><p><b>Payments:</b> you pay for the demo class or mentorship on Razorpay&rsquo;s page. Razorpay tells us your name, phone, email and whether the payment went through. We never see your card, bank or UPI PIN details.</p></li>
+        <li><span class="num">3</span><p><b>WhatsApp and calls:</b> when you message or call us, we get your number, your WhatsApp name and what you tell us.</p></li>
+        <li><span class="num">4</span><p><b>When you join:</b> the details we need for your admission, fees, classes, tests and mentorship sessions.</p></li>
+        <li><span class="num">5</span><p><b>Website visits:</b> basic information like your device, browser, IP address and which ad brought you to our site. This comes from the Google Ads tag and our website host.</p></li>
+      </ol>
+    </article>
+
+    <!-- HOW WE USE IT -->
+    <article class="term" id="use">
+      <div class="tag">Use</div>
+      <h2>How We Use Your Details</h2>
+      <p class="term-sub">Only for your course and our classes</p>
+      <ol class="clauses">
+        <li><span class="num">1</span><p>To call you back for free counselling and answer your questions.</p></li>
+        <li><span class="num">2</span><p>To tell you about our batches, demo classes, fees and offers by call, WhatsApp, SMS or email.</p></li>
+        <li><span class="num">3</span><p>To handle your admission, fees, classes, tests and mentorship sessions.</p></li>
+        <li><span class="num">4</span><p>To see which of our ads work, so we can show better ads.</p></li>
+        <li><span class="num">5</span><p>To keep records the law asks us to keep, like fee receipts.</p></li>
+        <li><span class="num">6</span><p><b>We never sell your details.</b></p></li>
+      </ol>
+    </article>
+
+    <!-- WHO SEES IT -->
+    <article class="term" id="share">
+      <div class="tag">Sharing</div>
+      <h2>Who Sees Your Details</h2>
+      <p class="term-sub">Only people and services that help us run The Officer Code</p>
+      <ol class="clauses">
+        <li><span class="num">1</span><p><b>Our team:</b> the counsellors and staff who call you back and handle your admission.</p></li>
+        <li><span class="num">2</span><p><b>Our enquiry software:</b> where we save counselling requests so our team can call you back.</p></li>
+        <li><span class="num">3</span><p><b>Google:</b> our pages load their fonts from Google and use the Google Ads tag. The tag uses cookies to tell us when someone who clicked our ad books counselling. Google and other ad partners may also use cookies to show you our ads on other websites, based on your visits to our site. You can turn off personalised ads at <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ads Settings</a>.</p></li>
+        <li><span class="num">4</span><p><b>Razorpay:</b> handles your payments under its own privacy policy.</p></li>
+        <li><span class="num">5</span><p><b>WhatsApp:</b> when you chat with us there, WhatsApp&rsquo;s own privacy policy also applies.</p></li>
+        <li><span class="num">6</span><p><b>Our website host (GitHub Pages):</b> may keep basic visit logs, like IP addresses, for security.</p></li>
+        <li><span class="num">7</span><p><b>Government or police:</b> only when the law asks us to.</p></li>
+      </ol>
+    </article>
+
+    <!-- SAFETY -->
+    <article class="term" id="safety">
+      <div class="tag">Safety</div>
+      <h2>How We Keep Your Details Safe</h2>
+      <p class="term-sub">How long we keep them, cookies and more</p>
+      <ol class="clauses">
+        <li><span class="num">1</span><p><b>How long:</b> we keep your details only as long as we need them for the reasons above, or as long as the law asks (like fee records for tax).</p></li>
+        <li><span class="num">2</span><p><b>Protection:</b> your details are kept in password-protected systems, and only the team members who need them can see them.</p></li>
+        <li><span class="num">3</span><p><b>Cookies:</b> our website does not set any cookies of its own. Only the Google Ads tag does. You can block or delete cookies in your browser settings. After you book counselling, your browser keeps your first name and phone number only until you close the tab, to show them on the thank-you page.</p></li>
+        <li><span class="num">4</span><p><b>Under 18:</b> our courses are for students aged 18 and above. If you are under 18, please share your details only with your parent&rsquo;s or guardian&rsquo;s permission.</p></li>
+        <li><span class="num">5</span><p><b>Changes:</b> we may update this policy. The date at the top of this page shows the last change.</p></li>
+      </ol>
+    </article>
+
+    <!-- YOUR RIGHTS -->
+    <article class="term" id="rights">
+      <div class="tag">Your Rights</div>
+      <h2>Your Rights</h2>
+      <p class="term-sub">Write to us or call us anytime</p>
+      <ol class="clauses">
+        <li><span class="num">1</span><p><b>Know:</b> ask what details we have about you and how we use them.</p></li>
+        <li><span class="num">2</span><p><b>Correct:</b> ask us to fix or update wrong details.</p></li>
+        <li><span class="num">3</span><p><b>Delete:</b> ask us to delete your details. We will, unless the law asks us to keep some records.</p></li>
+        <li><span class="num">4</span><p><b>Stop:</b> tell us anytime to stop calls and messages about our courses.</p></li>
+        <li><span class="num">5</span><p><b>Nominate:</b> choose a person who can use these rights for you if you are not able to.</p></li>
+        <li><span class="num">6</span><p><b>Complain:</b> write to our Grievance Officer below. We will reply within 30 days. If you are not happy with our reply, you can complain to the Data Protection Board of India.</p></li>
+      </ol>
+    </article>
+
+    <!-- GRIEVANCE OFFICER -->
+    <div class="ask" id="contact">
+      <div class="tag">Grievance Officer</div>
+      <h2>Mr. Anand Mohan</h2>
+      <p>For any question or request about your details</p>
+      <p class="phones">Email: <a href="mailto:theofficercode1@gmail.com">theofficercode1@gmail.com</a></p>
+      <p class="phones">Call us: <a href="tel:+918235950035">8235950035</a> · <a href="tel:+919122437765">9122437765</a></p>
+      <p>The Officer Code, 4th Floor, Roshpa Tower, Main Road, Ranchi · Monday to Saturday, 10 AM – 2 PM</p>
+      <a href="https://wa.me/918235950035?text=Hi%2C%20I%20have%20a%20question%20about%20my%20details%20and%20your%20privacy%20policy" class="btn btn-wa" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.642-6.438-1.758l-.408-.248-3.1 1.04 1.04-3.1-.248-.408A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        WhatsApp Us
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="links"><a href="../about-us/">About Us</a><a href="../#counselling">Contact Us</a><a href="../terms/">Terms &amp; Conditions</a><a href="./" aria-current="page">Privacy Policy</a></div>
+    <div class="founders">Co-Founders: <b>Mr. Anand Mohan</b> &amp; <b>Mr. Saman Shrestha</b></div>
+    &copy; 2026 <b>The Officer Code</b> · All Rights Reserved · Designed by <a href="https://kalamacademy.org/business" target="_blank" rel="noopener">Kalam Academy Team</a>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/918235950035?text=Hi%2C%20I%20want%20to%20know%20about%20The%20Officer%20Code" class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.642-6.438-1.758l-.408-.248-3.1 1.04 1.04-3.1-.248-.408A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+</body>
+</html>
