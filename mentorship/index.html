@@ -428,6 +428,25 @@ pointer-events: none;
     color: rgba(255,255,255,0.4); font-size: 0.8rem;
   }
   .footer span { color: var(--gold); }
+  /* footer: "About Us" (address & timings) and "Quick Links" side by side,
+     then a faint line, then the co-founder and copyright lines.
+     On phones the two columns sit one under the other. */
+  .footer .fcols { display: flex; justify-content: center; gap: 26px 80px; max-width: 700px; margin: 0 auto 18px; padding: 10px 0 24px; border-bottom: 1px solid rgba(255,255,255,0.12); text-align: left; }
+  .footer .fhead { color: #fff; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .footer .fhead::after { content: ''; display: block; width: 28px; height: 2px; margin-top: 8px; border-radius: 2px; background: var(--gold); }
+  .footer .fline { display: flex; align-items: flex-start; gap: 9px; color: rgba(255,255,255,0.75); font-size: 0.92rem; line-height: 1.55; }
+  .footer .fline + .fline { margin-top: 10px; }
+  .footer .fline svg { flex: none; width: 16px; height: 16px; margin-top: 3px; color: var(--gold); }
+  .footer .fclosed { color: rgba(255,255,255,0.5); font-size: 0.84rem; }
+  .footer .fline .nw { white-space: nowrap; color: inherit; }
+  .footer .flinks { list-style: none; display: grid; gap: 9px; font-size: 0.92rem; }
+  .footer .flinks a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .footer .flinks a[aria-current="page"] { color: #fff; }
+  @media (max-width: 640px) {
+    .footer .fcols { flex-direction: column; align-items: center; text-align: center; padding-top: 4px; }
+    .footer .fhead::after { margin-inline: auto; }
+    .footer .fline { justify-content: center; }
+  }
 
   /* ── FLOATING WHATSAPP ── */
   .float-wa {
@@ -1235,14 +1254,26 @@ const TESTIMONIALS = [
     <strong>Visit Us</strong><br>
     4th Floor, Roshpa Tower, Main Road, Ranchi, Jharkhand
     <div class="visit-hours">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><span style="white-space:nowrap">Monday &ndash; Saturday</span> &nbsp;·&nbsp; <span style="white-space:nowrap">10:00 AM &ndash; 2:00 PM</span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><span style="white-space:nowrap">Monday &ndash; Saturday</span> &nbsp;·&nbsp; <span style="white-space:nowrap">10:00 AM &ndash; 6:30 PM</span>
     </div>
     <div class="visit-closed">Sunday closed</div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer"><div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;max-width:640px;margin:0 auto 16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.12);"><a href="../" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">&larr; New UPSC Batch (Ranchi Classroom &amp; Online)</a><a href="../about-us/" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">About Us</a><a href="../#counselling" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">Contact Us</a><a href="../terms/" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">Terms &amp; Conditions</a><a href="../privacy-policy/" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:0.9rem;">Privacy Policy</a></div><div style="margin-bottom:8px;font-size:0.95rem;color:rgba(255,255,255,0.7);">Co-Founders: <span style="color:#FFBD59;font-weight:600;">Mr. Anand Mohan</span> &amp; <span style="color:#FFBD59;font-weight:600;">Mr. Saman Shrestha</span></div>
+<footer class="footer">
+  <div class="fcols">
+    <div class="fcol">
+      <div class="fhead">About Us</div>
+      <div class="fline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div>4th Floor, Roshpa Tower,<br>Main Road, Ranchi</div></div>
+      <div class="fline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><div>Monday to Saturday, <span class="nw">10 AM &ndash; 6:30 PM</span><div class="fclosed">Sunday closed</div></div></div>
+    </div>
+    <div class="fcol">
+      <div class="fhead">Quick Links</div>
+      <ul class="flinks"><li><a href="../">&larr; New UPSC Batch (Ranchi Classroom &amp; Online)</a></li><li><a href="../#counselling">Contact Us</a></li><li><a href="../terms/">Terms &amp; Conditions</a></li><li><a href="../privacy-policy/">Privacy Policy</a></li></ul>
+    </div>
+  </div>
+  <div style="margin-bottom:8px;font-size:0.95rem;color:rgba(255,255,255,0.7);">Co-Founders: <span style="color:#FFBD59;font-weight:600;">Mr. Anand Mohan</span> &amp; <span style="color:#FFBD59;font-weight:600;">Mr. Saman Shrestha</span></div>
   &copy; 2026 <span>The Officer Code</span> · All Rights Reserved · Designed by <a href="https://kalamacademy.org/business" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;font-weight:600;">Kalam Academy Team</a>
 </footer>
 
