@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18495506036"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-18495506036');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Contact Us | The Officer Code — Anand Mohan Sir</title>
+<meta name="description" content="Contact The Officer Code (TOC), UPSC coaching in Ranchi. Visit us at 4th Floor, Roshpa Tower, Main Road, Ranchi. Open Monday to Sunday, 10 AM to 6:30 PM. Call 8235950035 or 9122437765.">
+<meta property="og:title" content="Contact Us | The Officer Code">
+<meta property="og:description" content="Visit, call or email The Officer Code. 4th Floor, Roshpa Tower, Main Road, Ranchi.">
+<meta property="og:image" content="https://theofficercode.com/anandsir.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap">
+</head>
+<body>
+<style>
+  /* Layout: same look as the home page. Navy hero, contact details,
+     then the map. */
+  :root {
+    --navy: #050544;
+    --navy-2: #0c0c5a;
+    --night: #020228;
+    --gold: #FFBD59;
+    --gold-dark: #e6a840;
+    --gold-soft: rgba(255,189,89,0.14);
+    --bg: #FFFFFF;
+    --bg-soft: #F4F4FA;
+    --line: rgba(5,5,68,0.10);
+    --ink: #050544;
+    --muted: #4f5170;
+    --wa: #25D366;
+    --font: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --nav-h: 68px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font); font-size: 16px; line-height: 1.6;
+    color: var(--ink); background: var(--bg); overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding-inline: 20px; }
+
+  /* ── buttons ── */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 14px 28px; border-radius: 10px; border: none; cursor: pointer;
+    font: 700 1.02rem/1.2 var(--font); text-decoration: none;
+    transition: transform .2s, background .2s, box-shadow .2s;
+  }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,189,89,0.3); }
+  .btn-wa { background: var(--wa); color: #fff; }
+  .btn-wa:hover { background: #1fb855; transform: translateY(-2px); }
+
+  /* ── nav (same as home page) ── */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy); box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .nav-in { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .nav-logo { color: var(--gold); text-decoration: none; font-size: 1.5rem; font-weight: 800; letter-spacing: 3px; line-height: 1.1; }
+  .nav-logo span { display: block; color: #fff; font-size: 0.78rem; font-weight: 400; letter-spacing: 1px; }
+  .nav-links { display: flex; align-items: center; gap: 26px; }
+  .nav-link { color: rgba(255,255,255,0.8); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
+  .nav-link:hover, .nav-link[aria-current="page"] { color: var(--gold); }
+  .nav-cta { padding: 10px 20px; font-size: 0.92rem; border-radius: 8px; }
+
+  /* ── hero ── */
+  .hero {
+    position: relative; overflow: hidden; color: #fff; text-align: center;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, var(--navy) 100%);
+    padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 56px);
+    padding-bottom: 64px;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -30%; right: -15%; width: 640px; height: 640px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,189,89,0.10) 0%, transparent 70%); pointer-events: none;
+  }
+  .hero .wrap { position: relative; }
+  .hero-badge {
+    display: inline-block; margin-bottom: 18px; padding: 6px 16px; border-radius: 50px;
+    background: var(--gold-soft); color: var(--gold);
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+  }
+  .hero h1 { font-size: clamp(2rem, 4.4vw, 3.15rem); font-weight: 800; line-height: 1.14; text-wrap: balance; margin-bottom: 16px; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p { max-width: 600px; margin: 0 auto; font-size: 1.1rem; color: rgba(255,255,255,0.85); }
+
+  /* ── sections ── */
+  .section { padding-block: 80px; }
+  .soft { background: var(--bg-soft); }
+  .head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
+  .tag {
+    display: inline-block; margin-bottom: 14px; padding: 5px 16px; border-radius: 50px;
+    background: var(--gold-soft); color: var(--gold-dark);
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .title { font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 800; line-height: 1.22; text-wrap: balance; margin-bottom: 12px; }
+
+  /* ── who we are ── */
+  .story { max-width: 680px; margin: 0 auto; display: grid; gap: 16px; font-size: 1.1rem; color: var(--muted); }
+  .story b { color: var(--ink); }
+  .facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+  .fact {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px;
+    background: var(--bg-soft); border: 1px solid var(--line); font-weight: 700; font-size: 0.92rem;
+  }
+
+  /* ── what we offer ── */
+  .offers { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 960px; margin: 0 auto; }
+  .offer {
+    display: flex; flex-direction: column; gap: 12px; min-width: 0;
+    background: var(--bg); border: 2px solid var(--line); border-radius: 22px; padding: 30px 28px;
+  }
+  .offer.main { border-color: var(--gold); }
+  .offer-mode {
+    align-self: flex-start; padding: 4px 12px; border-radius: 50px;
+    background: var(--bg-soft); color: var(--muted); border: 1px solid var(--line);
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase;
+  }
+  .offer.main .offer-mode { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+  .offer h3 { font-size: 1.45rem; font-weight: 800; line-height: 1.2; }
+  .offer p { color: var(--muted); }
+  .offer .money {
+    padding: 12px 14px; border-radius: 12px; background: rgba(22,163,74,0.08);
+    color: #15803d; font-weight: 700; font-size: 0.95rem;
+  }
+  .offer-link { margin-top: auto; padding-top: 6px; color: var(--navy); font-weight: 800; text-decoration: none; }
+  .offer-link:hover { color: var(--gold-dark); }
+
+  /* ── how we teach ── */
+  .ways { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 900px; margin: 0 auto; }
+  .ways li { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; font-weight: 600; line-height: 1.4; }
+  .ways .ic { flex: 0 0 40px; height: 40px; border-radius: 10px; background: var(--gold-soft); display: grid; place-items: center; font-size: 1.15rem; }
+
+
+  /* ── contact cards + map ── */
+  .cgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 900px; margin: 0 auto; }
+  .ccard { display: flex; gap: 16px; align-items: flex-start; min-width: 0; padding: 22px 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--bg); }
+  .ccard .ic { flex: 0 0 46px; height: 46px; border-radius: 12px; background: var(--gold-soft); color: var(--gold-dark); display: grid; place-items: center; }
+  .ccard .ic svg { width: 22px; height: 22px; }
+  .ccard h3 { font-size: 0.78rem; font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .ccard p { font-size: 1.08rem; font-weight: 700; line-height: 1.45; overflow-wrap: anywhere; }
+  .ccard a { color: var(--navy); text-decoration: none; border-bottom: 2px solid var(--gold); }
+  .ccard a:hover { color: var(--gold-dark); }
+  .ccard small { display: block; margin-top: 4px; color: var(--muted); font-size: 0.9rem; font-weight: 500; }
+  .map { max-width: 900px; margin: 0 auto; border-radius: 22px; overflow: hidden; border: 1px solid var(--line); background: var(--bg); }
+  .map iframe { display: block; width: 100%; height: 380px; border: 0; }
+  .map-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; }
+  .map-foot span { font-weight: 700; }
+  @media (max-width: 760px) {
+    .cgrid { grid-template-columns: 1fr; }
+    .map iframe { height: 300px; }
+    .map-foot { flex-direction: column; align-items: stretch; text-align: center; }
+  }
+
+  /* ── final CTA ── */
+  .final { background: var(--navy); color: #fff; text-align: center; position: relative; overflow: hidden; }
+  .final::before {
+    content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,189,89,0.07) 0%, transparent 70%); pointer-events: none;
+  }
+  .final h2 { position: relative; font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 800; line-height: 1.22; text-wrap: balance; margin-bottom: 14px; }
+  .final h2 em { font-style: normal; color: var(--gold); }
+  .final p { position: relative; color: rgba(255,255,255,0.72); font-size: 1.08rem; max-width: 560px; margin: 0 auto 30px; }
+  .final-btns { position: relative; display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+
+  /* ── footer (same as home page) ── */
+  .footer { background: var(--night); color: rgba(255,255,255,0.45); text-align: center; font-size: 0.82rem; padding-block: 26px; }
+  .footer .founders { color: rgba(255,255,255,0.72); font-size: 0.95rem; margin-bottom: 8px; }
+  .footer b { color: var(--gold); font-weight: 600; }
+  .footer a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  /* footer: "About Us" (address & timings) and "Quick Links" side by side,
+     then a faint line, then the co-founder and copyright lines.
+     On phones the two columns sit one under the other. */
+  .footer .fcols { display: flex; justify-content: center; gap: 26px 60px; max-width: 900px; margin: 0 auto 18px; padding: 10px 0 24px; border-bottom: 1px solid rgba(255,255,255,0.12); text-align: left; }
+  .footer .fcol { flex: none; }
+  .footer .fhead { color: #fff; font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .footer .fhead::after { content: ''; display: block; width: 28px; height: 2px; margin-top: 8px; border-radius: 2px; background: var(--gold); }
+  .footer .fline { display: flex; align-items: flex-start; gap: 9px; color: rgba(255,255,255,0.75); font-size: 0.92rem; line-height: 1.55; }
+  .footer .fline + .fline { margin-top: 10px; }
+  .footer .fline svg { flex: none; width: 16px; height: 16px; margin-top: 3px; color: var(--gold); }
+  .footer .fclosed { color: rgba(255,255,255,0.5); font-size: 0.84rem; }
+  .footer .fline .nw { white-space: nowrap; color: inherit; }
+  .footer .fline a { color: var(--gold); text-decoration: none; font-weight: 600; white-space: nowrap; }
+  .footer .flinks { list-style: none; display: grid; gap: 9px; font-size: 0.92rem; }
+  .footer .flinks a { color: var(--gold); text-decoration: none; font-weight: 600; }
+  .footer .flinks a[aria-current="page"] { color: #fff; }
+  .footer .fsocial { list-style: none; display: grid; gap: 10px; font-size: 0.92rem; }
+  .footer .fsocial a { display: inline-flex; align-items: center; gap: 9px; color: var(--gold); text-decoration: none; font-weight: 600; }
+  .footer .fsocial a:hover { color: #fff; }
+  .footer .fsocial svg { flex: none; width: 20px; height: 20px; }
+  @media (max-width: 640px) {
+    .footer .fcols { flex-direction: column; align-items: center; text-align: center; padding-top: 4px; }
+    .footer .fhead::after { margin-inline: auto; }
+    .footer .fline { justify-content: center; }
+  }
+
+  /* ── floating WhatsApp ── */
+  .float-wa {
+    position: fixed; right: 24px; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); z-index: 99;
+    width: 60px; height: 60px; border-radius: 50%; background: var(--wa);
+    display: grid; place-items: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    animation: pulse-wa 2s infinite;
+  }
+  .float-wa svg { width: 32px; height: 32px; fill: #fff; }
+  @keyframes pulse-wa { 0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 30px rgba(37,211,102,0.6); } }
+
+  /* ── responsive ── */
+  @media (max-width: 760px) {
+    :root { --nav-h: 62px; }
+    .nav-link { display: none; }
+    .nav-link.nav-home { display: inline; }
+    .nav-links { gap: 16px; }
+    .nav-logo { font-size: 1.3rem; }
+    .nav-cta { padding: 9px 14px; font-size: 0.84rem; }
+    .hero { padding-top: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 36px); padding-bottom: 48px; }
+    .section { padding-block: 60px; }
+    .offers, .ways { grid-template-columns: 1fr; }
+    .offer { padding: 26px 20px; }
+    .story { font-size: 1.02rem; }
+    .float-wa { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: 54px; height: 54px; }
+    .footer { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<script>
+/* Opening this page from a link always starts at the top of the page.
+   A link to one part of the page (like #mentorship) still goes to that part,
+   and Back/Forward keeps the browser's normal scroll memory. */
+(function () {
+  try {
+    const nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if ((!nav || nav.type === 'navigate') && !location.hash) {
+      const up = () => window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      up(); window.addEventListener('load', up, { once: true });
+    }
+  } catch (_) {}
+})();
+</script>
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="../" class="nav-logo">TOC <span>The Officer Code</span></a>
+    <div class="nav-links">
+      <a href="../" class="nav-link nav-home">Home</a>
+      <a href="../#course" class="nav-link">Course</a>
+      <a href="../mentorship/" class="nav-link">Mentorship</a>
+      <a href="../#counselling" class="btn btn-gold nav-cta">Free Counselling</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-badge">Contact Us</div>
+    <h1>Contact <em>The Officer Code</em></h1>
+    <p>Have a question about UPSC, BPSC or our courses? Call us, email us, or visit our centre in Ranchi.</p>
+  </div>
+</header>
+
+<!-- CONTACT DETAILS -->
+<section class="section">
+  <div class="wrap">
+    <div class="head">
+      <div class="tag">Get In Touch</div>
+      <h2 class="title">How to Reach Us</h2>
+    </div>
+    <div class="cgrid">
+      <div class="ccard"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><h3>Address</h3><p>4th Floor, Roshpa Tower,<br>Main Road, Ranchi</p></div></div>
+      <div class="ccard"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></span><div><h3>Timing</h3><p>Monday to Sunday<br>10 AM &ndash; 6:30 PM</p><small>Open all 7 days</small></div></div>
+      <div class="ccard"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><div><h3>Phone</h3><p><a href="tel:+918235950035">+91 8235950035</a><br><a href="tel:+919122437765">+91 9122437765</a></p></div></div>
+      <div class="ccard"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><h3>Email</h3><p><a href="mailto:theofficercode1@gmail.com">theofficercode1@gmail.com</a></p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="section soft">
+  <div class="wrap">
+    <div class="head">
+      <div class="tag">Find Us</div>
+      <h2 class="title">Visit Our Ranchi Centre</h2>
+    </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=Roshpa+Tower,+Main+Road,+Ranchi,+Jharkhand&amp;output=embed" title="Map of The Officer Code, Roshpa Tower, Main Road, Ranchi" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="map-foot">
+        <span>📍 4th Floor, Roshpa Tower, Main Road, Ranchi</span>
+        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Roshpa+Tower,+Main+Road,+Ranchi,+Jharkhand" class="btn btn-gold" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="fcols">
+      <div class="fcol">
+        <div class="fhead">Contact Us</div>
+        <div class="fline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div>4th Floor, Roshpa Tower,<br>Main Road, Ranchi</div></div>
+        <div class="fline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><div>Monday to Sunday, <span class="nw">10 AM &ndash; 6:30 PM</span></div></div>
+        <div class="fline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div>Call: <a href="tel:+918235950035">8235950035</a> &middot; <a href="tel:+919122437765">9122437765</a></div></div>
+      </div>
+      <div class="fcol">
+        <div class="fhead">Quick Links</div>
+        <ul class="flinks"><li><a href="../about-us/">About Us</a></li><li><a href="./" aria-current="page">Contact Us</a></li><li><a href="../terms/">Terms &amp; Conditions</a></li><li><a href="../privacy-policy/">Privacy Policy</a></li></ul>
+      </div>
+      <div class="fcol">
+        <div class="fhead">Follow Us</div>
+        <ul class="fsocial"><li><a href="https://www.youtube.com/@TheOfficerCode1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FF0000" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8z"/><path fill="#fff" d="M9.6 15.6 15.8 12 9.6 8.4z"/></svg>YouTube</a></li><li><a href="https://www.instagram.com/theofficercode1/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><radialGradient id="igg" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6" fill="url(#igg)"/><rect x="5.5" y="5.5" width="13" height="13" rx="3.8" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg>Instagram</a></li></ul>
+      </div>
+    </div>
+    <div class="founders">Co-Founders: <b>Mr. Anand Mohan</b> &amp; <b>Mr. Saman Shrestha</b></div>
+    &copy; 2026 <b>The Officer Code</b> · All Rights Reserved · Designed by <a href="https://kalamacademy.org/business" target="_blank" rel="noopener">Kalam Academy Team</a>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/918235950035?text=Hi%2C%20I%20want%20to%20know%20about%20The%20Officer%20Code" class="float-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.352 0-4.55-.642-6.438-1.758l-.408-.248-3.1 1.04 1.04-3.1-.248-.408A9.958 9.958 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+</body>
+</html>
