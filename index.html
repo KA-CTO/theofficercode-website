@@ -1014,6 +1014,99 @@
   </a>
 </div>
 
+<!-- ── AD ATTRIBUTION CAPTURE ──────────────────────────────────────────────
+     Same logic as Kalam Academy's ka_lead_config.js.
+     Reads UTM params / Google & Meta click IDs from the landing URL once,
+     stores them first-touch in localStorage (survives multi-page navigation),
+     and exposes TOC_getTracking() for the lead form to append to FormData.
+──────────────────────────────────────────────────────────────────────────── -->
+<script>
+(function () {
+  'use strict';
+  var TRACK_KEYS = [
+    'gclid', 'gbraid', 'wbraid', 'fbclid',
+    'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+    'gad_campaignid', 'gad_source'
+  ];
+  var STORE = 'toc_attr';
+
+  function param(name) {
+    try {
+      var m = new RegExp('[?&]' + name + '=([^&#]*)').exec(location.search || '');
+      return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : '';
+    } catch (e) { return ''; }
+  }
+  function cookie(name) {
+    try {
+      var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+      return m ? m.pop() : '';
+    } catch (e) { return ''; }
+  }
+  function readNow() {
+    var t = {};
+    for (var i = 0; i < TRACK_KEYS.length; i++) {
+      var v = param(TRACK_KEYS[i]);
+      if (v) t[TRACK_KEYS[i]] = v;
+    }
+    var fbc = cookie('_fbc'); if (fbc) t.fbc = fbc;
+    var fbp = cookie('_fbp'); if (fbp) t.fbp = fbp;
+    return t;
+  }
+
+  var stored = {};
+  try { stored = JSON.parse(localStorage.getItem(STORE) || '{}'); } catch (e) { stored = {}; }
+  var fresh = readNow();
+  var hasFresh = false;
+  for (var k in fresh) { if (Object.prototype.hasOwnProperty.call(fresh, k)) { hasFresh = true; break; } }
+  var hasStored = false;
+  for (var s in stored) { if (Object.prototype.hasOwnProperty.call(stored, s)) { hasStored = true; break; } }
+
+  if (hasFresh && !hasStored) {
+    stored = fresh;
+    stored._first_landing = location.href;
+    stored._referrer = document.referrer || '';
+    try { stored._ts = new Date().toISOString(); } catch (e) {}
+    try { localStorage.setItem(STORE, JSON.stringify(stored)); } catch (e) {}
+    hasStored = true;
+  }
+
+  window.TOC_getTracking = function () {
+    var base = hasStored ? stored : fresh;
+    var g = function (key) { return base[key] || fresh[key] || ''; };
+    return {
+      gclid:          g('gclid'),
+      gbraid:         g('gbraid'),
+      wbraid:         g('wbraid'),
+      fbclid:         g('fbclid'),
+      fbc:            g('fbc') || cookie('_fbc'),
+      fbp:            g('fbp') || cookie('_fbp'),
+      utm_source:     g('utm_source'),
+      utm_medium:     g('utm_medium'),
+      utm_campaign:   g('utm_campaign'),
+      utm_content:    g('utm_content'),
+      utm_term:       g('utm_term'),
+      gad_campaignid: g('gad_campaignid'),
+      gad_source:     g('gad_source'),
+      landing_url:    base._first_landing || location.href,
+      referrer:       base._referrer || document.referrer || ''
+    };
+  };
+
+  window.TOC_appendTracking = function (formData) {
+    if (!formData || typeof formData.append !== 'function') return formData;
+    if (formData.has && formData.has('_toc_tracked')) return formData;
+    var t = window.TOC_getTracking();
+    for (var key in t) {
+      if (Object.prototype.hasOwnProperty.call(t, key) && t[key]) {
+        formData.append(key, t[key]);
+      }
+    }
+    formData.append('_toc_tracked', '1');
+    return formData;
+  };
+})();
+</script>
+
 <script>
 /* ═══════════════════════════════════════════════════════════════
    LEAD FORM — for the developer
@@ -1285,6 +1378,8 @@ const THANK_YOU_URL = 'thank-you/';
       fd.append('state', '');
       fd.append('city', '');
       fd.append('Shop_Size', '');
+      /* attach ad attribution (gclid, utm_*, gad_*, fbc, fbp, landing_url, referrer) */
+      if (typeof window.TOC_appendTracking === 'function') window.TOC_appendTracking(fd);
       const res = await fetch(LEAD_API_URL, {
         method: 'POST',
         body: fd,
