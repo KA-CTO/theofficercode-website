@@ -627,7 +627,6 @@
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
-a.plan-btn{cursor:pointer}
 </style>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap">
@@ -1086,6 +1085,28 @@ a.plan-btn{cursor:pointer}
     .ticket-body { padding: 20px 18px; }
   }
   @media (prefers-reduced-motion: reduce) { .sheet, .sheet:nth-child(2), .sheet:nth-child(3) { transform: none; } }
+  a.plan-btn { cursor: pointer; }
+
+  /* 1. hero heading: tighter lines on phones */
+  @media (max-width: 600px) {
+    .p3-hero h1 { line-height: 1.08; }
+    .p3-hero h1 .h1b { display: inline-block; margin-top: .22em; }
+    .p3-hero h1 .pill.hot { padding: .1em .45em .02em; margin: .06em 0; line-height: 1.2; }
+  }
+  /* 3. Hindi kicker: no letter gaps, centred pill */
+  .tale .kicker { letter-spacing: 0; text-transform: none; font-family: var(--hi); font-size: 1rem; font-weight: 700;
+    display: table; margin: 0 auto 14px; padding: 5px 16px; border-radius: 50px; background: var(--navy); color: var(--gold); }
+  .tale-h, .tale-yr { text-align: center; }
+  .tale-yr { letter-spacing: 0; }
+  /* 4. the two big coachings: readable, still clearly "the expensive ones" */
+  .vs-card.dim { opacity: 1; filter: none; background: #fff; border: 2px solid #ffd0d0; padding: 16px 8px 14px; box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+  .vs-card.dim b { font-size: 1rem; font-weight: 800; color: var(--navy); }
+  .vs-card.dim .only { color: #b42318; background: #ffeceb; font-size: 0.85rem; font-weight: 700; padding: 4px 10px; line-height: 1.3; }
+  .vs-card.dim s { font-size: 1.45rem; font-weight: 800; color: var(--navy); text-decoration-color: #e5383b; text-decoration-thickness: 3px; }
+  @keyframes dimIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 400px) { .vs-card.dim s { font-size: 1.2rem; } .vs-card.dim .only { font-size: 0.78rem; padding: 4px 8px; } }
+  /* crown banner: stands out from the dark background */
+  .crown { background: #e5383b; color: #fff; border: 2px solid #fff; font-size: 0.85rem; padding: 5px 14px; top: -15px; box-shadow: 0 6px 16px rgba(229,56,59,0.5); }
 </style>
 
 
