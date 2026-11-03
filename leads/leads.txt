@@ -3,3 +3,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 2 | 03-11-2026 17:27:31 | ₹9,999 full | Test Lead Two | 9876543210 | test2@example.com
 3 | 03-11-2026 17:33:00 | ₹9,999 full | Test Lead V2 | 9999888877 | testv2@example.com
 4 | 03-11-2026 17:45:05 | ₹9,999 full | Debug Test | 9999999999 | debug@test.com
+5 | 03-11-2026 17:57:15 | ₹9,999 full | E2E Test Final | 8765432109 | e2etest@example.com
