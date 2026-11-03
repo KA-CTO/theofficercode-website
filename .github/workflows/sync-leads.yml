@@ -1,0 +1,48 @@
+name: Sync Buy Now leads
+# Every 5 minutes: read new Buy Now leads from the Google Apps Script and
+# append them to leads/leads.txt (S.No | Date & Time | Plan | Name | Phone | Email).
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sync-leads
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add new leads to leads/leads.txt
+        env:
+          LEADS_URL: https://script.google.com/macros/s/AKfycbzIHAU5G2mXd4slhpUNjYOtm6g9GmyRjPZ4co2GxHoZP09sqctuHYl6YDZvJGeJ4cw7/exec
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          p = 'leads/leads.txt'
+          lines = open(p, encoding='utf-8').read().splitlines()
+          last = 0
+          for l in lines[1:]:
+              try:
+                  last = max(last, int(l.split('|')[0].strip()))
+              except ValueError:
+                  pass
+          with urllib.request.urlopen(os.environ['LEADS_URL'] + '?after=' + str(last), timeout=60) as r:
+              rows = json.load(r).get('rows', [])
+          rows = sorted((r for r in rows if int(r[0]) > last), key=lambda r: int(r[0]))
+          if rows:
+              with open(p, 'a', encoding='utf-8') as f:
+                  for r in rows:
+                      f.write(' | '.join(str(c).strip() for c in r) + '\n')
+          print(len(rows), 'new lead(s)')
+          PY
+      - name: Commit new leads
+        run: |
+          if git diff --quiet; then echo "No new leads"; exit 0; fi
+          git config user.name "leads-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add leads/leads.txt
+          git commit -m "Add new Buy Now leads"
+          git push
