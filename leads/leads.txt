@@ -1,1 +1,4 @@
 S.No | Date & Time | Plan | Name | Phone | Email
+1 | 03-11-2026 17:25:21 | ₹9,999 full | Test Lead Claude | 9876543210 | testlead@example.com
+2 | 03-11-2026 17:27:31 | ₹9,999 full | Test Lead Two | 9876543210 | test2@example.com
+3 | 03-11-2026 17:33:00 | ₹9,999 full | Test Lead V2 | 9999888877 | testv2@example.com
