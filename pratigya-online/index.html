@@ -1606,7 +1606,7 @@
 
 <script>
 (function () {
-  const LEAD_API = 'https://teamka.in/api_live/APIs/ash.php';
+  const LEAD_API = 'https://script.google.com/macros/s/AKfycbzIHAU5G2mXd4slhpUNjYOtm6g9GmyRjPZ4co2GxHoZP09sqctuHYl6YDZvJGeJ4cw7/exec';
   const bd = document.getElementById('emBd');
   const planLab = document.getElementById('emPlan');
   const formWrap = document.getElementById('emForm');
@@ -1676,27 +1676,17 @@
     btn.textContent = 'Sending…';
     const plan = form.dataset.plan || 'full';
     try {
-      const fd = new FormData();
-      fd.append('Type', '003A');
-      fd.append('name', nameI.value.trim());
-      fd.append('email', emailI.value.trim());
-      fd.append('mobile', cleanPhone(phoneI.value));
-      fd.append('alternate_mobile', 0);
-      fd.append('whatsapp', 0);
-      fd.append('interested_in', 'UPSC Online');
-      fd.append('source', 'website - pratigya online (' + (plan === 'emi' ? '6000 EMI' : '9999 full') + ')');
-      fd.append('status', 'Unassigned');
-      fd.append('caller', '');
-      fd.append('caller_id', '');
-      fd.append('state', '');
-      fd.append('city', '');
-      fd.append('Shop_Size', '');
-      if (typeof window.TOC_appendTracking === 'function') window.TOC_appendTracking(fd);
       const ctrl = new AbortController();
-      const t = setTimeout(() => ctrl.abort(), 15000);
-      const res = await fetch(LEAD_API, { method: 'POST', body: fd, signal: ctrl.signal });
+      const t = setTimeout(() => ctrl.abort(), 20000);
+      const res = await fetch(LEAD_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({ name: nameI.value.trim(), phone: cleanPhone(phoneI.value), email: emailI.value.trim(), plan: plan === 'emi' ? '₹6,000 EMI' : '₹9,999 full' }),
+        signal: ctrl.signal,
+      });
       clearTimeout(t);
-      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const j = await res.json();
+      if (!j.ok) throw new Error(j.error || 'not saved');
     } catch (err) {
       console.error('Enroll form:', err);
       btn.disabled = false;
