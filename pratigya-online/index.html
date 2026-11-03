@@ -1571,14 +1571,13 @@
     <button type="button" class="em-x" id="emX" aria-label="Close">&times;</button>
     <div id="emForm">
       <div class="em-top">
-        <h3 id="emTitle">आपकी Pratigya Online की सीट</h3>
+        <h3 id="emTitle">Buy Pratigya Online 2028-29 Course</h3>
         <span class="em-plan" id="emPlan">₹9,999</span>
-        <p>अपनी details दीजिए, हम आपको 24 घंटे में call करके seat confirm करेंगे।</p>
       </div>
       <div class="em-body">
         <form id="emF" novalidate>
           <div class="em-fld" id="emf-name">
-            <label for="emName">आपका नाम <span class="req">*</span></label>
+            <label for="emName">Name <span class="req">*</span></label>
             <input id="emName" type="text" autocomplete="name" placeholder="जैसे Rahul Kumar" required>
             <div class="err">कृपया अपना पूरा नाम लिखें।</div>
           </div>
@@ -1592,7 +1591,7 @@
             <input id="emEmail" type="email" inputmode="email" autocomplete="email" placeholder="aapka@gmail.com" required>
             <div class="err">कृपया सही email लिखें, जैसे name@gmail.com।</div>
           </div>
-          <button type="submit" class="em-sub" id="emBtn">Confirm My Seat →</button>
+          <button type="submit" class="em-sub" id="emBtn">Buy Now →</button>
           <p class="em-note">🔒 आपकी details सुरक्षित हैं। हम सिर्फ enrollment के लिए call करेंगे।</p>
         </form>
       </div>
@@ -1621,7 +1620,7 @@
 
   function open(plan, btnEl) {
     planLab.textContent = plan === 'emi' ? '₹6,000 (पहली किस्त)' : '₹9,999';
-    btn.textContent = plan === 'emi' ? 'Confirm My Seat (₹6,000) →' : 'Confirm My Seat →';
+    btn.textContent = plan === 'emi' ? 'Buy Now →' : 'Buy Now →';
     btn.classList.toggle('ghost', plan === 'emi');
     form.dataset.plan = plan;
     formWrap.hidden = false;
