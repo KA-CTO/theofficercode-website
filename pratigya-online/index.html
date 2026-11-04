@@ -1692,6 +1692,11 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({ action: 'payment', payment_id: response.razorpay_payment_id, plan: plan === 'emi' ? '₹6,000 EMI' : '₹9,999 full', amount: plan === 'emi' ? '6000' : '9999', name: nameI.value.trim(), phone: cleanPhone(phoneI.value), email: emailI.value.trim(), status: 'success' }),
         }).catch(function () {});
+        // Meta Pixel: Advanced matching + Purchase
+        if(typeof fbq==='function'){
+          fbq('init','2444729099389998',{em:emailI.value.trim().toLowerCase(),ph:'91'+cleanPhone(phoneI.value),fn:nameI.value.trim().split(' ')[0].toLowerCase()});
+          fbq('track','Purchase',{content_name:'Pratigya Online',content_ids:['pratigya-online'],content_type:'product',value:(plan==='emi')?6000:9999,currency:'INR'},{eventID:response.razorpay_payment_id});
+        }
         // Redirect to payment success page
         var amtStr = plan === 'emi' ? '6,000' : '9,999';
         var q = '?name=' + encodeURIComponent(nameI.value.trim()) + '&amount=' + encodeURIComponent(amtStr) + '&pid=' + encodeURIComponent(response.razorpay_payment_id);
@@ -1701,13 +1706,14 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
         ondismiss: function () {
           btn.disabled = false; btn.textContent = old;
           // Meta Pixel: PaymentFailed
-          if(typeof fbq==='function'){fbq('trackCustom','PaymentFailed',{value:9999,currency:'INR'});}
+          if(typeof fbq==='function'){fbq('trackCustom','PaymentFailed',{value:(plan==='emi')?6000:9999,currency:'INR'});}
           // Payment dismissed/failed — scroll to the Pay Now section
           var paySection = document.getElementById('offer');
           if (paySection) paySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       },
     });
+    rzp.on('payment.failed',function(){if(typeof fbq==='function'){fbq('trackCustom','PaymentFailed',{value:(plan==='emi')?6000:9999,currency:'INR'});}});
     // Meta Pixel: InitiateCheckout
     if(typeof fbq==='function'){fbq('track','InitiateCheckout',{content_name:'Pratigya Online',value:plan==='emi'?6000:9999,currency:'INR'});}
     rzp.open();
