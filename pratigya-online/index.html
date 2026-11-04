@@ -1597,9 +1597,9 @@
     </div>
     <div id="emDone" class="em-ok" hidden>
       <div class="tick">✓</div>
-      <h3>धन्यवाद! आपकी details मिल गई।</h3>
-      <p>हमारी team 24 घंटे में आपको call करेगी और seat confirm करेगी।</p>
-      <p>तुरंत बात करनी हो? Call <a href="tel:+918235950035" style="color:var(--gold-dark);font-weight:700">8235950035</a></p>
+      <h3>धन्यवाद!</h3>
+      <p>आपको 24 घंटे के अंदर App का access दिया जाएगा।</p>
+      <p>किसी भी query के लिए call करें <a href="tel:+918235950035" style="color:var(--gold-dark);font-weight:700">8235950035</a></p>
     </div>
   </div>
 </div>
@@ -1694,7 +1694,8 @@
       alert('कुछ गड़बड़ हुई। कृपया थोड़ी देर में try करें, या call करें 8235950035');
       return;
     }
-    close();
+    formWrap.hidden = true;
+    doneWrap.hidden = false;
   });
 })();
 </script>
