@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- GA + Meta Pixel deferred to end of body for fast FCP -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2444729099389998');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'INR'});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Pratigya Online — UPSC का सबसे सस्ता Course | The Officer Code — Anand Mohan Sir</title>
@@ -1692,12 +1700,16 @@
       modal: {
         ondismiss: function () {
           btn.disabled = false; btn.textContent = old;
+          // Meta Pixel: PaymentFailed
+          if(typeof fbq==='function'){fbq('trackCustom','PaymentFailed',{value:9999,currency:'INR'});}
           // Payment dismissed/failed — scroll to the Pay Now section
           var paySection = document.getElementById('offer');
           if (paySection) paySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       },
     });
+    // Meta Pixel: InitiateCheckout
+    if(typeof fbq==='function'){fbq('track','InitiateCheckout',{content_name:'Pratigya Online',value:plan==='emi'?6000:9999,currency:'INR'});}
     rzp.open();
   });
 })();
@@ -1730,18 +1742,15 @@ document.querySelectorAll('.nav-dd').forEach(function (dd) {
 })();
 </script>
 
-<!-- GA + Meta Pixel: deferred so they don't block first paint -->
+<!-- Google Analytics: deferred so it doesn't block first paint -->
 <script>
 (function(){
-  function loadTrackers(){
+  function loadGA(){
     var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id=AW-18495506036';document.head.appendChild(gs);
     window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18495506036');
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init','2444729099389998');fbq('track','PageView');
   }
-  if('requestIdleCallback' in window){requestIdleCallback(loadTrackers);}else{setTimeout(loadTrackers,1500);}
+  if('requestIdleCallback' in window){requestIdleCallback(loadGA);}else{setTimeout(loadGA,1500);}
 })();
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"/></noscript>
 </body>
 </html>
