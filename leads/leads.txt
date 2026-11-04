@@ -5,3 +5,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 4 | 04-11-2026 11:23:57 | ₹9,999 full | Test User Four | 9988776644 | test4@example.com
 5 | 04-11-2026 12:07:43 | ₹9,999 full | solace | 8809815299 | apka@gmail.com
 6 | 04-11-2026 12:09:07 | ₹9,999 full | solace | 8809815299 | apka@gmail.com
+7 | 04-11-2026 12:10:09 | ₹6,000 EMI | solace | 8809815289 | aapka@gmail.com
