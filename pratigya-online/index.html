@@ -1604,9 +1604,11 @@
   </div>
 </div>
 
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 (function () {
-  const LEAD_API = 'https://script.google.com/macros/s/AKfycbzIHAU5G2mXd4slhpUNjYOtm6g9GmyRjPZ4co2GxHoZP09sqctuHYl6YDZvJGeJ4cw7/exec';
+  const LEAD_API = 'https://script.google.com/macros/s/AKfycbz_t6NMC_q7cM4Ll4UkES-2vOblnJnTL9LdoWRWXV0gXpoGBrQueryBhwKF0gBq_I_5/exec';
+  const RZP_KEY = 'rzp_live_TvOzwPPH4FfmCF';
   const bd = document.getElementById('emBd');
   const planLab = document.getElementById('emPlan');
   const formWrap = document.getElementById('emForm');
@@ -1694,8 +1696,29 @@
       alert('कुछ गड़बड़ हुई। कृपया थोड़ी देर में try करें, या call करें 8235950035');
       return;
     }
-    formWrap.hidden = true;
-    doneWrap.hidden = false;
+    // Lead saved — now open Razorpay checkout
+    const amt = plan === 'emi' ? 600000 : 999900; // amount in paise
+    const rzp = new Razorpay({
+      key: RZP_KEY,
+      amount: amt,
+      currency: 'INR',
+      name: 'Pratigya Online 2028-29 Course',
+      description: plan === 'emi' ? 'पहली किस्त — ₹6,000' : 'Full Payment — ₹9,999',
+      prefill: { name: nameI.value.trim(), email: emailI.value.trim(), contact: '+91' + cleanPhone(phoneI.value) },
+      theme: { color: '#050544' },
+      handler: function (response) {
+        // Payment successful — log to Google Sheet
+        fetch(LEAD_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ action: 'payment', payment_id: response.razorpay_payment_id, plan: plan === 'emi' ? '₹6,000 EMI' : '₹9,999 full', amount: plan === 'emi' ? '6000' : '9999', name: nameI.value.trim(), phone: cleanPhone(phoneI.value), email: emailI.value.trim(), status: 'success' }),
+        }).catch(function () {});
+        formWrap.hidden = true;
+        doneWrap.hidden = false;
+      },
+      modal: { ondismiss: function () { btn.disabled = false; btn.textContent = old; } },
+    });
+    rzp.open();
   });
 })();
 </script>
