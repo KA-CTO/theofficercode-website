@@ -1676,7 +1676,7 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
       return;
     }
     // Lead saved — now open Razorpay checkout
-    const amt = plan === 'emi' ? 600000 : 999900; // amount in paise
+    const amt = 100; // ₹1 TEST MODE — revert to: plan === 'emi' ? 600000 : 999900
     const rzp = new Razorpay({
       key: RZP_KEY,
       amount: amt,
