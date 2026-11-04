@@ -6,3 +6,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 5 | 04-11-2026 12:07:43 | ₹9,999 full | solace | 8809815299 | apka@gmail.com
 6 | 04-11-2026 12:09:07 | ₹9,999 full | solace | 8809815299 | apka@gmail.com
 7 | 04-11-2026 12:10:09 | ₹6,000 EMI | solace | 8809815289 | aapka@gmail.com
+8 | 04-11-2026 12:17:53 | ₹9,999 full | SOLACE | 8809815299 | aapka@gmail.com
