@@ -1731,10 +1731,19 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({ action: 'payment', payment_id: response.razorpay_payment_id, plan: plan === 'emi' ? '₹6,000 EMI' : '₹9,999 full', amount: plan === 'emi' ? '6000' : '9999', name: nameI.value.trim(), phone: cleanPhone(phoneI.value), email: emailI.value.trim(), status: 'success' }),
         }).catch(function () {});
-        formWrap.hidden = true;
-        doneWrap.hidden = false;
+        // Redirect to payment success page
+        var amtStr = plan === 'emi' ? '6,000' : '9,999';
+        var q = '?name=' + encodeURIComponent(nameI.value.trim()) + '&amount=' + encodeURIComponent(amtStr) + '&pid=' + encodeURIComponent(response.razorpay_payment_id);
+        window.location.href = '/payment-success/' + q;
       },
-      modal: { ondismiss: function () { btn.disabled = false; btn.textContent = old; } },
+      modal: {
+        ondismiss: function () {
+          btn.disabled = false; btn.textContent = old;
+          // Payment dismissed/failed — scroll to the Pay Now section
+          var paySection = document.getElementById('offer');
+          if (paySection) paySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      },
     });
     rzp.open();
   });
