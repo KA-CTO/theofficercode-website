@@ -1,34 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18495506036"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18495506036');
-</script>
-
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2444729099389998');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+<!-- GA + Meta Pixel deferred to end of body for fast FCP -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Pratigya Online — UPSC का सबसे सस्ता Course | The Officer Code — Anand Mohan Sir</title>
@@ -40,7 +13,9 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
 <link rel="canonical" href="https://theofficercode.com/pratigya-online/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap">
+<link rel="preload" as="image" href="../anandsir.jpg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap"></noscript>
 <style>
   /* Layout: ad landing page. Offer list + free-counselling form side by side at the top,
      then Anand Sir's journey, results, fees, what you get, proof, and one repeated action. */
@@ -647,7 +622,8 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
   }
 </style>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap"></noscript>
 <style>
   /* Pratigya Online: a page in Anand Sir's own voice. His reels carry it — pitch, story, proof, teaching —
      with the reel caption pill (black, bold, white) as the page's one visual signature. The offer comes last. */
@@ -1255,7 +1231,7 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
       </div>
       <p class="lede">जो रास्ता मैंने चला है, वही अब आपको <b>घर बैठे</b> सिखाऊँगा।</p>
       <div class="sig">
-        <img src="../anandsir.jpg" alt="Anand Mohan Sir">
+        <img src="../anandsir.jpg" alt="Anand Mohan Sir" fetchpriority="high" width="350" height="416">
         <div><b>Anand Mohan <span class="tick" aria-label="verified">✓</span></b><span>IIT qualified · 4x Prelims · 3x Mains · 3x Interview</span></div>
       </div>
       <div class="hero-btns">
@@ -1269,7 +1245,7 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
         <span class="float f2 pill">Hindi + English</span>
         <span class="float f3 pill">Live + Recorded 🎥</span>
         <div class="spin" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text><textPath href="#circ">THE OFFICER CODE • ANAND MOHAN • </textPath></text></svg><span>TOC</span></div>
-        <div id="heroReel"><div class="reel has-snd" tabindex="0" role="button" aria-label="Play with sound"><video src="../assets/anand-course-reel.mp4" poster="../assets/anand-course-reel.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Anand Mohan Sir talks about the Pratigya Online course"></video><span class="snd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Tap for sound</span></span><svg class="rline" aria-hidden="true" preserveAspectRatio="none"><rect class="rl-bg" x="3" y="3" rx="36" ry="36" pathLength="100"/><rect class="rl-fg" x="3" y="3" rx="36" ry="36" pathLength="100"/></svg></div></div>
+        <div id="heroReel"><div class="reel has-snd" tabindex="0" role="button" aria-label="Play with sound"><video data-src="../assets/anand-course-reel.mp4" poster="../assets/anand-course-reel.jpg" muted loop playsinline preload="none" aria-label="Anand Mohan Sir talks about the Pratigya Online course"></video><span class="snd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Tap for sound</span></span><svg class="rline" aria-hidden="true" preserveAspectRatio="none"><rect class="rl-bg" x="3" y="3" rx="36" ry="36" pathLength="100"/><rect class="rl-fg" x="3" y="3" rx="36" ry="36" pathLength="100"/></svg></div></div>
       </div>
     </div>
   </div>
@@ -1279,7 +1255,7 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
 <section class="sec story-sec" id="story">
   <div class="wrap">
     <div class="story">
-      <div class="story-reel"><div class="reel has-snd" tabindex="0" role="button" aria-label="Play with sound"><video src="../assets/anand-story-reel.mp4" poster="../assets/anand-story-reel.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Anand Sir’s story: from UPSC heartbreak to helping students"></video><span class="snd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Tap for sound</span></span><svg class="rline" aria-hidden="true" preserveAspectRatio="none"><rect class="rl-bg" x="3" y="3" rx="36" ry="36" pathLength="100"/><rect class="rl-fg" x="3" y="3" rx="36" ry="36" pathLength="100"/></svg></div></div>
+      <div class="story-reel"><div class="reel has-snd" tabindex="0" role="button" aria-label="Play with sound"><video data-src="../assets/anand-story-reel.mp4" poster="../assets/anand-story-reel.jpg" muted loop playsinline preload="none" aria-label="Anand Sir’s story: from UPSC heartbreak to helping students"></video><span class="snd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Tap for sound</span></span><svg class="rline" aria-hidden="true" preserveAspectRatio="none"><rect class="rl-bg" x="3" y="3" rx="36" ry="36" pathLength="100"/><rect class="rl-fg" x="3" y="3" rx="36" ry="36" pathLength="100"/></svg></div></div>
       <div class="tale">
         <span class="kicker">मेरी कहानी</span>
         <h2 class="tale-h">मैंने UPSC को <span class="mark">बहुत करीब</span> से देखा है.</h2>
@@ -1299,9 +1275,9 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
       </div>
     </div>
     <div class="sheets">
-      <figure class="sheet zoomable" tabindex="0" role="button"><img src="../assets/marksheet-2021.jpg" alt="Anand Mohan's UPSC Mains 2021 marksheet"><figcaption><b>Mains 2021</b> · Written 703</figcaption></figure>
-      <figure class="sheet zoomable" tabindex="0" role="button"><img src="../assets/marksheet-2.jpg" alt="Anand Mohan's UPSC Mains 2022 marksheet"><figcaption><b>CSE 2022</b> · Interview 160 · Total 943</figcaption></figure>
-      <figure class="sheet zoomable" tabindex="0" role="button"><img src="../assets/marksheet-3.jpg" alt="Anand Mohan's UPSC Mains 2023 marksheet"><figcaption><b>CSE 2023</b> · Interview 165 · Total 917</figcaption></figure>
+      <figure class="sheet zoomable" tabindex="0" role="button"><img src="../assets/marksheet-2021.jpg" alt="Anand Mohan's UPSC Mains 2021 marksheet" loading="lazy" decoding="async" width="720" height="560"><figcaption><b>Mains 2021</b> · Written 703</figcaption></figure>
+      <figure class="sheet zoomable" tabindex="0" role="button"><img src="../assets/marksheet-2.jpg" alt="Anand Mohan's UPSC Mains 2022 marksheet" loading="lazy" decoding="async" width="720" height="560"><figcaption><b>CSE 2022</b> · Interview 160 · Total 943</figcaption></figure>
+      <figure class="sheet zoomable" tabindex="0" role="button"><img src="../assets/marksheet-3.jpg" alt="Anand Mohan's UPSC Mains 2023 marksheet" loading="lazy" decoding="async" width="720" height="560"><figcaption><b>CSE 2023</b> · Interview 165 · Total 917</figcaption></figure>
     </div>
     <p class="sheets-note">मेरी अपनी UPSC marksheets, upsc.gov.in से। Tap करके zoom कीजिए।</p>
   </div>
@@ -1321,9 +1297,9 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
       <div class="rn"><b data-to="3">3</b><span>State PCS qualified</span></div>
     </div>
     <div class="polas">
-      <figure class="pola zoomable" tabindex="0" role="button"><img src="../assets/student-call-1.jpg" alt="A student on a video call with Anand Sir, smiling"><figcaption><span class="pill">Shubham, मेरा student</span></figcaption></figure>
-      <figure class="pola wide zoomable" tabindex="0" role="button"><img src="../assets/students-group.jpg" alt="Anand Sir with his 16 UPSC Prelims qualifiers"><figcaption><span class="pill">मेरे 16 Prelims qualifiers</span></figcaption></figure>
-      <figure class="pola zoomable" tabindex="0" role="button"><img src="../assets/student-call-2.jpg" alt="A student smiling on a video call"><figcaption><span class="pill">यही smile चाहिए ❤️</span></figcaption></figure>
+      <figure class="pola zoomable" tabindex="0" role="button"><img src="../assets/student-call-1.jpg" alt="A student on a video call with Anand Sir, smiling" loading="lazy" decoding="async" width="540" height="720"><figcaption><span class="pill">Shubham, मेरा student</span></figcaption></figure>
+      <figure class="pola wide zoomable" tabindex="0" role="button"><img src="../assets/students-group.jpg" alt="Anand Sir with his 16 UPSC Prelims qualifiers" loading="lazy" decoding="async" width="720" height="330"><figcaption><span class="pill">मेरे 16 Prelims qualifiers</span></figcaption></figure>
+      <figure class="pola zoomable" tabindex="0" role="button"><img src="../assets/student-call-2.jpg" alt="A student smiling on a video call" loading="lazy" decoding="async" width="540" height="960"><figcaption><span class="pill">यही smile चाहिए ❤️</span></figcaption></figure>
     </div>
   </div>
 </section>
@@ -1491,9 +1467,9 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
   });
   document.querySelectorAll('[data-play]').forEach((b) => b.addEventListener('click', () => { const r = document.querySelector('#' + b.dataset.play + ' .reel'); if (r && !r.classList.contains('on')) toggle(r); }));
   document.querySelectorAll('video[controls]').forEach((v) => v.addEventListener('play', () => reels.forEach((x) => setOn(x, false))));
-  /* only play reels that are on screen */
+  /* lazy-load + play reels only when on screen */
   if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((es) => es.forEach((e) => { const v = e.target; if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }), { threshold: 0.25 });
+    const io = new IntersectionObserver((es) => es.forEach((e) => { const v = e.target; if (e.isIntersecting) { if (!v.src && v.dataset.src) { v.src = v.dataset.src; } v.play().catch(() => {}); } else { v.pause(); } }), { threshold: 0.25 });
     document.querySelectorAll('.reel video:not([controls])').forEach((v) => io.observe(v));
   }
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('.reel video[autoplay]').forEach((v) => { v.removeAttribute('autoplay'); v.pause(); });
@@ -1622,7 +1598,7 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
   </div>
 </div>
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 <script>
 (function () {
   const LEAD_API = 'https://script.google.com/macros/s/AKfycbz_t6NMC_q7cM4Ll4UkES-2vOblnJnTL9LdoWRWXV0gXpoGBrQueryBhwKF0gBq_I_5/exec';
@@ -1776,5 +1752,19 @@ document.querySelectorAll('.nav-dd').forEach(function (dd) {
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
 })();
 </script>
+
+<!-- GA + Meta Pixel: deferred so they don't block first paint -->
+<script>
+(function(){
+  function loadTrackers(){
+    var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id=AW-18495506036';document.head.appendChild(gs);
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-18495506036');
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','2444729099389998');fbq('track','PageView');
+  }
+  if('requestIdleCallback' in window){requestIdleCallback(loadTrackers);}else{setTimeout(loadTrackers,1500);}
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"/></noscript>
 </body>
 </html>
