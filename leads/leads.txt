@@ -14,3 +14,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 13 | 04-11-2026 14:37:03 | ₹9,999 full | solace | 8898152999 | aapka@gmail.com
 14 | 04-11-2026 14:39:38 | ₹9,999 full | soalce | 8809815299 | aapka@gmail.com
 15 | 04-11-2026 14:40:13 | ₹6,000 EMI | soalce | 8809815299 | aapka@gmail.com
+16 | 05-11-2026 20:14:36 | ₹6,000 EMI | Vishal kumar Kumar | 8797135242 | vishalrx84@gmail.com
