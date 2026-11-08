@@ -16,3 +16,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 15 | 04-11-2026 14:40:13 | ₹6,000 EMI | soalce | 8809815299 | aapka@gmail.com
 16 | 05-11-2026 20:14:36 | ₹6,000 EMI | Vishal kumar Kumar | 8797135242 | vishalrx84@gmail.com
 17 | 08-11-2026 15:45:36 | ₹9,999 full | Anuj Bhatia | 9643260204 | anujrbi9791@gmail.com
+18 | 08-11-2026 15:46:26 | ₹9,999 full | Anuj Bhatia | 9643260204 | anujrbi9791@gmail.com
