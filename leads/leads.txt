@@ -22,3 +22,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 21 | 12-11-2026 14:57:13 | ₹9,999 full | Solace | 8809815299 | solace@gmail.com
 22 | 13-11-2026 00:36:18 | ₹9,999 full | Anuj Bhatia | 9643260204 | anujrbi9791@gmail.com
 23 | 13-11-2026 16:30:06 | ₹9,999 full | solace | 8809815299 | soalce@gmail.com
+24 | 13-11-2026 21:29:49 | ₹9,999 full | Jyoti Laguri | 7079171390 | jlaguri2304@gmail.com
