@@ -774,7 +774,7 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
         </div>
         <div class="bubbles" id="bubbles">
           <div class="bubble">Hi there! 👋</div>
-          <div class="bubble">Fill in your details below. Our team will call you to fix a time.</div>
+          <div class="bubble">Register for our <b>Free UPSC Webinar</b> 🎥 Fill in your details below.</div>
         </div>
       </div>
 
@@ -802,7 +802,8 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
           </div>
           <div class="err" data-empty="Please write your phone number." data-wrong="Please write a correct 10-digit mobile number.">Please write your phone number.</div>
         </div>
-        <div class="fld" id="f-mode">
+        <!-- webinar form: exam is always UPSC Online, so this question is hidden (the value is still sent) -->
+        <div class="fld" id="f-mode" hidden>
           <label id="mode-lbl" for="mode">Which exam are you preparing for? <span class="req" aria-hidden="true">*</span></label>
           <div class="pick" id="modePick">
             <button type="button" class="pick-btn" id="mode" value="" aria-haspopup="listbox" aria-expanded="false" aria-controls="modeList" aria-labelledby="mode-lbl mode-value">
@@ -831,7 +832,7 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
           <div class="err" data-empty="Please choose one option." data-wrong="Please choose one option.">Please choose one option.</div>
         </div>
         <p class="req-note"><span class="req">*</span> All fields are required</p>
-        <button type="submit" class="btn btn-gold" id="submitBtn">Book My Free Counselling →</button>
+        <button type="submit" class="btn btn-gold" id="submitBtn">Register for Free Webinar →</button>
         <p class="send-err" id="sendErr">Something went wrong. Please try again, or call us on 8235950035.</p>
       </form>
 
@@ -1328,6 +1329,8 @@ const THANK_YOU_URL = 'thank-you/';
   });
   document.addEventListener('pointerdown', (e) => { if (!modeBox.contains(e.target)) closeModes(false); });
   modeList.addEventListener('focusout', (e) => { if (!modeBox.contains(e.relatedTarget)) closeModes(false); });
+  /* webinar form: UPSC Online is already chosen; the student can still change it */
+  chooseMode(0);
 
   /* every "Book Free Counselling" button: scroll to the form, then focus the first field */
   document.querySelectorAll('[data-book]').forEach((a) => {
@@ -1465,7 +1468,7 @@ const THANK_YOU_URL = 'thank-you/';
     } catch (err) {
       console.error('Lead form:', err);
       btn.disabled = false;
-      btn.textContent = 'Book My Free Counselling →';
+      btn.textContent = 'Register for Free Webinar →';
       $('sendErr').classList.add('show');
       return;
     }
