@@ -905,6 +905,7 @@ document.querySelectorAll('.vid').forEach(function (b) {
         // Payment successful — log to Google Sheet
         fetch(LEAD_API, {
           method: 'POST',
+          keepalive: true,
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({ action: 'payment', payment_id: response.razorpay_payment_id, plan: plan === 'emi' ? '₹6,200 EMI' : '₹9,999 full', amount: plan === 'emi' ? '6200' : '9999', name: nameI.value.trim(), phone: cleanPhone(phoneI.value), email: emailI.value.trim(), status: 'success' }),
         }).catch(function () {});
