@@ -24,3 +24,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 23 | 13-11-2026 16:30:06 | ₹9,999 full | solace | 8809815299 | soalce@gmail.com
 24 | 13-11-2026 21:29:49 | ₹9,999 full | Jyoti Laguri | 7079171390 | jlaguri2304@gmail.com
 25 | 17-11-2026 10:57:04 | ₹9,999 full | solace | 8898152999 | soalce@gmail.com
+26 | 19-11-2026 00:22:59 | ₹9,999 full | Rohan | 9100000000 | rohansinghQ1@gmail.com
