@@ -26,3 +26,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 25 | 17-11-2026 10:57:04 | ₹9,999 full | solace | 8898152999 | soalce@gmail.com
 26 | 19-11-2026 00:22:59 | ₹9,999 full | Rohan | 9100000000 | rohansinghQ1@gmail.com
 27 | 19-11-2026 16:23:45 | ₹9,999 full | solace | 8809815299 | solace@gmail.com
+28 | 19-11-2026 18:28:31 | ₹9,999 full | Anshu Singh | 7866971556 | anshusi124ngh@gmail.com
