@@ -29,3 +29,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 28 | 19-11-2026 18:28:31 | ₹9,999 full | Anshu Singh | 7866971556 | anshusi124ngh@gmail.com
 29 | 19-11-2026 18:29:05 | ₹9,999 full | Suraj Kumar Pandey | 6306329716 | surajkumarpandey961@gmail.com
 30 | 19-11-2026 18:37:46 | ₹9,999 full | Chanchal Choudhary | 7568438751 | chanchalchoudharychanchal22@gmail.com
+31 | 19-11-2026 18:37:59 | ₹9,999 full | soalce | 8809815290 | soalce@gmail.com
