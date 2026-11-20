@@ -32,3 +32,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 31 | 19-11-2026 18:37:59 | ₹9,999 full | soalce | 8809815290 | soalce@gmail.com
 32 | 19-11-2026 18:43:23 | ₹9,999 full | MOHIT KUMAR | 9608141954 | princeraj1075@gmail.com
 33 | 19-11-2026 18:45:10 | ₹9,999 full | Arpit | 8052782264 | arpitpandey2985@gmail.com
+34 | 20-11-2026 15:03:11 | ₹9,999 full | Saman kumar | 7541911805 | kumkumgupta1313@gmail.com
