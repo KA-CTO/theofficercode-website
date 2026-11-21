@@ -1022,5 +1022,14 @@ document.querySelectorAll('.vid').forEach(function (b) {
   if('requestIdleCallback' in window){requestIdleCallback(loadGA);}else{setTimeout(loadGA,1500);}
 })();
 </script>
+<script>
+/* Coming from a Buy Now link elsewhere (e.g. homepage card): ?enrol=full or ?enrol=emi opens the enrol form straight away. */
+(function () {
+  var m = /[?&]enrol=(full|emi)\b/.exec(location.search); if (!m) return;
+  var b = document.querySelector(m[1] === 'emi' ? '.plan-btn.ghost' : '.plan-btn[data-cta="hero"]'); if (!b) return;
+  var cta = b.dataset.cta; b.dataset.cta = 'home-' + m[1]; b.click(); b.dataset.cta = cta;   // same path as tapping Enrol Now; tracked as EnrolClick place "home-full"
+  try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}       // so refresh / back doesn't reopen it
+})();
+</script>
 </body>
 </html>
