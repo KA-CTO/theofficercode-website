@@ -212,6 +212,7 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
   .vs span.us { background: var(--navy); color: #fff; border-color: var(--navy); font-weight: 700; }
   .vs span.us b { color: var(--gold); }
   .plans { display: grid; gap: 16px; margin-top: 24px; }
+  .plans.one { grid-template-columns: minmax(0, 560px) !important; justify-content: center; }
   .plan { position: relative; border-radius: 22px; padding: 22px 20px; background: #fff; border: 1px solid var(--line); display: grid; gap: 10px; align-content: start; }
   .plan.main { border: 0; background: linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, var(--gold), var(--navy-3)) border-box; border: 2px solid transparent; box-shadow: 0 30px 60px -30px rgba(5,5,68,.45); }
   .plan .rib { position: absolute; top: -12px; left: 20px; font-size: .74rem; font-weight: 800; background: var(--navy); color: var(--gold); padding: 4px 11px; border-radius: 999px; }
@@ -555,7 +556,6 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
         </ul>
         <div class="price">
           <div><span class="was"><s>₹20,000</s><span class="off">50% OFF</span></span><span class="now">₹9,999</span></div>
-          <a class="emi" href="#emi-plan">or in 2 instalments<b>₹6,200 × 2 →</b></a>
         </div>
         <a role="button" tabindex="0" class="cta block plan-btn" data-cta="hero">Enrol Now <span class="ar" aria-hidden="true">→</span></a>
         <p class="refund hi"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z" fill="#16a34a"/><path d="M8 12l3 3 5-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Clear Prelims, get 100% of your fees back.</p>
@@ -591,19 +591,13 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
       <div class="srow us"><span><b>Pratigya Online</b></span><strong>₹9,999</strong></div>
       <div class="sbig"><span>You save big</span><b>₹1,70,001</b><small>compared with Coaching A</small></div>
     </div>
-    <div class="plans">
+    <div class="plans one">
       <div class="plan main rv">
         <span class="rib">Best value</span>
         <h3>Full fees, one time</h3>
         <div class="amt"><strong>₹9,999</strong><span><s>₹20,000</s></span></div>
         <p>Pay once, the full course is yours.</p>
         <a role="button" tabindex="0" class="cta block plan-btn attn" data-cta="plan-full">BUY NOW</a>
-      </div>
-      <div class="plan rv" id="emi-plan">
-        <h3>2 easy instalments</h3>
-        <div class="amt"><strong>₹6,200</strong><span>× 2 · Total ₹12,400</span></div>
-        <p>₹6,200 today, ₹6,200 after 30 days.</p>
-        <a role="button" tabindex="0" class="cta block plan-btn ghost" data-cta="plan-emi">BUY NOW</a>
       </div>
     </div>
     <ol class="steps rv" aria-label="What happens after you pay">
@@ -668,7 +662,7 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
 
 <div class="bar" id="bar" aria-hidden="true">
   <div class="wrap">
-    <div><b>₹9,999</b><a class="bar-emi" href="#emi-plan">or ₹6,200 × 2 instalments →</a></div>
+    <div><b>₹9,999</b><span>Full course</span></div>
     <a role="button" tabindex="0" class="cta plan-btn" data-cta="sticky">Enrol Now →</a>
   </div>
 </div>
@@ -786,7 +780,7 @@ document.querySelectorAll('.vid').forEach(function (b) {
     <div class="ep-top"><small>Pratigya Online · UPSC CSE 2028-29</small><b id="epTitle">Ready to start your UPSC preparation?</b></div>
     <div class="ep-body">
       <div class="ep-price"><strong>₹9,999</strong><s>₹20,000</s><em>50% OFF</em></div>
-      <p class="ep-note">Full course, new batch started 10 November 2026. Or <a href="#emi-plan" id="epEmi">₹6,200 × 2 instalments</a>.</p>
+      <p class="ep-note">Full course, new batch started 10 November 2026.</p>
       <a role="button" tabindex="0" class="cta block plan-btn" data-cta="popup">Enrol Now</a>
       <button type="button" class="ep-later" id="epLater">Maybe later</button>
     </div>
@@ -809,7 +803,7 @@ document.querySelectorAll('.vid').forEach(function (b) {
   };
   var close = function () { bd.classList.remove('show'); bd.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; schedule(GAP); };
   var stop = function () { done = true; clearTimeout(timer); try { sessionStorage.setItem('tocEpDone', '1'); } catch (e) {} };
-  ['epX', 'epLater', 'epEmi'].forEach(function (id) { document.getElementById(id).addEventListener('click', close); });
+  ['epX', 'epLater'].forEach(function (id) { document.getElementById(id).addEventListener('click', close); });
   bd.addEventListener('click', function (e) { if (e.target === bd) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && bd.classList.contains('show')) close(); });
   document.querySelectorAll('.plan-btn').forEach(function (b) { b.addEventListener('click', function () { stop(); if (bd.classList.contains('show')) { bd.classList.remove('show'); bd.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; } }); });
