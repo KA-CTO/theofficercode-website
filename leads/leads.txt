@@ -40,3 +40,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 39 | 20-11-2026 22:43:32 | ₹9,999 full | Test Vikash | 8449770871 | vikash8294@gmail.com
 40 | 20-11-2026 22:44:04 | ₹6,200 EMI | Test Vikash | 8449770871 | vikash8294@gmail.com
 41 | 20-11-2026 23:22:02 | ₹9,999 full | Test Vikash | 8449770871 | vikash8294@gmail.com
+42 | 21-11-2026 10:11:32 | ₹6,200 EMI | Pinaz | 9395561140 | missbarbhuiya@gmail.com
