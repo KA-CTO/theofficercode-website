@@ -870,28 +870,18 @@ document.querySelectorAll('.vid').forEach(function (b) {
     if (bad.length) { document.getElementById('em' + bad[0][0].toUpperCase() + bad[0].slice(1)).focus(); return; }
     btn.disabled = true;
     const old = btn.textContent;
-    btn.textContent = 'Sending…';
+    btn.textContent = 'Opening payment…';
     const plan = form.dataset.plan || 'full';
-    try {
-      const ctrl = new AbortController();
-      const t = setTimeout(() => ctrl.abort(), 20000);
-      const res = await fetch(LEAD_API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ name: nameI.value.trim(), phone: cleanPhone(phoneI.value), email: emailI.value.trim(), plan: plan === 'emi' ? '₹6,200 EMI' : '₹9,999 full' }),
-        signal: ctrl.signal,
-      });
-      clearTimeout(t);
-      const j = await res.json();
-      if (!j.ok) throw new Error(j.error || 'not saved');
-    } catch (err) {
-      console.error('Enroll form:', err);
-      btn.disabled = false;
-      btn.textContent = old;
-      alert('Something went wrong. Please try again in a moment, or call 9546018830.');
-      return;
-    }
-    // Lead saved — now open Razorpay checkout
+
+    // ── Save lead in background (fire-and-forget) — never blocks Razorpay ──
+    fetch(LEAD_API, {
+      method: 'POST',
+      keepalive: true,
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ name: nameI.value.trim(), phone: cleanPhone(phoneI.value), email: emailI.value.trim(), plan: plan === 'emi' ? '₹6,200 EMI' : '₹9,999 full' }),
+    }).catch(function () { /* silent — lead will be saved on payment success too */ });
+
+    // ── Open Razorpay immediately ──
     const amt = plan === 'emi' ? 620000 : 999900; // amount in paise
     const rzp = new Razorpay({
       key: RZP_KEY,
