@@ -20,6 +20,12 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#050544">
 <link rel="canonical" href="https://theofficercode.com/pratigya-online/">
+<!-- Razorpay: connect + download checkout early so the payment popup opens instantly for first-time visitors -->
+<link rel="preconnect" href="https://checkout.razorpay.com">
+<link rel="preconnect" href="https://api.razorpay.com">
+<link rel="preconnect" href="https://checkout-static-next.razorpay.com" crossorigin>
+<link rel="preconnect" href="https://lumberjack.razorpay.com">
+<link rel="preload" href="https://checkout.razorpay.com/v1/checkout.js" as="script">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="../anandsir.jpg">
@@ -342,6 +348,13 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
   .em-sub.ghost { background: linear-gradient(180deg, var(--gold-2), var(--gold) 55%, #f6ab35); color: var(--navy); box-shadow: var(--glow); }
   .em-sub:disabled { opacity: .7; cursor: wait; }
   .em-safe { display: flex; gap: 8px; align-items: center; justify-content: center; font-size: .82rem; color: var(--muted); margin-top: 12px; font-family: 'Mukta', var(--ff); }
+  .em-status { margin: 10px 0 0; padding: 10px 12px; border-radius: 10px; background: #fff7e6; color: #7a4b00; font: 600 .9rem/1.45 'Mukta', var(--ff); text-align: center; }
+  .em-status.bad { background: #fdecec; color: #8a1c1c; }
+  .em-status .em-acts { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 10px; }
+  .em-status .em-acts a, .em-status .em-acts button { flex: 1 1 130px; min-height: 42px; border-radius: 10px; border: 0; font: 700 .9rem var(--ff); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+  .em-status .em-retry { background: var(--navy); color: #fff; }
+  .em-status .em-wa { background: #25d366; color: #fff; }
+  .em-status .em-call { background: #fff; color: var(--navy); border: 1px solid #d9d9e6 !important; }
   .em-ok { text-align: center; padding: 26px 20px; }
   .em-ok .tick { width: 56px; height: 56px; border-radius: 50%; background: #e8f7ee; color: var(--ok); font-size: 1.8rem; display: grid; place-items: center; margin: 0 auto 10px; }
   body.em-open { overflow: hidden; }
@@ -705,6 +718,7 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
             <div class="err">Please enter a valid email, like name@gmail.com.</div>
           </div>
           <button type="submit" class="em-sub" id="emBtn">Buy Now →</button>
+          <div class="em-status" id="emStatus" role="status" aria-live="polite" hidden></div>
           <p class="em-safe"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V8a6 6 0 1 1 12 0v2h1v12H5V10zm2 0h8V8a4 4 0 1 0-8 0z" fill="currentColor"/></svg>Secure payment on Razorpay in the next step</p>
         </form>
       </div>
@@ -799,10 +813,23 @@ document.querySelectorAll('.vid').forEach(function (b) {
   img.addEventListener('click', function (e) { e.stopPropagation(); i = (i + 1) % set.length; img.src = set[i].src; img.alt = set[i].cap; cap.textContent = set[i].cap + ' · ' + (i + 1) + '/3 · tap for next'; });
 })();
 </script>
-<script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js" async onerror="window.__rzpErr=1"></script>
 <script>
 (function () {
   const LEAD_API = 'https://script.google.com/macros/s/AKfycbz_t6NMC_q7cM4Ll4UkES-2vOblnJnTL9LdoWRWXV0gXpoGBrQueryBhwKF0gBq_I_5/exec';
+  // Lead saving that survives a dropped connection: kept on the phone until the sheet confirms, re-sent when back online
+  const PENDING = 'tocPendingLeads';
+  const readPending = function () { try { return JSON.parse(localStorage.getItem(PENDING) || '[]'); } catch (e) { return []; } };
+  const writePending = function (a) { try { a.length ? localStorage.setItem(PENDING, JSON.stringify(a)) : localStorage.removeItem(PENDING); } catch (e) {} };
+  const sendLead = function (lead) {
+    return fetch(LEAD_API, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(lead) })
+      .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); writePending(readPending().filter(function (x) { return x._id !== lead._id; })); })
+      .catch(function () { /* stays pending — re-sent when the internet is back */ });
+  };
+  const saveLead = function (lead) { lead._id = Date.now() + '-' + Math.random().toString(36).slice(2, 7); const a = readPending(); a.push(lead); writePending(a.slice(-5)); return sendLead(lead); };
+  const flushPending = function () { if (navigator.onLine === false) return; readPending().forEach(sendLead); };
+  flushPending();
+  addEventListener('online', flushPending);
   const RZP_KEY = 'rzp_live_TvOzwPPH4FfmCF';
   const bd = document.getElementById('emBd');
   const planLab = document.getElementById('emPlan');
@@ -874,14 +901,51 @@ document.querySelectorAll('.vid').forEach(function (b) {
     const plan = form.dataset.plan || 'full';
 
     // ── Save lead in background (fire-and-forget) — never blocks Razorpay ──
-    fetch(LEAD_API, {
-      method: 'POST',
-      keepalive: true,
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify({ name: nameI.value.trim(), phone: cleanPhone(phoneI.value), email: emailI.value.trim(), plan: plan === 'emi' ? '₹6,200 EMI' : '₹9,999 full' }),
-    }).catch(function () { /* silent — lead will be saved on payment success too */ });
+    if (form.dataset.retry) { delete form.dataset.retry; } else // "Try again" after a slow-internet failure: lead already sent, don't save twice
+    saveLead({ name: nameI.value.trim(), phone: cleanPhone(phoneI.value), email: emailI.value.trim(), plan: plan === 'emi' ? '₹6,200 EMI' : '₹9,999 full' });
 
     // ── Open Razorpay immediately ──
+    // ── Slow / no internet: wait for Razorpay patiently, retry, then offer WhatsApp / call. Normal users skip all of this. ──
+    const st = document.getElementById('emStatus');
+    const say = function (html, bad) { st.innerHTML = html; st.classList.toggle('bad', !!bad); st.hidden = false; };
+    st.hidden = true;
+    if (typeof Razorpay !== 'function') {
+      if (navigator.onLine === false) {
+        btn.disabled = false; btn.textContent = old;
+        say('You are offline. Please connect to the internet and tap <b>Buy Now</b> again.', true);
+        return;
+      }
+      const altBtns = function (withRetry) {
+        const amtTxt = plan === 'emi' ? '₹6,200 (1st instalment)' : '₹9,999';
+        const waTxt = 'Hi, I want to join Pratigya Online (' + amtTxt + ') but the payment page did not load.\nName: ' + nameI.value.trim() + '\nPhone: ' + cleanPhone(phoneI.value) + '\nEmail: ' + emailI.value.trim();
+        return '<div class="em-acts">' + (withRetry ? '<button type="button" class="em-retry" id="emRetry">Try again</button>' : '') +
+          '<a class="em-wa" target="_blank" rel="noopener" href="https://wa.me/919546018830?text=' + encodeURIComponent(waTxt) + '">Pay via WhatsApp</a>' +
+          '<a class="em-call" href="tel:+919546018830">Call 9546018830</a></div>';
+      };
+      btn.textContent = 'Loading secure payment…';
+      say('Your internet is slow. Please wait — don\'t close this page.');
+      const ready = await new Promise(function (res) {
+        var t0 = Date.now(), tries = 0, early = false;
+        var add = function () { tries++; var sc = document.createElement('script'); sc.src = 'https://checkout.razorpay.com/v1/checkout.js'; document.head.appendChild(sc); };
+        if (window.__rzpErr) add();
+        var iv = setInterval(function () {
+          var ms = Date.now() - t0;
+          if (typeof Razorpay === 'function') { clearInterval(iv); return res(true); }
+          if (ms > 8000 && tries === 0) { add(); say('Still loading… almost there. Please wait.'); }
+          if (ms > 10000 && !early) { early = true; say('Still loading — it will open by itself. Taking too long? Choose one:' + altBtns(), false); }
+          if (ms > 20000 && tries === 1) { add(); }
+          if (ms > 35000) { clearInterval(iv); res(false); }
+        }, 200);
+      });
+      if (!ready) {
+        btn.disabled = false; btn.textContent = old;
+        say('The payment page could not load on your internet. Your seat is not lost — choose one:' + altBtns(true), true);
+        document.getElementById('emRetry').onclick = function () { st.hidden = true; form.dataset.retry = '1'; form.requestSubmit(); };
+        return;
+      }
+      st.hidden = true;
+    }
+    let payFailed = false; // true once a real payment attempt fails in this checkout
     const amt = plan === 'emi' ? 620000 : 999900; // amount in paise
     const rzp = new Razorpay({
       key: RZP_KEY,
@@ -912,15 +976,16 @@ document.querySelectorAll('.vid').forEach(function (b) {
       modal: {
         ondismiss: function () {
           btn.disabled = false; btn.textContent = old;
-          // Meta Pixel: PaymentFailed
-          if(typeof fbq==='function'){fbq('trackCustom','PaymentFailed',{value:(plan==='emi')?6200:9999,currency:'INR'});}
+          // Meta Pixel: CheckoutClosed — only when no payment failed (a real decline is already counted as PaymentFailed)
+          if(!payFailed && typeof fbq==='function'){fbq('trackCustom','CheckoutClosed',{value:(plan==='emi')?6200:9999,currency:'INR'});}
           // Payment dismissed/failed — scroll to the Pay Now section
           var paySection = document.getElementById('offer');
           if (paySection) paySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       },
     });
-    rzp.on('payment.failed',function(){if(typeof fbq==='function'){fbq('trackCustom','PaymentFailed',{value:(plan==='emi')?6200:9999,currency:'INR'});}});
+    // Meta Pixel: PaymentFailed — real declines only, once per checkout (retries inside the popup don't double count)
+    rzp.on('payment.failed',function(){if(payFailed)return;payFailed=true;if(typeof fbq==='function'){fbq('trackCustom','PaymentFailed',{value:(plan==='emi')?6200:9999,currency:'INR'});}});
     // Meta Pixel: InitiateCheckout
     if(typeof fbq==='function'){fbq('track','InitiateCheckout',{content_name:'Pratigya Online',value:plan==='emi'?6200:9999,currency:'INR'});}
     rzp.open();
@@ -931,7 +996,7 @@ document.querySelectorAll('.vid').forEach(function (b) {
 <script id="track">
 /* Funnel events. Only adds listeners; the checkout script above is unchanged.
    Meta (custom): EnrolClick, ScrollDepth. Google: enrol_click, scroll_depth.
-   Meta PageView, ViewContent, InitiateCheckout, Purchase and PaymentFailed still fire as before. */
+   Meta PageView, ViewContent, InitiateCheckout, Purchase, PaymentFailed and CheckoutClosed fire from the checkout script. */
 (function () {
   var send = function (name, p) {
     try { if (typeof fbq === 'function') fbq('trackCustom', name, p); } catch (e) {}
