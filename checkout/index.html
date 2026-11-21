@@ -359,11 +359,6 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
       <div class="save"><span>Discount</span><span>− ₹10,001</span></div>
       <div class="total"><span>Total to pay</span><span>₹9,999</span></div>
     </div>
-    <div class="sum" id="coEmi" hidden>
-      <div><span>Plan</span><span>Instalments (2 × ₹6,000)</span></div>
-      <div><span>2nd instalment, after 30 days</span><span>₹6,000</span></div>
-      <div class="total"><span>Pay now (1st instalment)</span><span>₹6,000</span></div>
-    </div>
   </section>
 
   <!-- DETAILS + PAY -->
@@ -436,16 +431,6 @@ src="https://www.facebook.com/tr?id=2444729099389998&ev=PageView&noscript=1"
    The student's details are only checked here; they are not saved anywhere.
    ═══════════════════════════════════════════════════════════════ */
 const PAY_URL = '';          /* one-time ₹9,999 */
-const PAY_URL_EMI = '';      /* first instalment ₹6,000 */
-
-/* Plan: the Pratigya page links here as checkout/ (one-time) or checkout/#instalment */
-const EMI = location.hash === '#instalment';
-if (EMI) {
-  document.getElementById('coFull').hidden = true;
-  document.getElementById('coEmi').hidden = false;
-  document.getElementById('coPrice').innerHTML = '<b>₹6,000</b><small style="display:block;font-size:.75rem;opacity:.7">1st of 2 instalments</small>';
-  document.getElementById('payBtn').textContent = 'Pay ₹6,000 →';
-}
 
 (function () {
   const $ = (id) => document.getElementById(id);
@@ -471,7 +456,7 @@ if (EMI) {
     tried = true;
     const bad = Object.keys(checks).filter((k) => !check(k));
     if (bad.length) { $(bad[0]).focus(); return; }
-    const url = EMI ? PAY_URL_EMI : PAY_URL;
+    const url = PAY_URL;
     if (!url) { $('soon').classList.add('show'); return; }
     $('payBtn').textContent = 'Opening payment…';
     location.href = url;
