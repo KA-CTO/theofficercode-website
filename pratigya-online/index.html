@@ -500,9 +500,33 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
   .m-h > span { display: table; white-space: nowrap; }
   @media (max-width: 979px) { .mentor .m-h { font-size: min(1.75rem, calc((100vw - 36px - 132px) / 7.6)); line-height: 1.18; align-self: center; } }
   @media (max-width: 340px) { .ask a { padding: 0 10px; font-size: .82rem; } .ask { gap: 6px; } }
+
+  /* slim top header: logo + Home + Enrol Now (not sticky — the bottom bar keeps Enrol Now in reach while scrolling) */
+  .tn { background: var(--navy); padding-top: env(safe-area-inset-top, 0px); }
+  .tn-in { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .tn-logo { color: var(--gold); text-decoration: none; font: 800 1.35rem/1.05 var(--ff); letter-spacing: 3px; }
+  .tn-logo span { display: block; color: #fff; font-size: .7rem; font-weight: 500; letter-spacing: 1px; }
+  .tn-r { display: flex; align-items: center; gap: 8px; }
+  .tn-home, .tn-cta { display: inline-flex; align-items: center; min-height: 38px; padding: 0 14px; border-radius: 8px; font: 700 .88rem var(--ff); text-decoration: none; white-space: nowrap; cursor: pointer; transition: transform .15s, background .15s, border-color .15s; }
+  .tn-home { color: var(--gold); border: 1.5px solid rgba(255,189,89,.55); }
+  .tn-home:hover, .tn-home:focus-visible { border-color: var(--gold); background: rgba(255,189,89,.12); }
+  .tn-cta { background: var(--gold); color: var(--navy); font-weight: 800; }
+  .tn-cta:hover, .tn-cta:focus-visible { background: var(--gold-2); transform: translateY(-1px); }
+  @media (max-width: 360px) { .tn-logo span { display: none; } .tn-home, .tn-cta { padding: 0 11px; font-size: .82rem; } }
+  .tn ~ main .hero { padding-top: 22px; }
+  @media (min-width: 980px) { .tn ~ main .hero { padding-top: 56px; } }
 </style>
 </head>
 <body>
+<header class="tn">
+  <div class="wrap tn-in">
+    <a href="../" class="tn-logo">TOC <span>The Officer Code</span></a>
+    <nav class="tn-r" aria-label="Main">
+      <a href="../" class="tn-home">Home</a>
+      <a role="button" tabindex="0" class="tn-cta plan-btn" data-cta="header">Enrol Now</a>
+    </nav>
+  </div>
+</header>
 
 <main>
 <!-- HERO: headline + the batch card -->
