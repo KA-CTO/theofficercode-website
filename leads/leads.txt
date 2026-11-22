@@ -49,3 +49,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 48 | 22-11-2026 16:13:09 | ₹9,999 full | Test Vikash | 8449770871 | emailforkrishan@gmail.com
 49 | 22-11-2026 16:13:10 | ₹9,999 full | Test Vikash | 8449770871 | emailforkrishan@gmail.com
 50 | 22-11-2026 16:13:19 | ₹9,999 full | Test Vikash | 8449770871 | emailforkrishan@gmail.com
+51 | 22-11-2026 17:06:36 | ₹9,999 full | soalce | 8098815299 | solace@gmail.com
