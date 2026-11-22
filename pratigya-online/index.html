@@ -1045,7 +1045,7 @@ document.querySelectorAll('.vid').forEach(function (b) {
 })();
 </script>
 <script>
-/* Shared "offer ends" countdown. Reads timer.json ({"end": <epoch ms>}) next to this page every 30 s, so everyone sees the same clock,
+/* Shared "offer ends" countdown. Reads timer.json ({"end": <epoch ms>}) next to this page every 10 s, so everyone sees the same clock,
    including people already on the page when it starts. Uses the server's clock, so a wrong phone clock doesn't matter.
    Hidden when there is no future end time; disappears at 00:00. */
 (function () {
@@ -1076,7 +1076,7 @@ document.querySelectorAll('.vid').forEach(function (b) {
       .then(function (j) { set(j ? j.end : 0); })
       .catch(function () {});
   };
-  check(); setInterval(check, 30000);
+  check(); setInterval(check, 10000);
 })();
 </script>
 </body>
