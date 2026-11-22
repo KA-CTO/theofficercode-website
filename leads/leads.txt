@@ -45,3 +45,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 44 | 21-11-2026 16:21:51 | ₹9,999 full | Shashi Raj | 9835372607 | sraj98353@gmail.com
 45 | 21-11-2026 17:42:56 | ₹9,999 full | Solace | 8809815990 | solae@gmail.com
 46 | 21-11-2026 17:45:49 | ₹9,999 full | Solace | 8809815299 | solae@gmail.com
+47 | 22-11-2026 16:12:11 | ₹9,999 full | Test Vikash | 8449770871 | emailforkrishan@gmail.com
