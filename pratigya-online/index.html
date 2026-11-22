@@ -516,6 +516,38 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
   @media (max-width: 360px) { .tn-logo span { display: none; } .tn-home, .tn-cta { padding: 0 11px; font-size: .82rem; } }
   .tn ~ main .hero { padding-top: 22px; }
   @media (min-width: 980px) { .tn ~ main .hero { padding-top: 56px; } }
+
+  /* shared "offer ends" countdown — shown only while pratigya-online/timer.json has a future end time */
+  .ot[hidden] { display: none !important; }
+  .ot { display: inline-flex; flex-direction: column; align-items: center; gap: 4px; padding: 7px 10px 8px; border-radius: 12px; flex: 0 0 auto;
+        color: #fff; background: linear-gradient(110deg, #be123c 0%, #e11d48 38%, #ff5c7a 50%, #e11d48 62%, #be123c 100%); background-size: 260% 100%;
+        box-shadow: 0 10px 24px -10px rgba(185,28,28,.8); animation: otShine 2s linear infinite, otGlow 1.1s ease-out infinite, otShake 4s ease-in-out infinite; }
+  .ot-lab { display: flex; align-items: center; gap: 6px; font: 800 .64rem/1 var(--ff); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+  .ot-lab .ot-hurry { color: #FFE27A; }
+  .ot-dot { width: 7px; height: 7px; border-radius: 50%; background: #fff; flex: 0 0 7px; animation: otDot 1s ease-in-out infinite; }
+  .ot-clock { display: flex; align-items: center; gap: 3px; }
+  .ot-clock b { min-width: 34px; text-align: center; font: 800 1.2rem/1 var(--ff); font-variant-numeric: tabular-nums; color: #b91c1c; background: #fff; border-radius: 7px; padding: 5px 4px 4px; }
+  .ot-clock .ot-c { font: 800 1.1rem/1 var(--ff); color: #fff; }
+  .ot-clock b.tick { animation: otTick .4s ease-out; }
+  .ot.last { animation: otShine .9s linear infinite, otGlow .55s ease-out infinite, otShake 1.2s ease-in-out infinite; }
+  .ot.last .ot-clock b { color: #fff; background: #111827; }
+  .pr-row { display: flex; align-items: center; gap: 12px; flex-wrap: nowrap; }
+  .em-row { display: flex; align-items: center; justify-content: flex-start; gap: 10px; margin-top: 8px; }
+  .em-row .em-plan { margin-top: 0; }
+  /* while the offer is running, every Enrol / Buy Now button pulses too */
+  body.ot-on .plan-btn, body.ot-on #emBtn { animation: otBtn 1.3s ease-in-out infinite; }
+  @media (max-width: 360px) {
+    .ot { padding: 6px 8px 7px; } .ot-lab { font-size: .58rem; } .ot-lab .ot-hurry { display: none; }
+    .ot-clock b { min-width: 29px; font-size: 1rem; padding: 4px 3px 3px; } .ot-clock .ot-c { font-size: .95rem; }
+    .price .now { font-size: 2.3rem; }
+  }
+  @keyframes otShine { from { background-position: 100% 0; } to { background-position: -160% 0; } }
+  @keyframes otGlow { 0% { box-shadow: 0 10px 24px -10px rgba(185,28,28,.8), 0 0 0 0 rgba(255,77,109,.75); } 100% { box-shadow: 0 10px 24px -10px rgba(185,28,28,.8), 0 0 0 12px rgba(255,77,109,0); } }
+  @keyframes otShake { 0%, 9%, 100% { transform: none; } 2% { transform: rotate(-4deg) scale(1.06); } 4% { transform: rotate(4deg) scale(1.06); } 6% { transform: rotate(-3deg) scale(1.04); } 8% { transform: rotate(2deg); } }
+  @keyframes otTick { 0% { transform: translateY(-4px) scale(1.22); background: #FFE27A; } 100% { transform: none; } }
+  @keyframes otDot { 50% { opacity: .25; } }
+  @keyframes otBtn { 0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,189,89,.65); } 50% { transform: scale(1.035); box-shadow: 0 0 0 8px rgba(255,189,89,0); } }
+  @media (prefers-reduced-motion: reduce) { .ot, .ot.last, .ot-dot, .ot-clock b.tick, body.ot-on .plan-btn, body.ot-on #emBtn { animation: none; } }
 </style>
 </head>
 <body>
@@ -555,7 +587,7 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
           <li>Live classes</li><li>Recorded classes</li><li>Topic-wise tests</li><li>Doubt solving</li><li>Answer writing</li><li>Interview guidance</li>
         </ul>
         <div class="price">
-          <div><span class="was"><s>₹20,000</s><span class="off">50% OFF</span></span><span class="now">₹9,999</span></div>
+          <div><span class="was"><s>₹20,000</s><span class="off">50% OFF</span></span><span class="pr-row"><span class="now">₹9,999</span><div class="ot" role="timer" aria-live="off" hidden><span class="ot-lab"><i class="ot-dot"></i><span><span class="ot-hurry">Hurry!</span> Offer ends in</span></span><span class="ot-clock"><b class="ot-m">10</b><span class="ot-c">:</span><b class="ot-s">00</b></span></div></span></div>
         </div>
         <a role="button" tabindex="0" class="cta block plan-btn" data-cta="hero">Enrol Now <span class="ar" aria-hidden="true">→</span></a>
         <p class="refund hi"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.4 9.4-8 11-4.6-1.6-8-6-8-11V5l8-3z" fill="#16a34a"/><path d="M8 12l3 3 5-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Clear Prelims, get 100% of your fees back.</p>
@@ -716,7 +748,7 @@ fbq('track','ViewContent',{content_name:'Pratigya Online',value:9999,currency:'I
     <div id="emForm">
       <div class="em-top">
         <h3 id="emTitle">Pratigya Online 2028-29</h3>
-        <span class="em-plan" id="emPlan">₹9,999</span>
+        <div class="em-row"><span class="em-plan" id="emPlan">₹9,999</span><div class="ot" role="timer" aria-live="off" hidden><span class="ot-lab"><i class="ot-dot"></i><span><span class="ot-hurry">Hurry!</span> Offer ends in</span></span><span class="ot-clock"><b class="ot-m">10</b><span class="ot-c">:</span><b class="ot-s">00</b></span></div></div>
       </div>
       <div class="em-body">
         <form id="emF" novalidate>
@@ -773,43 +805,6 @@ document.querySelectorAll('.vid').forEach(function (b) {
 })();
 </script>
 
-<!-- Enrol pop-up (every 1 minute, max 3 times) -->
-<div class="ep-bd" id="epBd" role="dialog" aria-modal="true" aria-labelledby="epTitle" aria-hidden="true">
-  <div class="ep">
-    <button type="button" class="ep-x" id="epX" aria-label="Close">&times;</button>
-    <div class="ep-top"><small>Pratigya Online · UPSC CSE 2028-29</small><b id="epTitle">Ready to start your UPSC preparation?</b></div>
-    <div class="ep-body">
-      <div class="ep-price"><strong>₹9,999</strong><s>₹20,000</s><em>50% OFF</em></div>
-      <p class="ep-note">Full course, new batch started 10 November 2026.</p>
-      <a role="button" tabindex="0" class="cta block plan-btn" data-cta="popup">Enrol Now</a>
-      <button type="button" class="ep-later" id="epLater">Maybe later</button>
-    </div>
-  </div>
-</div>
-<script>
-/* enrol pop-up: first at 1 minute, then 1 minute after each close, at most 3 times per visit.
-   Stops for good once the student taps any Enrol / Buy Now button. */
-(function () {
-  var bd = document.getElementById('epBd'); if (!bd) return;
-  var FIRST = 60000, GAP = 60000, MAX = 3, shown = 0, done = false, timer = null;
-  try { shown = +(sessionStorage.getItem('tocEpN') || 0); done = sessionStorage.getItem('tocEpDone') === '1'; } catch (e) {}
-  var busy = function () { return document.body.classList.contains('em-open') || document.querySelector('.viewer.open, .vidbox.open'); };
-  var schedule = function (ms) { clearTimeout(timer); if (done || shown >= MAX) return; timer = setTimeout(open, ms); };
-  var open = function () {
-    if (done || shown >= MAX) return;
-    if (document.hidden || busy()) { schedule(5000); return; }
-    shown++; try { sessionStorage.setItem('tocEpN', String(shown)); } catch (e) {}
-    bd.classList.add('show'); bd.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
-  };
-  var close = function () { bd.classList.remove('show'); bd.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; schedule(GAP); };
-  var stop = function () { done = true; clearTimeout(timer); try { sessionStorage.setItem('tocEpDone', '1'); } catch (e) {} };
-  ['epX', 'epLater'].forEach(function (id) { document.getElementById(id).addEventListener('click', close); });
-  bd.addEventListener('click', function (e) { if (e.target === bd) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && bd.classList.contains('show')) close(); });
-  document.querySelectorAll('.plan-btn').forEach(function (b) { b.addEventListener('click', function () { stop(); if (bd.classList.contains('show')) { bd.classList.remove('show'); bd.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; } }); });
-  schedule(FIRST);
-})();
-</script>
 <script>
 /* bottom Enrol bar: appears only after the course card has scrolled away, so it never covers it */
 (function () {
@@ -1047,6 +1042,41 @@ document.querySelectorAll('.vid').forEach(function (b) {
   var b = document.querySelector(m[1] === 'emi' ? '.plan-btn.ghost' : '.plan-btn[data-cta="hero"]'); if (!b) return;
   var cta = b.dataset.cta; b.dataset.cta = 'home-' + m[1]; b.click(); b.dataset.cta = cta;   // same path as tapping Enrol Now; tracked as EnrolClick place "home-full"
   try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) {}       // so refresh / back doesn't reopen it
+})();
+</script>
+<script>
+/* Shared "offer ends" countdown. Reads timer.json ({"end": <epoch ms>}) next to this page every 30 s, so everyone sees the same clock,
+   including people already on the page when it starts. Uses the server's clock, so a wrong phone clock doesn't matter.
+   Hidden when there is no future end time; disappears at 00:00. */
+(function () {
+  var els = [].slice.call(document.querySelectorAll('.ot')); if (!els.length) return;
+  var end = 0, off = 0, tick = null, lastS = '';
+  var show = function (on) { els.forEach(function (e) { e.hidden = !on; }); document.body.classList.toggle('ot-on', on); };
+  var two = function (n) { return String(n).padStart(2, '0'); };
+  var pop = function (el) { el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick'); };
+  var paint = function () {
+    var left = end - (Date.now() + off);
+    if (left <= 0) { clearInterval(tick); tick = null; end = 0; show(false); return; }
+    var sec = Math.ceil(left / 1000), m = two(Math.floor(sec / 60)), s = two(sec % 60), flip = s !== lastS; lastS = s;
+    els.forEach(function (e) {
+      var mb = e.querySelector('.ot-m'), sb = e.querySelector('.ot-s');
+      if (mb.textContent !== m) { mb.textContent = m; pop(mb); }
+      sb.textContent = s; if (flip) pop(sb);
+      e.classList.toggle('last', sec <= 60);
+    });
+  };
+  var set = function (e) {
+    e = +e || 0;
+    if (e && e - (Date.now() + off) > 0) { if (e !== end) { end = e; paint(); show(true); clearInterval(tick); tick = setInterval(paint, 250); } }
+    else if (end) { end = 0; clearInterval(tick); tick = null; show(false); }
+  };
+  var check = function () {
+    fetch('timer.json?v=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { var d = Date.parse(r.headers.get('Date') || ''); if (d) off = d + 500 - Date.now(); return r.ok ? r.json() : null; })
+      .then(function (j) { set(j ? j.end : 0); })
+      .catch(function () {});
+  };
+  check(); setInterval(check, 30000);
 })();
 </script>
 </body>
