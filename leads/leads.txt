@@ -51,3 +51,4 @@ S.No | Date & Time | Plan | Name | Phone | Email
 50 | 22-11-2026 16:13:19 | ₹9,999 full | Test Vikash | 8449770871 | emailforkrishan@gmail.com
 51 | 22-11-2026 17:06:36 | ₹9,999 full | soalce | 8098815299 | solace@gmail.com
 52 | 25-11-2026 16:56:18 | ₹9,999 full | Eee | 9122942236 | hhg@hhja.sj
+53 | 27-11-2026 01:14:48 | ₹9,999 full | Himanshu | 9654402961 | sonalika7838@gmail.com
